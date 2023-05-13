@@ -1,19 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using LogicaNegocio;
 
 namespace InterfazUsuario
 {
     public partial class frmPrincipal : Form
     {
+        // Atributos
+        private List<Articulo> articulos = null;
         private bool modificacionPendiente;
         private int indiceModificacionPendiente;
+        
+        // Constructor
         public frmPrincipal()
         {
             InitializeComponent();
@@ -178,6 +185,25 @@ namespace InterfazUsuario
                 panelAgregarArticulo.Visible = false;
             }
             panelModificarArticulo.Visible = true;
+        }
+
+        // Eventos
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            try
+            {
+                articulos = artNegocio.CargarArticulos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error: cargar articulos");
+            }
+
+            if (articulos != null)
+            {
+                dgvArticulos.DataSource = articulos;
+            }
         }
     }
 }

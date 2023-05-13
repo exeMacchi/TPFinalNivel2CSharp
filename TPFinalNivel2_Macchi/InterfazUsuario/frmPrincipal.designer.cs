@@ -29,40 +29,40 @@
         private void InitializeComponent()
         {
             this.panelSuperior = new System.Windows.Forms.Panel();
-            this.panelMetodosVentana = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
+            this.panelMetodosVentana = new System.Windows.Forms.Panel();
+            this.btnMinimizarFormulario = new System.Windows.Forms.Button();
+            this.btnMaximizarFormulario = new System.Windows.Forms.Button();
+            this.btnCerrarFormulario = new System.Windows.Forms.Button();
+            this.btnModificacionPendiente = new System.Windows.Forms.Button();
+            this.btnNuevoArticulo = new System.Windows.Forms.Button();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.panelSubPrincipalIzquierda = new System.Windows.Forms.Panel();
             this.panelGridDataView = new System.Windows.Forms.Panel();
             this.btnSeleccionarArticulo = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.panelFiltroAvanzado = new System.Windows.Forms.Panel();
             this.panelDetallesArticulos = new System.Windows.Forms.Panel();
             this.panelModificarArticulo = new System.Windows.Forms.Panel();
             this.panelAgregarArticulo = new System.Windows.Forms.Panel();
-            this.lbDetallesArticulos = new System.Windows.Forms.Label();
-            this.lbImagen = new System.Windows.Forms.Label();
-            this.btnModificarArticulo = new System.Windows.Forms.Button();
-            this.btnEliminarArticulo = new System.Windows.Forms.Button();
-            this.lbModificarArticulo = new System.Windows.Forms.Label();
-            this.btnConfirmarModificacion = new System.Windows.Forms.Button();
-            this.btnCancelarModificacion = new System.Windows.Forms.Button();
-            this.btnAgregarArticulo = new System.Windows.Forms.Button();
-            this.btnCancelarAgregacion = new System.Windows.Forms.Button();
             this.lbAgregarArticulo = new System.Windows.Forms.Label();
-            this.btnNuevoArticulo = new System.Windows.Forms.Button();
-            this.btnModificacionPendiente = new System.Windows.Forms.Button();
-            this.btnCerrarFormulario = new System.Windows.Forms.Button();
-            this.btnMaximizarFormulario = new System.Windows.Forms.Button();
-            this.btnMinimizarFormulario = new System.Windows.Forms.Button();
+            this.btnCancelarAgregacion = new System.Windows.Forms.Button();
+            this.btnAgregarArticulo = new System.Windows.Forms.Button();
+            this.btnCancelarModificacion = new System.Windows.Forms.Button();
+            this.btnConfirmarModificacion = new System.Windows.Forms.Button();
+            this.lbModificarArticulo = new System.Windows.Forms.Label();
+            this.lbImagen = new System.Windows.Forms.Label();
+            this.lbDetallesArticulos = new System.Windows.Forms.Label();
+            this.btnEliminarArticulo = new System.Windows.Forms.Button();
+            this.btnModificarArticulo = new System.Windows.Forms.Button();
             this.panelSuperior.SuspendLayout();
-            this.panelMetodosVentana.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
+            this.panelMetodosVentana.SuspendLayout();
             this.panelPrincipal.SuspendLayout();
             this.panelSubPrincipalIzquierda.SuspendLayout();
             this.panelGridDataView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panelDetallesArticulos.SuspendLayout();
             this.panelModificarArticulo.SuspendLayout();
             this.panelAgregarArticulo.SuspendLayout();
@@ -78,20 +78,6 @@
             this.panelSuperior.Name = "panelSuperior";
             this.panelSuperior.Size = new System.Drawing.Size(1339, 100);
             this.panelSuperior.TabIndex = 0;
-            // 
-            // panelMetodosVentana
-            // 
-            this.panelMetodosVentana.BackColor = System.Drawing.Color.ForestGreen;
-            this.panelMetodosVentana.Controls.Add(this.btnMinimizarFormulario);
-            this.panelMetodosVentana.Controls.Add(this.btnMaximizarFormulario);
-            this.panelMetodosVentana.Controls.Add(this.btnCerrarFormulario);
-            this.panelMetodosVentana.Controls.Add(this.btnModificacionPendiente);
-            this.panelMetodosVentana.Controls.Add(this.btnNuevoArticulo);
-            this.panelMetodosVentana.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMetodosVentana.Location = new System.Drawing.Point(846, 0);
-            this.panelMetodosVentana.Name = "panelMetodosVentana";
-            this.panelMetodosVentana.Size = new System.Drawing.Size(493, 100);
-            this.panelMetodosVentana.TabIndex = 1;
             // 
             // panelFiltroRapido
             // 
@@ -113,6 +99,72 @@
             this.btnFiltroAvanzado.Text = "Expandir / Ocultar";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
             this.btnFiltroAvanzado.Click += new System.EventHandler(this.btnFiltroAvanzado_Click);
+            // 
+            // panelMetodosVentana
+            // 
+            this.panelMetodosVentana.BackColor = System.Drawing.Color.ForestGreen;
+            this.panelMetodosVentana.Controls.Add(this.btnMinimizarFormulario);
+            this.panelMetodosVentana.Controls.Add(this.btnMaximizarFormulario);
+            this.panelMetodosVentana.Controls.Add(this.btnCerrarFormulario);
+            this.panelMetodosVentana.Controls.Add(this.btnModificacionPendiente);
+            this.panelMetodosVentana.Controls.Add(this.btnNuevoArticulo);
+            this.panelMetodosVentana.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelMetodosVentana.Location = new System.Drawing.Point(846, 0);
+            this.panelMetodosVentana.Name = "panelMetodosVentana";
+            this.panelMetodosVentana.Size = new System.Drawing.Size(493, 100);
+            this.panelMetodosVentana.TabIndex = 1;
+            // 
+            // btnMinimizarFormulario
+            // 
+            this.btnMinimizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimizarFormulario.Location = new System.Drawing.Point(337, 12);
+            this.btnMinimizarFormulario.Name = "btnMinimizarFormulario";
+            this.btnMinimizarFormulario.Size = new System.Drawing.Size(44, 36);
+            this.btnMinimizarFormulario.TabIndex = 4;
+            this.btnMinimizarFormulario.Text = "-";
+            this.btnMinimizarFormulario.UseVisualStyleBackColor = true;
+            // 
+            // btnMaximizarFormulario
+            // 
+            this.btnMaximizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaximizarFormulario.Location = new System.Drawing.Point(387, 12);
+            this.btnMaximizarFormulario.Name = "btnMaximizarFormulario";
+            this.btnMaximizarFormulario.Size = new System.Drawing.Size(44, 36);
+            this.btnMaximizarFormulario.TabIndex = 3;
+            this.btnMaximizarFormulario.Text = "■";
+            this.btnMaximizarFormulario.UseVisualStyleBackColor = true;
+            // 
+            // btnCerrarFormulario
+            // 
+            this.btnCerrarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarFormulario.Location = new System.Drawing.Point(437, 12);
+            this.btnCerrarFormulario.Name = "btnCerrarFormulario";
+            this.btnCerrarFormulario.Size = new System.Drawing.Size(44, 36);
+            this.btnCerrarFormulario.TabIndex = 2;
+            this.btnCerrarFormulario.Text = "X";
+            this.btnCerrarFormulario.UseVisualStyleBackColor = true;
+            // 
+            // btnModificacionPendiente
+            // 
+            this.btnModificacionPendiente.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificacionPendiente.Location = new System.Drawing.Point(116, 37);
+            this.btnModificacionPendiente.Name = "btnModificacionPendiente";
+            this.btnModificacionPendiente.Size = new System.Drawing.Size(141, 45);
+            this.btnModificacionPendiente.TabIndex = 1;
+            this.btnModificacionPendiente.Text = "Modificación pendiente";
+            this.btnModificacionPendiente.UseVisualStyleBackColor = true;
+            this.btnModificacionPendiente.Click += new System.EventHandler(this.btnModificacionPendiente_Click);
+            // 
+            // btnNuevoArticulo
+            // 
+            this.btnNuevoArticulo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoArticulo.Location = new System.Drawing.Point(6, 37);
+            this.btnNuevoArticulo.Name = "btnNuevoArticulo";
+            this.btnNuevoArticulo.Size = new System.Drawing.Size(93, 45);
+            this.btnNuevoArticulo.TabIndex = 0;
+            this.btnNuevoArticulo.Text = "Nuevo artículo";
+            this.btnNuevoArticulo.UseVisualStyleBackColor = true;
+            this.btnNuevoArticulo.Click += new System.EventHandler(this.btnNuevoArticulo_Click);
             // 
             // panelPrincipal
             // 
@@ -140,7 +192,7 @@
             // 
             this.panelGridDataView.BackColor = System.Drawing.Color.Navy;
             this.panelGridDataView.Controls.Add(this.btnSeleccionarArticulo);
-            this.panelGridDataView.Controls.Add(this.dataGridView1);
+            this.panelGridDataView.Controls.Add(this.dgvArticulos);
             this.panelGridDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGridDataView.Location = new System.Drawing.Point(0, 100);
             this.panelGridDataView.Name = "panelGridDataView";
@@ -161,18 +213,18 @@
             this.btnSeleccionarArticulo.UseVisualStyleBackColor = false;
             this.btnSeleccionarArticulo.Click += new System.EventHandler(this.btnSeleccionarArticulo_Click);
             // 
-            // dataGridView1
+            // dgvArticulos
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 7);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(822, 315);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.Location = new System.Drawing.Point(13, 7);
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.RowHeadersWidth = 51;
+            this.dgvArticulos.RowTemplate.Height = 24;
+            this.dgvArticulos.Size = new System.Drawing.Size(822, 315);
+            this.dgvArticulos.TabIndex = 0;
             // 
             // panelFiltroAvanzado
             // 
@@ -222,87 +274,14 @@
             this.panelAgregarArticulo.Size = new System.Drawing.Size(493, 482);
             this.panelAgregarArticulo.TabIndex = 0;
             // 
-            // lbDetallesArticulos
+            // lbAgregarArticulo
             // 
-            this.lbDetallesArticulos.AutoSize = true;
-            this.lbDetallesArticulos.Location = new System.Drawing.Point(156, 27);
-            this.lbDetallesArticulos.Name = "lbDetallesArticulos";
-            this.lbDetallesArticulos.Size = new System.Drawing.Size(110, 16);
-            this.lbDetallesArticulos.TabIndex = 0;
-            this.lbDetallesArticulos.Text = "Detalles artículos";
-            // 
-            // lbImagen
-            // 
-            this.lbImagen.AutoSize = true;
-            this.lbImagen.Location = new System.Drawing.Point(181, 100);
-            this.lbImagen.Name = "lbImagen";
-            this.lbImagen.Size = new System.Drawing.Size(52, 16);
-            this.lbImagen.TabIndex = 1;
-            this.lbImagen.Text = "Imagen";
-            // 
-            // btnModificarArticulo
-            // 
-            this.btnModificarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificarArticulo.Location = new System.Drawing.Point(99, 429);
-            this.btnModificarArticulo.Name = "btnModificarArticulo";
-            this.btnModificarArticulo.Size = new System.Drawing.Size(145, 41);
-            this.btnModificarArticulo.TabIndex = 2;
-            this.btnModificarArticulo.Text = "MODIFICAR";
-            this.btnModificarArticulo.UseVisualStyleBackColor = true;
-            this.btnModificarArticulo.Click += new System.EventHandler(this.btnModificarArticulo_Click);
-            // 
-            // btnEliminarArticulo
-            // 
-            this.btnEliminarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminarArticulo.Location = new System.Drawing.Point(303, 429);
-            this.btnEliminarArticulo.Name = "btnEliminarArticulo";
-            this.btnEliminarArticulo.Size = new System.Drawing.Size(145, 41);
-            this.btnEliminarArticulo.TabIndex = 3;
-            this.btnEliminarArticulo.Text = "ELIMINAR";
-            this.btnEliminarArticulo.UseVisualStyleBackColor = true;
-            this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
-            // 
-            // lbModificarArticulo
-            // 
-            this.lbModificarArticulo.AutoSize = true;
-            this.lbModificarArticulo.Location = new System.Drawing.Point(156, 43);
-            this.lbModificarArticulo.Name = "lbModificarArticulo";
-            this.lbModificarArticulo.Size = new System.Drawing.Size(127, 16);
-            this.lbModificarArticulo.TabIndex = 0;
-            this.lbModificarArticulo.Text = "Modificando artículo";
-            // 
-            // btnConfirmarModificacion
-            // 
-            this.btnConfirmarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmarModificacion.Location = new System.Drawing.Point(99, 412);
-            this.btnConfirmarModificacion.Name = "btnConfirmarModificacion";
-            this.btnConfirmarModificacion.Size = new System.Drawing.Size(145, 41);
-            this.btnConfirmarModificacion.TabIndex = 3;
-            this.btnConfirmarModificacion.Text = "CONFIRMAR";
-            this.btnConfirmarModificacion.UseVisualStyleBackColor = true;
-            this.btnConfirmarModificacion.Click += new System.EventHandler(this.btnConfirmarModificacion_Click);
-            // 
-            // btnCancelarModificacion
-            // 
-            this.btnCancelarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelarModificacion.Location = new System.Drawing.Point(303, 412);
-            this.btnCancelarModificacion.Name = "btnCancelarModificacion";
-            this.btnCancelarModificacion.Size = new System.Drawing.Size(145, 41);
-            this.btnCancelarModificacion.TabIndex = 4;
-            this.btnCancelarModificacion.Text = "CANCELAR";
-            this.btnCancelarModificacion.UseVisualStyleBackColor = true;
-            this.btnCancelarModificacion.Click += new System.EventHandler(this.btnCancelarModificacion_Click);
-            // 
-            // btnAgregarArticulo
-            // 
-            this.btnAgregarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(99, 412);
-            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
-            this.btnAgregarArticulo.Size = new System.Drawing.Size(145, 41);
-            this.btnAgregarArticulo.TabIndex = 4;
-            this.btnAgregarArticulo.Text = "AGREGAR";
-            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
-            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
+            this.lbAgregarArticulo.AutoSize = true;
+            this.lbAgregarArticulo.Location = new System.Drawing.Point(166, 43);
+            this.lbAgregarArticulo.Name = "lbAgregarArticulo";
+            this.lbAgregarArticulo.Size = new System.Drawing.Size(91, 16);
+            this.lbAgregarArticulo.TabIndex = 6;
+            this.lbAgregarArticulo.Text = "Articulo nuevo";
             // 
             // btnCancelarAgregacion
             // 
@@ -315,66 +294,87 @@
             this.btnCancelarAgregacion.UseVisualStyleBackColor = true;
             this.btnCancelarAgregacion.Click += new System.EventHandler(this.btnCancelarAgregacion_Click);
             // 
-            // lbAgregarArticulo
+            // btnAgregarArticulo
             // 
-            this.lbAgregarArticulo.AutoSize = true;
-            this.lbAgregarArticulo.Location = new System.Drawing.Point(166, 43);
-            this.lbAgregarArticulo.Name = "lbAgregarArticulo";
-            this.lbAgregarArticulo.Size = new System.Drawing.Size(91, 16);
-            this.lbAgregarArticulo.TabIndex = 6;
-            this.lbAgregarArticulo.Text = "Articulo nuevo";
+            this.btnAgregarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(99, 412);
+            this.btnAgregarArticulo.Name = "btnAgregarArticulo";
+            this.btnAgregarArticulo.Size = new System.Drawing.Size(145, 41);
+            this.btnAgregarArticulo.TabIndex = 4;
+            this.btnAgregarArticulo.Text = "AGREGAR";
+            this.btnAgregarArticulo.UseVisualStyleBackColor = true;
+            this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
             // 
-            // btnNuevoArticulo
+            // btnCancelarModificacion
             // 
-            this.btnNuevoArticulo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoArticulo.Location = new System.Drawing.Point(6, 37);
-            this.btnNuevoArticulo.Name = "btnNuevoArticulo";
-            this.btnNuevoArticulo.Size = new System.Drawing.Size(93, 45);
-            this.btnNuevoArticulo.TabIndex = 0;
-            this.btnNuevoArticulo.Text = "Nuevo artículo";
-            this.btnNuevoArticulo.UseVisualStyleBackColor = true;
-            this.btnNuevoArticulo.Click += new System.EventHandler(this.btnNuevoArticulo_Click);
+            this.btnCancelarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarModificacion.Location = new System.Drawing.Point(303, 412);
+            this.btnCancelarModificacion.Name = "btnCancelarModificacion";
+            this.btnCancelarModificacion.Size = new System.Drawing.Size(145, 41);
+            this.btnCancelarModificacion.TabIndex = 4;
+            this.btnCancelarModificacion.Text = "CANCELAR";
+            this.btnCancelarModificacion.UseVisualStyleBackColor = true;
+            this.btnCancelarModificacion.Click += new System.EventHandler(this.btnCancelarModificacion_Click);
             // 
-            // btnModificacionPendiente
+            // btnConfirmarModificacion
             // 
-            this.btnModificacionPendiente.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificacionPendiente.Location = new System.Drawing.Point(116, 37);
-            this.btnModificacionPendiente.Name = "btnModificacionPendiente";
-            this.btnModificacionPendiente.Size = new System.Drawing.Size(141, 45);
-            this.btnModificacionPendiente.TabIndex = 1;
-            this.btnModificacionPendiente.Text = "Modificación pendiente";
-            this.btnModificacionPendiente.UseVisualStyleBackColor = true;
-            this.btnModificacionPendiente.Click += new System.EventHandler(this.btnModificacionPendiente_Click);
+            this.btnConfirmarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConfirmarModificacion.Location = new System.Drawing.Point(99, 412);
+            this.btnConfirmarModificacion.Name = "btnConfirmarModificacion";
+            this.btnConfirmarModificacion.Size = new System.Drawing.Size(145, 41);
+            this.btnConfirmarModificacion.TabIndex = 3;
+            this.btnConfirmarModificacion.Text = "CONFIRMAR";
+            this.btnConfirmarModificacion.UseVisualStyleBackColor = true;
+            this.btnConfirmarModificacion.Click += new System.EventHandler(this.btnConfirmarModificacion_Click);
             // 
-            // btnCerrarFormulario
+            // lbModificarArticulo
             // 
-            this.btnCerrarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarFormulario.Location = new System.Drawing.Point(437, 12);
-            this.btnCerrarFormulario.Name = "btnCerrarFormulario";
-            this.btnCerrarFormulario.Size = new System.Drawing.Size(44, 36);
-            this.btnCerrarFormulario.TabIndex = 2;
-            this.btnCerrarFormulario.Text = "X";
-            this.btnCerrarFormulario.UseVisualStyleBackColor = true;
+            this.lbModificarArticulo.AutoSize = true;
+            this.lbModificarArticulo.Location = new System.Drawing.Point(156, 43);
+            this.lbModificarArticulo.Name = "lbModificarArticulo";
+            this.lbModificarArticulo.Size = new System.Drawing.Size(127, 16);
+            this.lbModificarArticulo.TabIndex = 0;
+            this.lbModificarArticulo.Text = "Modificando artículo";
             // 
-            // btnMaximizarFormulario
+            // lbImagen
             // 
-            this.btnMaximizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximizarFormulario.Location = new System.Drawing.Point(387, 12);
-            this.btnMaximizarFormulario.Name = "btnMaximizarFormulario";
-            this.btnMaximizarFormulario.Size = new System.Drawing.Size(44, 36);
-            this.btnMaximizarFormulario.TabIndex = 3;
-            this.btnMaximizarFormulario.Text = "■";
-            this.btnMaximizarFormulario.UseVisualStyleBackColor = true;
+            this.lbImagen.AutoSize = true;
+            this.lbImagen.Location = new System.Drawing.Point(181, 100);
+            this.lbImagen.Name = "lbImagen";
+            this.lbImagen.Size = new System.Drawing.Size(52, 16);
+            this.lbImagen.TabIndex = 1;
+            this.lbImagen.Text = "Imagen";
             // 
-            // btnMinimizarFormulario
+            // lbDetallesArticulos
             // 
-            this.btnMinimizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimizarFormulario.Location = new System.Drawing.Point(337, 12);
-            this.btnMinimizarFormulario.Name = "btnMinimizarFormulario";
-            this.btnMinimizarFormulario.Size = new System.Drawing.Size(44, 36);
-            this.btnMinimizarFormulario.TabIndex = 4;
-            this.btnMinimizarFormulario.Text = "-";
-            this.btnMinimizarFormulario.UseVisualStyleBackColor = true;
+            this.lbDetallesArticulos.AutoSize = true;
+            this.lbDetallesArticulos.Location = new System.Drawing.Point(156, 27);
+            this.lbDetallesArticulos.Name = "lbDetallesArticulos";
+            this.lbDetallesArticulos.Size = new System.Drawing.Size(110, 16);
+            this.lbDetallesArticulos.TabIndex = 0;
+            this.lbDetallesArticulos.Text = "Detalles artículos";
+            // 
+            // btnEliminarArticulo
+            // 
+            this.btnEliminarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarArticulo.Location = new System.Drawing.Point(303, 429);
+            this.btnEliminarArticulo.Name = "btnEliminarArticulo";
+            this.btnEliminarArticulo.Size = new System.Drawing.Size(145, 41);
+            this.btnEliminarArticulo.TabIndex = 3;
+            this.btnEliminarArticulo.Text = "ELIMINAR";
+            this.btnEliminarArticulo.UseVisualStyleBackColor = true;
+            this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
+            // 
+            // btnModificarArticulo
+            // 
+            this.btnModificarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModificarArticulo.Location = new System.Drawing.Point(99, 429);
+            this.btnModificarArticulo.Name = "btnModificarArticulo";
+            this.btnModificarArticulo.Size = new System.Drawing.Size(145, 41);
+            this.btnModificarArticulo.TabIndex = 2;
+            this.btnModificarArticulo.Text = "MODIFICAR";
+            this.btnModificarArticulo.UseVisualStyleBackColor = true;
+            this.btnModificarArticulo.Click += new System.EventHandler(this.btnModificarArticulo_Click);
             // 
             // frmPrincipal
             // 
@@ -385,13 +385,14 @@
             this.Controls.Add(this.panelSuperior);
             this.Name = "frmPrincipal";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panelSuperior.ResumeLayout(false);
-            this.panelMetodosVentana.ResumeLayout(false);
             this.panelFiltroRapido.ResumeLayout(false);
+            this.panelMetodosVentana.ResumeLayout(false);
             this.panelPrincipal.ResumeLayout(false);
             this.panelSubPrincipalIzquierda.ResumeLayout(false);
             this.panelGridDataView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.panelDetallesArticulos.ResumeLayout(false);
             this.panelDetallesArticulos.PerformLayout();
             this.panelModificarArticulo.ResumeLayout(false);
@@ -413,7 +414,7 @@
         private System.Windows.Forms.Panel panelFiltroAvanzado;
         private System.Windows.Forms.Panel panelDetallesArticulos;
         private System.Windows.Forms.Button btnFiltroAvanzado;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.Button btnSeleccionarArticulo;
         private System.Windows.Forms.Panel panelModificarArticulo;
         private System.Windows.Forms.Panel panelAgregarArticulo;
