@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
@@ -40,7 +42,6 @@
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.panelSubPrincipalIzquierda = new System.Windows.Forms.Panel();
             this.panelGridDataView = new System.Windows.Forms.Panel();
-            this.btnSeleccionarArticulo = new System.Windows.Forms.Button();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.panelFiltroAvanzado = new System.Windows.Forms.Panel();
             this.panelDetallesArticulos = new System.Windows.Forms.Panel();
@@ -52,10 +53,10 @@
             this.btnCancelarModificacion = new System.Windows.Forms.Button();
             this.btnConfirmarModificacion = new System.Windows.Forms.Button();
             this.lbModificarArticulo = new System.Windows.Forms.Label();
-            this.lbImagen = new System.Windows.Forms.Label();
-            this.lbDetallesArticulos = new System.Windows.Forms.Label();
             this.btnEliminarArticulo = new System.Windows.Forms.Button();
             this.btnModificarArticulo = new System.Windows.Forms.Button();
+            this.pboxImagenDA = new System.Windows.Forms.PictureBox();
+            this.lbDataGridViewVacio = new System.Windows.Forms.Label();
             this.panelSuperior.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
             this.panelMetodosVentana.SuspendLayout();
@@ -66,6 +67,7 @@
             this.panelDetallesArticulos.SuspendLayout();
             this.panelModificarArticulo.SuspendLayout();
             this.panelAgregarArticulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxImagenDA)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSuperior
@@ -76,7 +78,7 @@
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.Location = new System.Drawing.Point(0, 0);
             this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new System.Drawing.Size(1339, 100);
+            this.panelSuperior.Size = new System.Drawing.Size(1351, 54);
             this.panelSuperior.TabIndex = 0;
             // 
             // panelFiltroRapido
@@ -86,13 +88,13 @@
             this.panelFiltroRapido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFiltroRapido.Location = new System.Drawing.Point(0, 0);
             this.panelFiltroRapido.Name = "panelFiltroRapido";
-            this.panelFiltroRapido.Size = new System.Drawing.Size(846, 100);
+            this.panelFiltroRapido.Size = new System.Drawing.Size(778, 54);
             this.panelFiltroRapido.TabIndex = 0;
             // 
             // btnFiltroAvanzado
             // 
             this.btnFiltroAvanzado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFiltroAvanzado.Location = new System.Drawing.Point(675, 37);
+            this.btnFiltroAvanzado.Location = new System.Drawing.Point(613, 3);
             this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
             this.btnFiltroAvanzado.Size = new System.Drawing.Size(159, 45);
             this.btnFiltroAvanzado.TabIndex = 0;
@@ -109,15 +111,15 @@
             this.panelMetodosVentana.Controls.Add(this.btnModificacionPendiente);
             this.panelMetodosVentana.Controls.Add(this.btnNuevoArticulo);
             this.panelMetodosVentana.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMetodosVentana.Location = new System.Drawing.Point(846, 0);
+            this.panelMetodosVentana.Location = new System.Drawing.Point(778, 0);
             this.panelMetodosVentana.Name = "panelMetodosVentana";
-            this.panelMetodosVentana.Size = new System.Drawing.Size(493, 100);
+            this.panelMetodosVentana.Size = new System.Drawing.Size(573, 54);
             this.panelMetodosVentana.TabIndex = 1;
             // 
             // btnMinimizarFormulario
             // 
             this.btnMinimizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimizarFormulario.Location = new System.Drawing.Point(337, 12);
+            this.btnMinimizarFormulario.Location = new System.Drawing.Point(426, 3);
             this.btnMinimizarFormulario.Name = "btnMinimizarFormulario";
             this.btnMinimizarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnMinimizarFormulario.TabIndex = 4;
@@ -127,7 +129,7 @@
             // btnMaximizarFormulario
             // 
             this.btnMaximizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximizarFormulario.Location = new System.Drawing.Point(387, 12);
+            this.btnMaximizarFormulario.Location = new System.Drawing.Point(476, 3);
             this.btnMaximizarFormulario.Name = "btnMaximizarFormulario";
             this.btnMaximizarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnMaximizarFormulario.TabIndex = 3;
@@ -137,7 +139,7 @@
             // btnCerrarFormulario
             // 
             this.btnCerrarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarFormulario.Location = new System.Drawing.Point(437, 12);
+            this.btnCerrarFormulario.Location = new System.Drawing.Point(526, 3);
             this.btnCerrarFormulario.Name = "btnCerrarFormulario";
             this.btnCerrarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnCerrarFormulario.TabIndex = 2;
@@ -147,9 +149,9 @@
             // btnModificacionPendiente
             // 
             this.btnModificacionPendiente.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificacionPendiente.Location = new System.Drawing.Point(116, 37);
+            this.btnModificacionPendiente.Location = new System.Drawing.Point(191, 3);
             this.btnModificacionPendiente.Name = "btnModificacionPendiente";
-            this.btnModificacionPendiente.Size = new System.Drawing.Size(141, 45);
+            this.btnModificacionPendiente.Size = new System.Drawing.Size(190, 45);
             this.btnModificacionPendiente.TabIndex = 1;
             this.btnModificacionPendiente.Text = "Modificación pendiente";
             this.btnModificacionPendiente.UseVisualStyleBackColor = true;
@@ -158,9 +160,9 @@
             // btnNuevoArticulo
             // 
             this.btnNuevoArticulo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoArticulo.Location = new System.Drawing.Point(6, 37);
+            this.btnNuevoArticulo.Location = new System.Drawing.Point(7, 3);
             this.btnNuevoArticulo.Name = "btnNuevoArticulo";
-            this.btnNuevoArticulo.Size = new System.Drawing.Size(93, 45);
+            this.btnNuevoArticulo.Size = new System.Drawing.Size(178, 45);
             this.btnNuevoArticulo.TabIndex = 0;
             this.btnNuevoArticulo.Text = "Nuevo artículo";
             this.btnNuevoArticulo.UseVisualStyleBackColor = true;
@@ -172,9 +174,9 @@
             this.panelPrincipal.Controls.Add(this.panelSubPrincipalIzquierda);
             this.panelPrincipal.Controls.Add(this.panelDetallesArticulos);
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPrincipal.Location = new System.Drawing.Point(0, 100);
+            this.panelPrincipal.Location = new System.Drawing.Point(0, 54);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1339, 482);
+            this.panelPrincipal.Size = new System.Drawing.Size(1351, 644);
             this.panelPrincipal.TabIndex = 1;
             // 
             // panelSubPrincipalIzquierda
@@ -185,33 +187,19 @@
             this.panelSubPrincipalIzquierda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSubPrincipalIzquierda.Location = new System.Drawing.Point(0, 0);
             this.panelSubPrincipalIzquierda.Name = "panelSubPrincipalIzquierda";
-            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(846, 482);
+            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(778, 644);
             this.panelSubPrincipalIzquierda.TabIndex = 1;
             // 
             // panelGridDataView
             // 
             this.panelGridDataView.BackColor = System.Drawing.Color.Navy;
-            this.panelGridDataView.Controls.Add(this.btnSeleccionarArticulo);
             this.panelGridDataView.Controls.Add(this.dgvArticulos);
+            this.panelGridDataView.Controls.Add(this.lbDataGridViewVacio);
             this.panelGridDataView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGridDataView.Location = new System.Drawing.Point(0, 100);
+            this.panelGridDataView.Location = new System.Drawing.Point(0, 57);
             this.panelGridDataView.Name = "panelGridDataView";
-            this.panelGridDataView.Size = new System.Drawing.Size(846, 382);
+            this.panelGridDataView.Size = new System.Drawing.Size(778, 587);
             this.panelGridDataView.TabIndex = 1;
-            // 
-            // btnSeleccionarArticulo
-            // 
-            this.btnSeleccionarArticulo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSeleccionarArticulo.BackColor = System.Drawing.Color.Silver;
-            this.btnSeleccionarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSeleccionarArticulo.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionarArticulo.Location = new System.Drawing.Point(311, 329);
-            this.btnSeleccionarArticulo.Name = "btnSeleccionarArticulo";
-            this.btnSeleccionarArticulo.Size = new System.Drawing.Size(208, 42);
-            this.btnSeleccionarArticulo.TabIndex = 1;
-            this.btnSeleccionarArticulo.Text = "Seleccion articulo";
-            this.btnSeleccionarArticulo.UseVisualStyleBackColor = false;
-            this.btnSeleccionarArticulo.Click += new System.EventHandler(this.btnSeleccionarArticulo_Click);
             // 
             // dgvArticulos
             // 
@@ -219,12 +207,28 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(13, 7);
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
+            this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArticulos.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.RowTemplate.Height = 24;
-            this.dgvArticulos.Size = new System.Drawing.Size(822, 315);
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArticulos.Size = new System.Drawing.Size(769, 568);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // panelFiltroAvanzado
             // 
@@ -232,21 +236,20 @@
             this.panelFiltroAvanzado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltroAvanzado.Location = new System.Drawing.Point(0, 0);
             this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
-            this.panelFiltroAvanzado.Size = new System.Drawing.Size(846, 100);
+            this.panelFiltroAvanzado.Size = new System.Drawing.Size(778, 57);
             this.panelFiltroAvanzado.TabIndex = 0;
             // 
             // panelDetallesArticulos
             // 
             this.panelDetallesArticulos.BackColor = System.Drawing.Color.Moccasin;
             this.panelDetallesArticulos.Controls.Add(this.panelModificarArticulo);
-            this.panelDetallesArticulos.Controls.Add(this.lbImagen);
-            this.panelDetallesArticulos.Controls.Add(this.lbDetallesArticulos);
             this.panelDetallesArticulos.Controls.Add(this.btnEliminarArticulo);
             this.panelDetallesArticulos.Controls.Add(this.btnModificarArticulo);
+            this.panelDetallesArticulos.Controls.Add(this.pboxImagenDA);
             this.panelDetallesArticulos.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDetallesArticulos.Location = new System.Drawing.Point(846, 0);
+            this.panelDetallesArticulos.Location = new System.Drawing.Point(778, 0);
             this.panelDetallesArticulos.Name = "panelDetallesArticulos";
-            this.panelDetallesArticulos.Size = new System.Drawing.Size(493, 482);
+            this.panelDetallesArticulos.Size = new System.Drawing.Size(573, 644);
             this.panelDetallesArticulos.TabIndex = 0;
             // 
             // panelModificarArticulo
@@ -259,7 +262,7 @@
             this.panelModificarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelModificarArticulo.Location = new System.Drawing.Point(0, 0);
             this.panelModificarArticulo.Name = "panelModificarArticulo";
-            this.panelModificarArticulo.Size = new System.Drawing.Size(493, 482);
+            this.panelModificarArticulo.Size = new System.Drawing.Size(573, 644);
             this.panelModificarArticulo.TabIndex = 0;
             // 
             // panelAgregarArticulo
@@ -271,7 +274,7 @@
             this.panelAgregarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAgregarArticulo.Location = new System.Drawing.Point(0, 0);
             this.panelAgregarArticulo.Name = "panelAgregarArticulo";
-            this.panelAgregarArticulo.Size = new System.Drawing.Size(493, 482);
+            this.panelAgregarArticulo.Size = new System.Drawing.Size(573, 644);
             this.panelAgregarArticulo.TabIndex = 0;
             // 
             // lbAgregarArticulo
@@ -286,7 +289,7 @@
             // btnCancelarAgregacion
             // 
             this.btnCancelarAgregacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelarAgregacion.Location = new System.Drawing.Point(303, 412);
+            this.btnCancelarAgregacion.Location = new System.Drawing.Point(383, 574);
             this.btnCancelarAgregacion.Name = "btnCancelarAgregacion";
             this.btnCancelarAgregacion.Size = new System.Drawing.Size(145, 41);
             this.btnCancelarAgregacion.TabIndex = 5;
@@ -297,7 +300,7 @@
             // btnAgregarArticulo
             // 
             this.btnAgregarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(99, 412);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(179, 574);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(145, 41);
             this.btnAgregarArticulo.TabIndex = 4;
@@ -308,7 +311,7 @@
             // btnCancelarModificacion
             // 
             this.btnCancelarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelarModificacion.Location = new System.Drawing.Point(303, 412);
+            this.btnCancelarModificacion.Location = new System.Drawing.Point(358, 574);
             this.btnCancelarModificacion.Name = "btnCancelarModificacion";
             this.btnCancelarModificacion.Size = new System.Drawing.Size(145, 41);
             this.btnCancelarModificacion.TabIndex = 4;
@@ -319,7 +322,7 @@
             // btnConfirmarModificacion
             // 
             this.btnConfirmarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirmarModificacion.Location = new System.Drawing.Point(99, 412);
+            this.btnConfirmarModificacion.Location = new System.Drawing.Point(56, 574);
             this.btnConfirmarModificacion.Name = "btnConfirmarModificacion";
             this.btnConfirmarModificacion.Size = new System.Drawing.Size(145, 41);
             this.btnConfirmarModificacion.TabIndex = 3;
@@ -330,34 +333,16 @@
             // lbModificarArticulo
             // 
             this.lbModificarArticulo.AutoSize = true;
-            this.lbModificarArticulo.Location = new System.Drawing.Point(156, 43);
+            this.lbModificarArticulo.Location = new System.Drawing.Point(238, 145);
             this.lbModificarArticulo.Name = "lbModificarArticulo";
             this.lbModificarArticulo.Size = new System.Drawing.Size(127, 16);
             this.lbModificarArticulo.TabIndex = 0;
             this.lbModificarArticulo.Text = "Modificando artículo";
             // 
-            // lbImagen
-            // 
-            this.lbImagen.AutoSize = true;
-            this.lbImagen.Location = new System.Drawing.Point(181, 100);
-            this.lbImagen.Name = "lbImagen";
-            this.lbImagen.Size = new System.Drawing.Size(52, 16);
-            this.lbImagen.TabIndex = 1;
-            this.lbImagen.Text = "Imagen";
-            // 
-            // lbDetallesArticulos
-            // 
-            this.lbDetallesArticulos.AutoSize = true;
-            this.lbDetallesArticulos.Location = new System.Drawing.Point(156, 27);
-            this.lbDetallesArticulos.Name = "lbDetallesArticulos";
-            this.lbDetallesArticulos.Size = new System.Drawing.Size(110, 16);
-            this.lbDetallesArticulos.TabIndex = 0;
-            this.lbDetallesArticulos.Text = "Detalles artículos";
-            // 
             // btnEliminarArticulo
             // 
             this.btnEliminarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminarArticulo.Location = new System.Drawing.Point(303, 429);
+            this.btnEliminarArticulo.Location = new System.Drawing.Point(358, 591);
             this.btnEliminarArticulo.Name = "btnEliminarArticulo";
             this.btnEliminarArticulo.Size = new System.Drawing.Size(145, 41);
             this.btnEliminarArticulo.TabIndex = 3;
@@ -368,7 +353,7 @@
             // btnModificarArticulo
             // 
             this.btnModificarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModificarArticulo.Location = new System.Drawing.Point(99, 429);
+            this.btnModificarArticulo.Location = new System.Drawing.Point(56, 591);
             this.btnModificarArticulo.Name = "btnModificarArticulo";
             this.btnModificarArticulo.Size = new System.Drawing.Size(145, 41);
             this.btnModificarArticulo.TabIndex = 2;
@@ -376,15 +361,37 @@
             this.btnModificarArticulo.UseVisualStyleBackColor = true;
             this.btnModificarArticulo.Click += new System.EventHandler(this.btnModificarArticulo_Click);
             // 
+            // pboxImagenDA
+            // 
+            this.pboxImagenDA.BackColor = System.Drawing.Color.Snow;
+            this.pboxImagenDA.Location = new System.Drawing.Point(161, 3);
+            this.pboxImagenDA.Name = "pboxImagenDA";
+            this.pboxImagenDA.Size = new System.Drawing.Size(256, 256);
+            this.pboxImagenDA.TabIndex = 7;
+            this.pboxImagenDA.TabStop = false;
+            // 
+            // lbDataGridViewVacio
+            // 
+            this.lbDataGridViewVacio.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbDataGridViewVacio.AutoSize = true;
+            this.lbDataGridViewVacio.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDataGridViewVacio.ForeColor = System.Drawing.Color.White;
+            this.lbDataGridViewVacio.Location = new System.Drawing.Point(39, 250);
+            this.lbDataGridViewVacio.Name = "lbDataGridViewVacio";
+            this.lbDataGridViewVacio.Size = new System.Drawing.Size(675, 44);
+            this.lbDataGridViewVacio.TabIndex = 2;
+            this.lbDataGridViewVacio.Text = "No hay registros en la base de datos.";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1339, 582);
+            this.ClientSize = new System.Drawing.Size(1351, 698);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panelSuperior);
             this.Name = "frmPrincipal";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Catálogo de artículos";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panelSuperior.ResumeLayout(false);
             this.panelFiltroRapido.ResumeLayout(false);
@@ -392,13 +399,14 @@
             this.panelPrincipal.ResumeLayout(false);
             this.panelSubPrincipalIzquierda.ResumeLayout(false);
             this.panelGridDataView.ResumeLayout(false);
+            this.panelGridDataView.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.panelDetallesArticulos.ResumeLayout(false);
-            this.panelDetallesArticulos.PerformLayout();
             this.panelModificarArticulo.ResumeLayout(false);
             this.panelModificarArticulo.PerformLayout();
             this.panelAgregarArticulo.ResumeLayout(false);
             this.panelAgregarArticulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxImagenDA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -415,13 +423,10 @@
         private System.Windows.Forms.Panel panelDetallesArticulos;
         private System.Windows.Forms.Button btnFiltroAvanzado;
         private System.Windows.Forms.DataGridView dgvArticulos;
-        private System.Windows.Forms.Button btnSeleccionarArticulo;
         private System.Windows.Forms.Panel panelModificarArticulo;
         private System.Windows.Forms.Panel panelAgregarArticulo;
         private System.Windows.Forms.Button btnEliminarArticulo;
         private System.Windows.Forms.Button btnModificarArticulo;
-        private System.Windows.Forms.Label lbImagen;
-        private System.Windows.Forms.Label lbDetallesArticulos;
         private System.Windows.Forms.Label lbAgregarArticulo;
         private System.Windows.Forms.Button btnCancelarAgregacion;
         private System.Windows.Forms.Button btnAgregarArticulo;
@@ -433,6 +438,8 @@
         private System.Windows.Forms.Button btnCerrarFormulario;
         private System.Windows.Forms.Button btnModificacionPendiente;
         private System.Windows.Forms.Button btnMinimizarFormulario;
+        private System.Windows.Forms.PictureBox pboxImagenDA;
+        private System.Windows.Forms.Label lbDataGridViewVacio;
     }
 }
 

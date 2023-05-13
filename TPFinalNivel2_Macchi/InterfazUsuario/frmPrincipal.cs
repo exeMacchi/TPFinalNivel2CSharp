@@ -24,15 +24,51 @@ namespace InterfazUsuario
         public frmPrincipal()
         {
             InitializeComponent();
-            modificacionPendiente = false;
-            btnModificacionPendiente.Visible = false;
-            panelFiltroAvanzado.Visible = false;
-            panelDetallesArticulos.Visible = true;
-            panelModificarArticulo.Visible = false;
-            panelAgregarArticulo.Visible = false;
+            StartUp();
             // Reiniciar panelAgregarArticulo (por las dudas);
         }
 
+        // --------------------- Métodos ------------------------ //
+        private void StartUp()
+        {
+            panelDetallesArticulos.Visible = true;
+            modificacionPendiente = false;
+            btnModificacionPendiente.Visible = false;
+            panelFiltroAvanzado.Visible = false;
+            panelModificarArticulo.Visible = false;
+            panelAgregarArticulo.Visible = false;
+        }
+
+        private void NingunRegistro()
+        {
+            dgvArticulos.Visible = false;
+            panelModificarArticulo.Visible = true;
+            panelAgregarArticulo.Visible = true;
+            btnCancelarAgregacion.Enabled = false;
+        }
+
+        // --------------------- Eventos ------------------------ //
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            try
+            {
+                articulos = artNegocio.CargarArticulos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error: cargar articulos");
+            }
+
+            if (articulos != null && articulos.Count > 0)
+            {
+                dgvArticulos.DataSource = articulos;
+            }
+            else
+            {
+                NingunRegistro();
+            }
+        }
 
         // Filtro avanzado
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
@@ -44,40 +80,6 @@ namespace InterfazUsuario
             else if (!panelFiltroAvanzado.Visible)
             {
                 panelFiltroAvanzado.Visible = true;
-            }
-        }
-
-        // Activar PanelSubPrincipalDerecha
-        private void btnSeleccionarArticulo_Click(object sender, EventArgs e)
-        {
-            if (panelDetallesArticulos.Visible)
-            {
-                if (panelAgregarArticulo.Visible) // Verifica si la capa de articulos esta abierta
-                {
-                    panelAgregarArticulo.Visible = false;
-                    panelModificarArticulo.Visible = false;
-                    // Mostrar info articulo seleccionado
-                }
-                else if (panelModificarArticulo.Visible) // Verifica si la capa de modificación está abierta.
-                {
-                    if (modificacionPendiente)
-                    {
-                        btnModificacionPendiente.Visible = true;
-                    }
-                    panelModificarArticulo.Visible = false;
-                    // Mostrar info articulo seleccionado
-                }
-                else
-                {
-                    MessageBox.Show("Cambio de índice");
-                    // Mostrar info articulo seleccionado
-                }
-            }
-            else if (!panelDetallesArticulos.Visible)
-            {
-                panelDetallesArticulos.Visible = true;
-                MessageBox.Show("Cambio de índice");
-                // Mostrar info articulo seleccionado
             }
         }
 
@@ -140,13 +142,16 @@ namespace InterfazUsuario
         // Agregar artículo
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
-            panelAgregarArticulo.Visible = false;
-            panelModificarArticulo.Visible = false;
+            if (!btnCancelarAgregacion.Enabled)
+                btnCancelarAgregacion.Enabled = true;
 
-            // Funcionalidad
-                // Aviso: articulo agregado con exito!
-                // Resetear panelArticuloAgregar()
-                // Focusear el indice del nuevo articulo para que el usuario vea la info.
+            // Agregar
+            // Aviso: articulo agregado con exito!
+            // Focusear el indice del nuevo articulo para que el usuario vea la info.
+                // Cuando se focuseé, esto ya no va a ser necesario.
+                panelAgregarArticulo.Visible = false;
+                panelModificarArticulo.Visible = false;
+            // Resetear panelArticuloAgregar()
         }
 
         private void btnCancelarAgregacion_Click(object sender, EventArgs e)
@@ -162,10 +167,6 @@ namespace InterfazUsuario
 
         private void btnNuevoArticulo_Click(object sender, EventArgs e)
         {
-            if (!panelDetallesArticulos.Visible)
-            {
-                panelDetallesArticulos.Visible = true;
-            }
             if (modificacionPendiente)
             {
                 btnModificacionPendiente.Visible = true;
@@ -176,10 +177,6 @@ namespace InterfazUsuario
 
         private void btnModificacionPendiente_Click(object sender, EventArgs e)
         {
-            if (!panelDetallesArticulos.Visible)
-            {
-                panelDetallesArticulos.Visible = true;
-            }
             if (panelAgregarArticulo.Visible)
             {
                 panelAgregarArticulo.Visible = false;
@@ -187,22 +184,45 @@ namespace InterfazUsuario
             panelModificarArticulo.Visible = true;
         }
 
-        // Eventos
-        private void frmPrincipal_Load(object sender, EventArgs e)
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            ArticuloNegocio artNegocio = new ArticuloNegocio();
-            try
+            // Verificar si hay articulos disponibles. Si no los hay, activar
+            // la pestaña de Agregar artículo.
+            if (dgvArticulos.CurrentRow != null)
             {
-                articulos = artNegocio.CargarArticulos();
+                if (panelAgregarArticulo.Visible) // Verifica si la capa de articulos esta abierta
+                {
+                    panelAgregarArticulo.Visible = false;
+                    panelModificarArticulo.Visible = false;
+                    // Mostrar info articulo seleccionado
+                }
+                else if (panelModificarArticulo.Visible) // Verifica si la capa de modificación está abierta.
+                {
+                    if (modificacionPendiente)
+                    {
+                        btnModificacionPendiente.Visible = true;
+                    }
+                    panelModificarArticulo.Visible = false;
+                    // Mostrar info articulo seleccionado
+                }
+                else
+                {
+                    //MessageBox.Show("Cambio de índice");
+                    // Mostrar info articulo seleccionado
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString(), "Error: cargar articulos");
+                NingunRegistro();
             }
+        }
 
-            if (articulos != null)
+        private void dgvArticulos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            // Verificar si hay mínimo un dato en el DGV
+            if (!dgvArticulos.Visible)
             {
-                dgvArticulos.DataSource = articulos;
+                dgvArticulos.Visible = true;
             }
         }
     }
