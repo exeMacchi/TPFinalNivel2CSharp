@@ -156,13 +156,12 @@ namespace InterfazUsuario
 
         private void btnCancelarAgregacion_Click(object sender, EventArgs e)
         {
-            panelAgregarArticulo.Visible = false;
-            panelModificarArticulo.Visible = false;
-
-            // Funcionalidad
-                // Aviso: articulo descartado
-                // Resetear panelArticuloAgregar()
-                // Focusear el indice del nuevo articulo para que el usuario vea la info.
+            // Aviso: articulo descartado
+            // Focusear el indice del nuevo articulo para que el usuario vea la info.
+                // Cuando se focuseé, esto ya no va a ser necesario.
+                panelAgregarArticulo.Visible = false;
+                panelModificarArticulo.Visible = false;
+            // Resetear panelArticuloAgregar()
         }
 
         private void btnNuevoArticulo_Click(object sender, EventArgs e)
