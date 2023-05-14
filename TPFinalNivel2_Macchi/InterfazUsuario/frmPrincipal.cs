@@ -271,10 +271,12 @@ namespace InterfazUsuario
                 ReiniciarPlantillaNuevoArticulo();
                 nuevoArticuloPendiente = true;
             }
-            else
+            // Si hay un artículo pendiente, y mínimo un dato en alguno de los campos,
+            // se le permite al usuario que reinicie la plantilla si quiere ingresar otra información.
+            else if (txbxCodigoAA.Text != "" || txbxNombreAA.Text != "" || 
+                     txbxDescripcionAA.Text != "" || comboxMarcaAA.SelectedIndex != -1 || 
+                     comboxCategoriaAA.SelectedIndex != -1 || txbxPrecioAA.Text != "")
             {
-                // Si hay un artículo pendiente, se le permite al usuario que reinicie la 
-                // plantilla si quiere ingresar otra información.
                 btnReiniciarAA.Visible = true;
             }
 
@@ -302,6 +304,7 @@ namespace InterfazUsuario
             {
                 panelAgregarArticulo.Visible = false;
             }
+            // Habilitar el botón Nuevo Artículo
             btnNuevoArticulo.Visible = true;
             panelModificarArticulo.Visible = true;
         }
@@ -319,7 +322,6 @@ namespace InterfazUsuario
 
         private void btnReiniciarAA_Click(object sender, EventArgs e)
         {
-            // Reiniciar la plantilla nuevo artículo
             ReiniciarPlantillaNuevoArticulo();
         }
     }
