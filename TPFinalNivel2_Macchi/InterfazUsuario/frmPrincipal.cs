@@ -224,11 +224,11 @@ namespace InterfazUsuario
 
         private void btnCancelarModificacion_Click(object sender, EventArgs e)
         {
-            // Aviso: cambios descarto.s
+            // Aviso: cambios descartados
             modificacionPendiente = false;
+            // Focusear articulo modificado
             btnModificacionPendiente.Visible = false;
             panelModificarArticulo.Visible = false;
-            // Focusear articulo modificado
         }
 
 
@@ -267,7 +267,6 @@ namespace InterfazUsuario
             // la pantilla nuevo artículo.
             if (!nuevoArticuloPendiente)
             {
-                btnReiniciarAA.Visible = false;
                 ReiniciarPlantillaNuevoArticulo();
                 nuevoArticuloPendiente = true;
             }
@@ -298,14 +297,18 @@ namespace InterfazUsuario
 
         private void btnModificacionPendiente_Click(object sender, EventArgs e)
         {
+            btnModificacionPendiente.Visible = false;
+
             // Volver a la planilla modificar artículo con la información del artículo
             // previamente seleccionado.
             if (panelAgregarArticulo.Visible)
             {
                 panelAgregarArticulo.Visible = false;
             }
+
             // Habilitar el botón Nuevo Artículo
             btnNuevoArticulo.Visible = true;
+
             panelModificarArticulo.Visible = true;
         }
 
