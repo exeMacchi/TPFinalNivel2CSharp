@@ -52,8 +52,41 @@ namespace InterfazUsuario
             txbxDescripcionDA.Text = articuloSeleccionado.Descripcion;
             txbxMarcaDA.Text = articuloSeleccionado.Marca.Descripcion;
             txbxCategoriaDA.Text = articuloSeleccionado.Categoria.Descripcion;
-            // CargarImagen();
+            CargarImagen(articuloSeleccionado.Imagen);
             txbxPrecioDA.Text = "$" + articuloSeleccionado.Precio.ToString("N2");
+        }
+
+        private void OcultarColumnas()
+        {
+            dgvArticulos.Columns["ID"].Visible = false;
+            dgvArticulos.Columns["Descripcion"].Visible = false;
+            dgvArticulos.Columns["Imagen"].Visible = false;
+        }
+        private void FormatearDGV()
+        {
+            OcultarColumnas();
+            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "N2";
+            dgvArticulos.Columns["Codigo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvArticulos.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        }
+
+        private void CargarImagen(string img)
+        {
+            try
+            {
+                pboxImagenDA.Load(img);
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    pboxImagenDA.Image = Properties.Resources.placeholder;
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Error al cargar el placeholder");
+                }
+            }
         }
 
         // --------------------- Eventos ------------------------ //
@@ -72,6 +105,7 @@ namespace InterfazUsuario
             if (articulos != null && articulos.Count > 0)
             {
                 dgvArticulos.DataSource = articulos;
+                FormatearDGV();
             }
             else
             {
@@ -89,7 +123,6 @@ namespace InterfazUsuario
                 {
                     panelAgregarArticulo.Visible = false;
                     panelModificarArticulo.Visible = false;
-                    // Mostrar info articulo seleccionado
                     MostrarInfoArticulo();
                 }
                 else if (panelModificarArticulo.Visible) // Verifica si la capa de modificación está abierta.
@@ -99,12 +132,10 @@ namespace InterfazUsuario
                         btnModificacionPendiente.Visible = true;
                     }
                     panelModificarArticulo.Visible = false;
-                    // Mostrar info articulo seleccionado
                     MostrarInfoArticulo();
                 }
                 else
                 {
-                    // Mostrar info articulo seleccionado
                     MostrarInfoArticulo();
                 }
             }
@@ -237,6 +268,7 @@ namespace InterfazUsuario
             if (!dgvArticulos.Visible)
             {
                 dgvArticulos.Visible = true;
+                FormatearDGV();
             }
         }
     }

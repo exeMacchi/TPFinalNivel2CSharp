@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,22 @@ namespace Dominio
 
         // Propiedades
         public int ID { get { return id; } set { id = value; } }
+        
+        [DisplayName("Código")]
         public string Codigo { get { return codigo; } set { codigo = value; } }
+
         public string Nombre { get { return nombre; } set { nombre = value; } }
+
+        [DisplayName("Descripción")]
         public string Descripcion { get { return descripcion; } set { descripcion = value; } }
+
         public Marca Marca { get { return marca; } set { marca = value; } }
+
+        [DisplayName("Categoría")]
         public Categoria Categoria { get { return categoria; } set { categoria = value; } }
+
         public string Imagen { get { return imagen; } set { imagen = value; } }
+
         public decimal Precio { get { return precio; } set { precio = value; } }
 
         // Constructor
