@@ -31,20 +31,29 @@ namespace InterfazUsuario
         // --------------------- Métodos ------------------------ //
         private void StartUp()
         {
-            panelDetallesArticulos.Visible = true;
             modificacionPendiente = false;
             btnModificacionPendiente.Visible = false;
             panelFiltroAvanzado.Visible = false;
             panelModificarArticulo.Visible = false;
             panelAgregarArticulo.Visible = false;
         }
-
         private void NingunRegistro()
         {
             dgvArticulos.Visible = false;
             panelModificarArticulo.Visible = true;
             panelAgregarArticulo.Visible = true;
             btnCancelarAgregacion.Enabled = false;
+        }
+        private void MostrarInfoArticulo()
+        {
+            Articulo articuloSeleccionado = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
+            txbxCodigoDA.Text = articuloSeleccionado.Codigo;
+            txbxNombreDA.Text = articuloSeleccionado.Nombre;
+            txbxDescripcionDA.Text = articuloSeleccionado.Descripcion;
+            txbxMarcaDA.Text = articuloSeleccionado.Marca.Descripcion;
+            txbxCategoriaDA.Text = articuloSeleccionado.Categoria.Descripcion;
+            // CargarImagen();
+            txbxPrecioDA.Text = "$" + articuloSeleccionado.Precio.ToString("N2");
         }
 
         // --------------------- Eventos ------------------------ //
@@ -69,6 +78,44 @@ namespace InterfazUsuario
                 NingunRegistro();
             }
         }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            // Verificar si hay articulos disponibles. Si no los hay, activar
+            // la pestaña de Agregar artículo.
+            if (dgvArticulos.CurrentRow != null)
+            {
+                if (panelAgregarArticulo.Visible) // Verifica si la capa de articulos esta abierta
+                {
+                    panelAgregarArticulo.Visible = false;
+                    panelModificarArticulo.Visible = false;
+                    // Mostrar info articulo seleccionado
+                    MostrarInfoArticulo();
+                }
+                else if (panelModificarArticulo.Visible) // Verifica si la capa de modificación está abierta.
+                {
+                    if (modificacionPendiente)
+                    {
+                        btnModificacionPendiente.Visible = true;
+                    }
+                    panelModificarArticulo.Visible = false;
+                    // Mostrar info articulo seleccionado
+                    MostrarInfoArticulo();
+                }
+                else
+                {
+                    // Mostrar info articulo seleccionado
+                    MostrarInfoArticulo();
+                }
+            }
+            else
+            {
+                NingunRegistro();
+            }
+        }
+
+
+
 
         // Filtro avanzado
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
@@ -183,38 +230,6 @@ namespace InterfazUsuario
             panelModificarArticulo.Visible = true;
         }
 
-        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
-        {
-            // Verificar si hay articulos disponibles. Si no los hay, activar
-            // la pestaña de Agregar artículo.
-            if (dgvArticulos.CurrentRow != null)
-            {
-                if (panelAgregarArticulo.Visible) // Verifica si la capa de articulos esta abierta
-                {
-                    panelAgregarArticulo.Visible = false;
-                    panelModificarArticulo.Visible = false;
-                    // Mostrar info articulo seleccionado
-                }
-                else if (panelModificarArticulo.Visible) // Verifica si la capa de modificación está abierta.
-                {
-                    if (modificacionPendiente)
-                    {
-                        btnModificacionPendiente.Visible = true;
-                    }
-                    panelModificarArticulo.Visible = false;
-                    // Mostrar info articulo seleccionado
-                }
-                else
-                {
-                    //MessageBox.Show("Cambio de índice");
-                    // Mostrar info articulo seleccionado
-                }
-            }
-            else
-            {
-                NingunRegistro();
-            }
-        }
 
         private void dgvArticulos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {

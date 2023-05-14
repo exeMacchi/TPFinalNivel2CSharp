@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
@@ -106,11 +106,12 @@
             // btnFiltroAvanzado
             // 
             this.btnFiltroAvanzado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFiltroAvanzado.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFiltroAvanzado.Location = new System.Drawing.Point(613, 3);
             this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
             this.btnFiltroAvanzado.Size = new System.Drawing.Size(159, 45);
             this.btnFiltroAvanzado.TabIndex = 0;
-            this.btnFiltroAvanzado.Text = "Expandir / Ocultar";
+            this.btnFiltroAvanzado.Text = "Filtro avanzado";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
             this.btnFiltroAvanzado.Click += new System.EventHandler(this.btnFiltroAvanzado_Click);
             // 
@@ -224,17 +225,17 @@
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(769, 568);
@@ -472,7 +473,9 @@
             // 
             this.txbxCodigoDA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxCodigoDA.Location = new System.Drawing.Point(161, 295);
+            this.txbxCodigoDA.MaxLength = 50;
             this.txbxCodigoDA.Name = "txbxCodigoDA";
+            this.txbxCodigoDA.ReadOnly = true;
             this.txbxCodigoDA.Size = new System.Drawing.Size(256, 23);
             this.txbxCodigoDA.TabIndex = 14;
             // 
@@ -480,7 +483,9 @@
             // 
             this.txbxNombreDA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxNombreDA.Location = new System.Drawing.Point(161, 331);
+            this.txbxNombreDA.MaxLength = 50;
             this.txbxNombreDA.Name = "txbxNombreDA";
+            this.txbxNombreDA.ReadOnly = true;
             this.txbxNombreDA.Size = new System.Drawing.Size(256, 23);
             this.txbxNombreDA.TabIndex = 15;
             // 
@@ -488,8 +493,10 @@
             // 
             this.txbxDescripcionDA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxDescripcionDA.Location = new System.Drawing.Point(161, 368);
+            this.txbxDescripcionDA.MaxLength = 150;
             this.txbxDescripcionDA.Multiline = true;
             this.txbxDescripcionDA.Name = "txbxDescripcionDA";
+            this.txbxDescripcionDA.ReadOnly = true;
             this.txbxDescripcionDA.Size = new System.Drawing.Size(256, 60);
             this.txbxDescripcionDA.TabIndex = 16;
             // 
@@ -498,6 +505,7 @@
             this.txbxMarcaDA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxMarcaDA.Location = new System.Drawing.Point(161, 444);
             this.txbxMarcaDA.Name = "txbxMarcaDA";
+            this.txbxMarcaDA.ReadOnly = true;
             this.txbxMarcaDA.Size = new System.Drawing.Size(256, 23);
             this.txbxMarcaDA.TabIndex = 17;
             // 
@@ -506,6 +514,7 @@
             this.txbxCategoriaDA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxCategoriaDA.Location = new System.Drawing.Point(161, 483);
             this.txbxCategoriaDA.Name = "txbxCategoriaDA";
+            this.txbxCategoriaDA.ReadOnly = true;
             this.txbxCategoriaDA.Size = new System.Drawing.Size(256, 23);
             this.txbxCategoriaDA.TabIndex = 18;
             // 
@@ -514,6 +523,7 @@
             this.txbxPrecioDA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxPrecioDA.Location = new System.Drawing.Point(161, 522);
             this.txbxPrecioDA.Name = "txbxPrecioDA";
+            this.txbxPrecioDA.ReadOnly = true;
             this.txbxPrecioDA.Size = new System.Drawing.Size(256, 23);
             this.txbxPrecioDA.TabIndex = 19;
             // 
