@@ -121,18 +121,18 @@ namespace InterfazUsuario
             {
                 if (panelAgregarArticulo.Visible) // Verifica si la capa de articulos esta abierta
                 {
+                    MostrarInfoArticulo();
                     panelAgregarArticulo.Visible = false;
                     panelModificarArticulo.Visible = false;
-                    MostrarInfoArticulo();
                 }
                 else if (panelModificarArticulo.Visible) // Verifica si la capa de modificación está abierta.
                 {
+                    MostrarInfoArticulo();
                     if (modificacionPendiente)
                     {
                         btnModificacionPendiente.Visible = true;
                     }
                     panelModificarArticulo.Visible = false;
-                    MostrarInfoArticulo();
                 }
                 else
                 {
