@@ -91,9 +91,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Placeholder.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\placeholder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

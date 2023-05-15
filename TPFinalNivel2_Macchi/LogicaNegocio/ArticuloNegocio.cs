@@ -76,5 +76,33 @@ namespace LogicaNegocio
                 db.CloseConnection();
             }
         }
+
+        public void AgregarNuevoArticulo(Articulo nuevoArticulo)
+        {
+            Datos db = new Datos();
+
+            try
+            {
+                db.SetQuery("INSERT INTO ARTICULOS " +
+                            "VALUES (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, " +
+                            "        @Imagen, @Precio);");
+                db.SetParametro("@Codigo", nuevoArticulo.Codigo);
+                db.SetParametro("@Nombre", nuevoArticulo.Nombre);
+                db.SetParametro("@Descripcion", nuevoArticulo.Descripcion);
+                db.SetParametro("@IdMarca", nuevoArticulo.Marca.ID);
+                db.SetParametro("@IdCategoria", nuevoArticulo.Categoria.ID);
+                db.SetParametro("@Imagen", nuevoArticulo.Imagen);
+                db.SetParametro("@Precio", nuevoArticulo.Precio);
+                db.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
     }
 }

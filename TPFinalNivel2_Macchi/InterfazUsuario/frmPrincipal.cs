@@ -132,10 +132,14 @@ namespace InterfazUsuario
         {
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             comboxMarcaAA.DataSource = marcaNegocio.CargarMarcas();
+            comboxMarcaAA.DisplayMember = "Descripcion";
+            comboxMarcaAA.ValueMember = "ID";
             // ComboBox marca modificacion
 
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             comboxCategoriaAA.DataSource = categoriaNegocio.CargarCategorias();
+            comboxCategoriaAA.DisplayMember = "Descripcion";
+            comboxCategoriaAA.ValueMember = "ID";
             // ComboBox categoria modificacion
         }
 
@@ -202,10 +206,22 @@ namespace InterfazUsuario
             }
         }
 
-        // ====================================================== //
-        // ----------------------- Eventos ---------------------- //
-        // ====================================================== //
-        private void frmPrincipal_Load(object sender, EventArgs e)
+        private void AgregarNuevoArticulo(Articulo nuevoArticulo)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                articuloNegocio.AgregarNuevoArticulo(nuevoArticulo);
+                MessageBox.Show("¡Nuevo artículo agregado con éxito!", "Nuevo artículo",
+                                MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error: agregar nuevo artículo");
+            }
+        }
+
+        private void ActualizarDGV()
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
             try
@@ -226,6 +242,14 @@ namespace InterfazUsuario
             {
                 NingunRegistro();
             }
+        }
+
+        // ====================================================== //
+        // ----------------------- Eventos ---------------------- //
+        // ====================================================== //
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            ActualizarDGV();
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -389,18 +413,29 @@ namespace InterfazUsuario
 
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
-            // Se habilita el botón de cancelar porque hay mínimo un registro en la DB.
+            // Se habilita el botón de cancelar porque hay, mínimo, un registro en la DB.
             if (!btnCancelarAgregacion.Enabled)
                 btnCancelarAgregacion.Enabled = true;
 
-            // Verificar si la ruta/url es válida antes de subirla a la DB.
+            // Crear el nuevo articulo
+            Articulo nuevoArticulo = new Articulo();
+            nuevoArticulo.Codigo = txbxCodigoAA.Text;
+            nuevoArticulo.Nombre = txbxNombreAA.Text;
+            nuevoArticulo.Descripcion = txbxDescripcionAA.Text;
+            nuevoArticulo.Marca = (Marca) comboxMarcaAA.SelectedItem;
+            nuevoArticulo.Categoria = (Categoria)comboxCategoriaAA.SelectedItem;
+            nuevoArticulo.Precio = decimal.Parse(txbxPrecioAA.Text);
             if (!CargarImagenAA(txbxCargarImagenAA.Text))
             {
-                txbxCargarImagenAA.Text = "";
+                nuevoArticulo.Imagen = "";
+            }
+            else
+            {
+                nuevoArticulo.Imagen = txbxCargarImagenAA.Text;
             }
 
-            // Agregar
-            // Aviso: articulo agregado con exito!
+            AgregarNuevoArticulo(nuevoArticulo);
+            ActualizarDGV();
             // Focusear el indice del nuevo articulo para que el usuario vea la info.
                 // Cuando se focuseé, esto ya no va a ser necesario.
                 panelAgregarArticulo.Visible = false;
@@ -411,7 +446,13 @@ namespace InterfazUsuario
 
         private void btnCancelarAgregacion_Click(object sender, EventArgs e)
         {
-            // Aviso: articulo descartado
+            if (nuevoArticuloPendiente)
+            {
+                // Aviso: articulo descartado
+                MessageBox.Show("Información del nuevo artículo descartada.", "Información descartada",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
             panelAgregarArticulo.Visible = false;
             panelModificarArticulo.Visible = false;
             btnNuevoArticulo.Visible = true;
@@ -451,6 +492,7 @@ namespace InterfazUsuario
             }
             else
             {
+                pboxImagenAA.Image = Properties.Resources.placeholder;
                 txbxCargarImagenAA.Text = "";
                 txbxCargarImagenAA.Focus();
             }
@@ -514,7 +556,8 @@ namespace InterfazUsuario
 
         private void txbxPrecioAA_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46)
+            if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 &&  
+                 e.KeyChar != 44 && e.KeyChar != 46)
             {
                   e.Handled = true;
             }
@@ -543,6 +586,5 @@ namespace InterfazUsuario
             }
             this.Close();
         }
-
     }
 }
