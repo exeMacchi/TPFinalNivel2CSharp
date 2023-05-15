@@ -19,6 +19,7 @@ namespace InterfazUsuario
         private List<Articulo> articulos = null;
         private bool nuevoArticuloPendiente;
         private bool modificacionPendiente;
+        private bool imagenLocal;
         private int indiceModificacionPendiente;
         
         // Constructor
@@ -28,18 +29,22 @@ namespace InterfazUsuario
             StartUp();
             ReiniciarPlantillaNuevoArticulo();
         }
+
         // ====================================================== //
         // --------------------- Métodos ------------------------ //
         // ====================================================== //
 
         private void StartUp()
         {
-            nuevoArticuloPendiente = false;
             modificacionPendiente = false;
             btnModificacionPendiente.Visible = false;
+
             panelFiltroAvanzado.Visible = false;
+
             panelModificarArticulo.Visible = false;
             panelAgregarArticulo.Visible = false;
+
+            CargarComboBoxes();
         }
         private void NingunRegistro()
         {
@@ -92,12 +97,14 @@ namespace InterfazUsuario
                 }
             }
         }
+
         private bool CargarImagenAA(string img)
         {
             try
             {
                 pboxImagenAA.Load(img);
                 lbAvisoImagenAA.Visible = false;
+                imagenLocal = false;
                 return true;
             }
             catch (Exception)
@@ -105,6 +112,11 @@ namespace InterfazUsuario
                 try
                 {
                     pboxImagenAA.Image = Properties.Resources.placeholder;
+                    if (imagenLocal)
+                    {
+                        txbxCargarImagenAA.Text = "";
+                        imagenLocal = false;
+                    }
                     lbAvisoImagenAA.Visible = true;
                     return false;
                 }
@@ -116,12 +128,27 @@ namespace InterfazUsuario
             }
         }
 
+        private void CargarComboBoxes()
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            comboxMarcaAA.DataSource = marcaNegocio.CargarMarcas();
+            // ComboBox marca modificacion
+
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            comboxCategoriaAA.DataSource = categoriaNegocio.CargarCategorias();
+            // ComboBox categoria modificacion
+        }
+
         private void ReiniciarPlantillaNuevoArticulo()
         {
             btnNuevoArticulo.Text = "Nuevo artículo";
             pboxImagenAA.Image = Properties.Resources.placeholder;
+
+            btnCargarImagenUrlAA.Text = "Imagen URL";
+            imagenLocal = false;
             lbAvisoImagenAA.Visible = false;
             txbxCargarImagenAA.Visible = false;
+
             txbxCargarImagenAA.Text = "";
             txbxCodigoAA.Text = "";
             txbxNombreAA.Text = "";
@@ -129,7 +156,13 @@ namespace InterfazUsuario
             comboxMarcaAA.SelectedIndex = -1;
             comboxCategoriaAA.SelectedIndex = -1;
             txbxPrecioAA.Text = "";
+
+            nuevoArticuloPendiente = false;
             btnReiniciarAA.Visible = false;
+
+            btnAgregarArticulo.Enabled = false;
+            lbImpresindibleAA6.Visible = true;
+            lbAvisoAgregarAA.Visible = true;
         }
 
         private void HabilitarBtnReiniciar()
@@ -148,6 +181,24 @@ namespace InterfazUsuario
                 btnNuevoArticulo.Text = "Nuevo artículo";
                 btnReiniciarAA.Visible = false;
                 nuevoArticuloPendiente = false;
+            }
+        }
+
+        private void HabilitarBtnAgregar()
+        {
+            if (txbxCodigoAA.Text != "" && txbxNombreAA.Text != "" && 
+                comboxMarcaAA.SelectedIndex != -1 && comboxCategoriaAA.SelectedIndex != -1 &&
+                txbxPrecioAA.Text != "")
+            {
+                btnAgregarArticulo.Enabled = true;
+                lbImpresindibleAA6.Visible = false;
+                lbAvisoAgregarAA.Visible = false;
+            }
+            else
+            {
+                btnAgregarArticulo.Enabled = false;
+                lbImpresindibleAA6.Visible = true;
+                lbAvisoAgregarAA.Visible = true;
             }
         }
 
@@ -355,7 +406,6 @@ namespace InterfazUsuario
                 panelAgregarArticulo.Visible = false;
                 panelModificarArticulo.Visible = false;
             btnNuevoArticulo.Visible = true;
-            nuevoArticuloPendiente = false;
             ReiniciarPlantillaNuevoArticulo();
         }
 
@@ -365,7 +415,6 @@ namespace InterfazUsuario
             panelAgregarArticulo.Visible = false;
             panelModificarArticulo.Visible = false;
             btnNuevoArticulo.Visible = true;
-            nuevoArticuloPendiente = false;
             ReiniciarPlantillaNuevoArticulo();
         }
 
@@ -380,9 +429,12 @@ namespace InterfazUsuario
             pboxImagenAA.Image = Properties.Resources.placeholder;
             txbxCargarImagenAA.Text = "";
             txbxCargarImagenAA.Visible = false;
+            btnCargarImagenUrlAA.Text = "Imagen URL";
+
             ofdImagen.Filter = "Archivos de imagen|*.jpg;*.png";
             if (ofdImagen.ShowDialog() == DialogResult.OK)
             {
+                imagenLocal = true;
                 txbxCargarImagenAA.Text = ofdImagen.FileName;
             }
         }
@@ -395,12 +447,17 @@ namespace InterfazUsuario
                 pboxImagenAA.Image = Properties.Resources.placeholder;
                 txbxCargarImagenAA.Text = "https://...";
                 txbxCargarImagenAA.Visible = true;
+                btnCargarImagenUrlAA.Text = "Borrar URL";
+            }
+            else
+            {
+                txbxCargarImagenAA.Text = "";
+                txbxCargarImagenAA.Focus();
             }
         }
 
         private void txbxCargarImagenAA_TextChanged(object sender, EventArgs e)
         {
-            HabilitarBtnReiniciar();
             if (txbxCargarImagenAA.Text != "" && txbxCargarImagenAA.Text != "https://...")
             {
                 CargarImagenAA(txbxCargarImagenAA.Text);
@@ -409,6 +466,7 @@ namespace InterfazUsuario
             {
                 lbAvisoImagenAA.Visible = false;
             }
+            HabilitarBtnReiniciar();
         }
 
         private void txbxCargarImagenAA_Enter(object sender, EventArgs e)
@@ -422,11 +480,13 @@ namespace InterfazUsuario
         private void txbxCodigoAA_TextChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciar();
+            HabilitarBtnAgregar();
         }
 
         private void txbxNombreAA_TextChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciar();
+            HabilitarBtnAgregar();
         }
 
         private void txbxDescripcionAA_TextChanged(object sender, EventArgs e)
@@ -437,16 +497,27 @@ namespace InterfazUsuario
         private void comboxMarcaAA_SelectedIndexChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciar();
+            HabilitarBtnAgregar();
         }
 
         private void comboxCategoriaAA_SelectedIndexChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciar();
+            HabilitarBtnAgregar();
         }
 
         private void txbxPrecioAA_TextChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciar();
+            HabilitarBtnAgregar();
+        }
+
+        private void txbxPrecioAA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 && e.KeyChar != 46)
+            {
+                  e.Handled = true;
+            }
         }
 
         // --------------------------------------------------------------- //
@@ -472,5 +543,6 @@ namespace InterfazUsuario
             }
             this.Close();
         }
+
     }
 }

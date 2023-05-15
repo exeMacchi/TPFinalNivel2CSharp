@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
@@ -93,6 +93,8 @@
             this.pboxImagenDA = new System.Windows.Forms.PictureBox();
             this.ofdImagen = new System.Windows.Forms.OpenFileDialog();
             this.lbAvisoImagenAA = new System.Windows.Forms.Label();
+            this.lbImpresindibleAA6 = new System.Windows.Forms.Label();
+            this.lbAvisoAgregarAA = new System.Windows.Forms.Label();
             this.panelSuperior.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
             this.panelMetodosVentana.SuspendLayout();
@@ -215,7 +217,7 @@
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPrincipal.Location = new System.Drawing.Point(0, 54);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1353, 702);
+            this.panelPrincipal.Size = new System.Drawing.Size(1353, 719);
             this.panelPrincipal.TabIndex = 1;
             // 
             // panelSubPrincipalIzquierda
@@ -226,7 +228,7 @@
             this.panelSubPrincipalIzquierda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSubPrincipalIzquierda.Location = new System.Drawing.Point(0, 0);
             this.panelSubPrincipalIzquierda.Name = "panelSubPrincipalIzquierda";
-            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(780, 702);
+            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(780, 719);
             this.panelSubPrincipalIzquierda.TabIndex = 1;
             // 
             // panelGridDataView
@@ -237,7 +239,7 @@
             this.panelGridDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGridDataView.Location = new System.Drawing.Point(0, 57);
             this.panelGridDataView.Name = "panelGridDataView";
-            this.panelGridDataView.Size = new System.Drawing.Size(780, 645);
+            this.panelGridDataView.Size = new System.Drawing.Size(780, 662);
             this.panelGridDataView.TabIndex = 1;
             // 
             // dgvArticulos
@@ -245,34 +247,34 @@
             this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle40.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle40.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle40.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle41.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle41;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle42.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle42;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(771, 626);
+            this.dgvArticulos.Size = new System.Drawing.Size(771, 643);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
@@ -320,7 +322,7 @@
             this.panelDetallesArticulos.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelDetallesArticulos.Location = new System.Drawing.Point(780, 0);
             this.panelDetallesArticulos.Name = "panelDetallesArticulos";
-            this.panelDetallesArticulos.Size = new System.Drawing.Size(573, 702);
+            this.panelDetallesArticulos.Size = new System.Drawing.Size(573, 719);
             this.panelDetallesArticulos.TabIndex = 0;
             // 
             // panelModificarArticulo
@@ -333,12 +335,14 @@
             this.panelModificarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelModificarArticulo.Location = new System.Drawing.Point(0, 0);
             this.panelModificarArticulo.Name = "panelModificarArticulo";
-            this.panelModificarArticulo.Size = new System.Drawing.Size(573, 702);
+            this.panelModificarArticulo.Size = new System.Drawing.Size(573, 719);
             this.panelModificarArticulo.TabIndex = 0;
             // 
             // panelAgregarArticulo
             // 
             this.panelAgregarArticulo.BackColor = System.Drawing.Color.SaddleBrown;
+            this.panelAgregarArticulo.Controls.Add(this.lbAvisoAgregarAA);
+            this.panelAgregarArticulo.Controls.Add(this.lbImpresindibleAA6);
             this.panelAgregarArticulo.Controls.Add(this.lbAvisoImagenAA);
             this.panelAgregarArticulo.Controls.Add(this.btnReiniciarAA);
             this.panelAgregarArticulo.Controls.Add(this.lbImpresindibleAA5);
@@ -367,7 +371,7 @@
             this.panelAgregarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAgregarArticulo.Location = new System.Drawing.Point(0, 0);
             this.panelAgregarArticulo.Name = "panelAgregarArticulo";
-            this.panelAgregarArticulo.Size = new System.Drawing.Size(573, 702);
+            this.panelAgregarArticulo.Size = new System.Drawing.Size(573, 719);
             this.panelAgregarArticulo.TabIndex = 0;
             // 
             // btnReiniciarAA
@@ -387,7 +391,7 @@
             this.lbImpresindibleAA5.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA5.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleAA5.ForeColor = System.Drawing.Color.Red;
-            this.lbImpresindibleAA5.Location = new System.Drawing.Point(26, 609);
+            this.lbImpresindibleAA5.Location = new System.Drawing.Point(24, 609);
             this.lbImpresindibleAA5.Name = "lbImpresindibleAA5";
             this.lbImpresindibleAA5.Size = new System.Drawing.Size(27, 34);
             this.lbImpresindibleAA5.TabIndex = 26;
@@ -399,7 +403,7 @@
             this.lbImpresindibleAA4.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA4.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleAA4.ForeColor = System.Drawing.Color.Red;
-            this.lbImpresindibleAA4.Location = new System.Drawing.Point(26, 557);
+            this.lbImpresindibleAA4.Location = new System.Drawing.Point(24, 557);
             this.lbImpresindibleAA4.Name = "lbImpresindibleAA4";
             this.lbImpresindibleAA4.Size = new System.Drawing.Size(27, 34);
             this.lbImpresindibleAA4.TabIndex = 25;
@@ -411,7 +415,7 @@
             this.lbImpresindibleAA3.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA3.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleAA3.ForeColor = System.Drawing.Color.Red;
-            this.lbImpresindibleAA3.Location = new System.Drawing.Point(26, 504);
+            this.lbImpresindibleAA3.Location = new System.Drawing.Point(24, 504);
             this.lbImpresindibleAA3.Name = "lbImpresindibleAA3";
             this.lbImpresindibleAA3.Size = new System.Drawing.Size(27, 34);
             this.lbImpresindibleAA3.TabIndex = 24;
@@ -423,7 +427,7 @@
             this.lbImpresindibleAA2.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleAA2.ForeColor = System.Drawing.Color.Red;
-            this.lbImpresindibleAA2.Location = new System.Drawing.Point(26, 361);
+            this.lbImpresindibleAA2.Location = new System.Drawing.Point(24, 361);
             this.lbImpresindibleAA2.Name = "lbImpresindibleAA2";
             this.lbImpresindibleAA2.Size = new System.Drawing.Size(27, 34);
             this.lbImpresindibleAA2.TabIndex = 23;
@@ -435,7 +439,7 @@
             this.lbImpresindibleAA1.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleAA1.ForeColor = System.Drawing.Color.Red;
-            this.lbImpresindibleAA1.Location = new System.Drawing.Point(26, 316);
+            this.lbImpresindibleAA1.Location = new System.Drawing.Point(24, 316);
             this.lbImpresindibleAA1.Name = "lbImpresindibleAA1";
             this.lbImpresindibleAA1.Size = new System.Drawing.Size(27, 34);
             this.lbImpresindibleAA1.TabIndex = 22;
@@ -466,12 +470,13 @@
             // txbxPrecioAA
             // 
             this.txbxPrecioAA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbxPrecioAA.Location = new System.Drawing.Point(54, 610);
+            this.txbxPrecioAA.Location = new System.Drawing.Point(53, 610);
             this.txbxPrecioAA.MaxLength = 50;
             this.txbxPrecioAA.Name = "txbxPrecioAA";
-            this.txbxPrecioAA.Size = new System.Drawing.Size(466, 23);
+            this.txbxPrecioAA.Size = new System.Drawing.Size(468, 23);
             this.txbxPrecioAA.TabIndex = 19;
             this.txbxPrecioAA.TextChanged += new System.EventHandler(this.txbxPrecioAA_TextChanged);
+            this.txbxPrecioAA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbxPrecioAA_KeyPress);
             // 
             // lbPrecioAA
             // 
@@ -617,7 +622,7 @@
             // 
             this.btnCancelarAgregacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelarAgregacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarAgregacion.Location = new System.Drawing.Point(375, 648);
+            this.btnCancelarAgregacion.Location = new System.Drawing.Point(352, 650);
             this.btnCancelarAgregacion.Name = "btnCancelarAgregacion";
             this.btnCancelarAgregacion.Size = new System.Drawing.Size(145, 41);
             this.btnCancelarAgregacion.TabIndex = 5;
@@ -629,7 +634,7 @@
             // 
             this.btnAgregarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgregarArticulo.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(54, 648);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(79, 650);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(145, 41);
             this.btnAgregarArticulo.TabIndex = 4;
@@ -641,7 +646,7 @@
             // 
             this.btnCancelarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelarModificacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarModificacion.Location = new System.Drawing.Point(340, 637);
+            this.btnCancelarModificacion.Location = new System.Drawing.Point(340, 654);
             this.btnCancelarModificacion.Name = "btnCancelarModificacion";
             this.btnCancelarModificacion.Size = new System.Drawing.Size(145, 41);
             this.btnCancelarModificacion.TabIndex = 4;
@@ -653,7 +658,7 @@
             // 
             this.btnConfirmarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfirmarModificacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarModificacion.Location = new System.Drawing.Point(96, 639);
+            this.btnConfirmarModificacion.Location = new System.Drawing.Point(96, 656);
             this.btnConfirmarModificacion.Name = "btnConfirmarModificacion";
             this.btnConfirmarModificacion.Size = new System.Drawing.Size(145, 41);
             this.btnConfirmarModificacion.TabIndex = 3;
@@ -792,7 +797,7 @@
             // 
             this.btnEliminarArticuloDA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminarArticuloDA.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarArticuloDA.Location = new System.Drawing.Point(325, 637);
+            this.btnEliminarArticuloDA.Location = new System.Drawing.Point(325, 654);
             this.btnEliminarArticuloDA.Name = "btnEliminarArticuloDA";
             this.btnEliminarArticuloDA.Size = new System.Drawing.Size(145, 41);
             this.btnEliminarArticuloDA.TabIndex = 3;
@@ -804,7 +809,7 @@
             // 
             this.btnModificarArticuloDA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificarArticuloDA.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarArticuloDA.Location = new System.Drawing.Point(93, 637);
+            this.btnModificarArticuloDA.Location = new System.Drawing.Point(93, 654);
             this.btnModificarArticuloDA.Name = "btnModificarArticuloDA";
             this.btnModificarArticuloDA.Size = new System.Drawing.Size(145, 41);
             this.btnModificarArticuloDA.TabIndex = 2;
@@ -833,11 +838,35 @@
             this.lbAvisoImagenAA.TabIndex = 28;
             this.lbAvisoImagenAA.Text = "No se pudo cargar la imagen";
             // 
+            // lbImpresindibleAA6
+            // 
+            this.lbImpresindibleAA6.AutoSize = true;
+            this.lbImpresindibleAA6.BackColor = System.Drawing.Color.Transparent;
+            this.lbImpresindibleAA6.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbImpresindibleAA6.ForeColor = System.Drawing.Color.Red;
+            this.lbImpresindibleAA6.Location = new System.Drawing.Point(24, 694);
+            this.lbImpresindibleAA6.Name = "lbImpresindibleAA6";
+            this.lbImpresindibleAA6.Size = new System.Drawing.Size(27, 34);
+            this.lbImpresindibleAA6.TabIndex = 29;
+            this.lbImpresindibleAA6.Text = "*";
+            // 
+            // lbAvisoAgregarAA
+            // 
+            this.lbAvisoAgregarAA.AutoSize = true;
+            this.lbAvisoAgregarAA.BackColor = System.Drawing.Color.Transparent;
+            this.lbAvisoAgregarAA.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAvisoAgregarAA.ForeColor = System.Drawing.Color.Red;
+            this.lbAvisoAgregarAA.Location = new System.Drawing.Point(44, 694);
+            this.lbAvisoAgregarAA.Name = "lbAvisoAgregarAA";
+            this.lbAvisoAgregarAA.Size = new System.Drawing.Size(233, 21);
+            this.lbAvisoAgregarAA.TabIndex = 30;
+            this.lbAvisoAgregarAA.Text = "Información impresindible";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1353, 756);
+            this.ClientSize = new System.Drawing.Size(1353, 773);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panelSuperior);
             this.Name = "frmPrincipal";
@@ -928,6 +957,8 @@
         private System.Windows.Forms.Button btnReiniciarAA;
         private System.Windows.Forms.OpenFileDialog ofdImagen;
         private System.Windows.Forms.Label lbAvisoImagenAA;
+        private System.Windows.Forms.Label lbAvisoAgregarAA;
+        private System.Windows.Forms.Label lbImpresindibleAA6;
     }
 }
 
