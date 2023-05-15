@@ -28,8 +28,10 @@ namespace InterfazUsuario
             StartUp();
             ReiniciarPlantillaNuevoArticulo();
         }
-
+        // ====================================================== //
         // --------------------- Métodos ------------------------ //
+        // ====================================================== //
+
         private void StartUp()
         {
             nuevoArticuloPendiente = false;
@@ -56,7 +58,7 @@ namespace InterfazUsuario
             txbxDescripcionDA.Text = articuloSeleccionado.Descripcion;
             txbxMarcaDA.Text = articuloSeleccionado.Marca.Descripcion;
             txbxCategoriaDA.Text = articuloSeleccionado.Categoria.Descripcion;
-            CargarImagen(articuloSeleccionado.Imagen);
+            CargarImagenDA(articuloSeleccionado.Imagen);
             txbxPrecioDA.Text = "$" + articuloSeleccionado.Precio.ToString("N2");
         }
         private void OcultarColumnas()
@@ -72,7 +74,7 @@ namespace InterfazUsuario
             dgvArticulos.Columns["Codigo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvArticulos.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
-        private void CargarImagen(string img)
+        private void CargarImagenDA(string img)
         {
             try
             {
@@ -90,10 +92,35 @@ namespace InterfazUsuario
                 }
             }
         }
+        private bool CargarImagenAA(string img)
+        {
+            try
+            {
+                pboxImagenAA.Load(img);
+                lbAvisoImagenAA.Visible = false;
+                return true;
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    pboxImagenAA.Image = Properties.Resources.placeholder;
+                    lbAvisoImagenAA.Visible = true;
+                    return false;
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Error al cargar el placeholder");
+                    return false;
+                }
+            }
+        }
 
         private void ReiniciarPlantillaNuevoArticulo()
         {
+            btnNuevoArticulo.Text = "Nuevo artículo";
             pboxImagenAA.Image = Properties.Resources.placeholder;
+            lbAvisoImagenAA.Visible = false;
             txbxCargarImagenAA.Visible = false;
             txbxCargarImagenAA.Text = "";
             txbxCodigoAA.Text = "";
@@ -105,7 +132,28 @@ namespace InterfazUsuario
             btnReiniciarAA.Visible = false;
         }
 
-        // --------------------- Eventos ------------------------ //
+        private void HabilitarBtnReiniciar()
+        {
+            if ((txbxCargarImagenAA.Text != "" && txbxCargarImagenAA.Text != "https://...") ||
+                txbxCodigoAA.Text != "" || txbxNombreAA.Text != "" || txbxDescripcionAA.Text != "" ||
+                comboxMarcaAA.SelectedIndex != -1 || comboxCategoriaAA.SelectedIndex != -1 ||
+                txbxPrecioAA.Text != "")
+            {
+                btnNuevoArticulo.Text = "Nuevo artículo pendiente";
+                btnReiniciarAA.Visible = true;
+                nuevoArticuloPendiente = true;
+            }
+            else
+            {
+                btnNuevoArticulo.Text = "Nuevo artículo";
+                btnReiniciarAA.Visible = false;
+                nuevoArticuloPendiente = false;
+            }
+        }
+
+        // ====================================================== //
+        // ----------------------- Eventos ---------------------- //
+        // ====================================================== //
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
@@ -131,17 +179,23 @@ namespace InterfazUsuario
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
+            // El botón "Nuevo artículo" o "Nuevo artículo pendiete" se hace visible,
+            // sea el caso que sea.
+            btnNuevoArticulo.Visible = true;
+
             // Verificar si hay articulos disponibles. Si no los hay, activar
             // la pestaña de Agregar artículo.
             if (dgvArticulos.CurrentRow != null)
             {
-                if (panelAgregarArticulo.Visible) // Verifica si la capa de articulos esta abierta
+                // Verifica si la capa de articulos está abierta; si lo está, la oculta.
+                if (panelAgregarArticulo.Visible) 
                 {
                     MostrarInfoArticulo();
                     panelAgregarArticulo.Visible = false;
                     panelModificarArticulo.Visible = false;
                 }
-                else if (panelModificarArticulo.Visible) // Verifica si la capa de modificación está abierta.
+                // Verifica si la capa de modificación está abierta; si lo está, la oculta.
+                else if (panelModificarArticulo.Visible) 
                 {
                     MostrarInfoArticulo();
                     if (modificacionPendiente)
@@ -159,8 +213,16 @@ namespace InterfazUsuario
             {
                 NingunRegistro();
             }
-            // El botón "Nuevo artículo" se hace visible, sea el caso que sea.
-            btnNuevoArticulo.Visible = true;
+        }
+
+        private void dgvArticulos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            // Verificar si hay mínimo un dato en el DGV para mostrarlo.
+            if (!dgvArticulos.Visible)
+            {
+                dgvArticulos.Visible = true;
+                FormatearDGV();
+            }
         }
 
         // Filtro avanzado
@@ -230,71 +292,6 @@ namespace InterfazUsuario
             btnModificacionPendiente.Visible = false;
             panelModificarArticulo.Visible = false;
         }
-
-
-        // Agregar artículo
-        private void btnAgregarArticulo_Click(object sender, EventArgs e)
-        {
-            if (!btnCancelarAgregacion.Enabled)
-                btnCancelarAgregacion.Enabled = true;
-
-            // Agregar
-            // Aviso: articulo agregado con exito!
-            // Focusear el indice del nuevo articulo para que el usuario vea la info.
-                // Cuando se focuseé, esto ya no va a ser necesario.
-                panelAgregarArticulo.Visible = false;
-                panelModificarArticulo.Visible = false;
-            btnNuevoArticulo.Visible = true;
-            nuevoArticuloPendiente = false;
-            ReiniciarPlantillaNuevoArticulo();
-        }
-
-        private void btnCancelarAgregacion_Click(object sender, EventArgs e)
-        {
-            // Aviso: articulo descartado
-            // Focusear el indice del nuevo articulo para que el usuario vea la info.
-                // Cuando se focuseé, esto ya no va a ser necesario.
-                panelAgregarArticulo.Visible = false;
-                panelModificarArticulo.Visible = false;
-            btnNuevoArticulo.Visible = true;
-            nuevoArticuloPendiente = false;
-            ReiniciarPlantillaNuevoArticulo();
-        }
-
-        private void btnNuevoArticulo_Click(object sender, EventArgs e)
-        {
-            // Verificar si hay un nuevo artículo pendiente para saber si reiniciar o no 
-            // la pantilla nuevo artículo.
-            if (!nuevoArticuloPendiente)
-            {
-                ReiniciarPlantillaNuevoArticulo();
-                nuevoArticuloPendiente = true;
-            }
-            // Si hay un artículo pendiente, y mínimo un dato en alguno de los campos,
-            // se le permite al usuario que reinicie la plantilla si quiere ingresar otra información.
-            else if (txbxCodigoAA.Text != "" || txbxNombreAA.Text != "" || 
-                     txbxDescripcionAA.Text != "" || comboxMarcaAA.SelectedIndex != -1 || 
-                     comboxCategoriaAA.SelectedIndex != -1 || txbxPrecioAA.Text != "")
-            {
-                btnReiniciarAA.Visible = true;
-            }
-
-            // El botón "Nuevo artículo" se hace invisible hasta que se agregue, cancele o
-            // se cambie la selección de artículo.
-            btnNuevoArticulo.Visible = false;
-
-            // Verificar si se apretó el botón desde la plantilla de modificación de un
-            // artículo para habilitar el botón de "Modificación pendiente".
-            if (modificacionPendiente)
-            {
-                btnModificacionPendiente.Visible = true;
-            }
-
-            // Hacer visible la plantilla nuevo artículo.
-            panelModificarArticulo.Visible = true;
-            panelAgregarArticulo.Visible = true;
-        }
-
         private void btnModificacionPendiente_Click(object sender, EventArgs e)
         {
             btnModificacionPendiente.Visible = false;
@@ -313,19 +310,167 @@ namespace InterfazUsuario
         }
 
 
-        private void dgvArticulos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        // ----------------------- Agregar artículo ---------------------- //
+        private void btnNuevoArticulo_Click(object sender, EventArgs e)
         {
-            // Verificar si hay mínimo un dato en el DGV para mostrarlo.
-            if (!dgvArticulos.Visible)
+            // Verificar si hay un nuevo artículo pendiente para saber si reiniciar o no 
+            // la pantilla nuevo artículo.
+            if (!nuevoArticuloPendiente)
             {
-                dgvArticulos.Visible = true;
-                FormatearDGV();
+                ReiniciarPlantillaNuevoArticulo();
             }
+
+            // El botón "Nuevo artículo" o "Nuevo artículo pendiente" se hace invisible
+            // hasta que se agregue, cancele o se cambie la selección de artículo.
+            btnNuevoArticulo.Visible = false;
+
+            // Verificar si se apretó el botón desde la plantilla de modificación de un
+            // artículo para habilitar el botón de "Modificación pendiente".
+            if (modificacionPendiente)
+            {
+                btnModificacionPendiente.Visible = true;
+            }
+
+            // Hacer visible la plantilla nuevo artículo.
+            panelModificarArticulo.Visible = true;
+            panelAgregarArticulo.Visible = true;
+        }
+
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            // Se habilita el botón de cancelar porque hay mínimo un registro en la DB.
+            if (!btnCancelarAgregacion.Enabled)
+                btnCancelarAgregacion.Enabled = true;
+
+            // Verificar si la ruta/url es válida antes de subirla a la DB.
+            if (!CargarImagenAA(txbxCargarImagenAA.Text))
+            {
+                txbxCargarImagenAA.Text = "";
+            }
+
+            // Agregar
+            // Aviso: articulo agregado con exito!
+            // Focusear el indice del nuevo articulo para que el usuario vea la info.
+                // Cuando se focuseé, esto ya no va a ser necesario.
+                panelAgregarArticulo.Visible = false;
+                panelModificarArticulo.Visible = false;
+            btnNuevoArticulo.Visible = true;
+            nuevoArticuloPendiente = false;
+            ReiniciarPlantillaNuevoArticulo();
+        }
+
+        private void btnCancelarAgregacion_Click(object sender, EventArgs e)
+        {
+            // Aviso: articulo descartado
+            panelAgregarArticulo.Visible = false;
+            panelModificarArticulo.Visible = false;
+            btnNuevoArticulo.Visible = true;
+            nuevoArticuloPendiente = false;
+            ReiniciarPlantillaNuevoArticulo();
         }
 
         private void btnReiniciarAA_Click(object sender, EventArgs e)
         {
             ReiniciarPlantillaNuevoArticulo();
+        }
+
+        private void btnCargarImagenLocalAA_Click(object sender, EventArgs e)
+        {
+            lbAvisoImagenAA.Visible = false;
+            pboxImagenAA.Image = Properties.Resources.placeholder;
+            txbxCargarImagenAA.Text = "";
+            txbxCargarImagenAA.Visible = false;
+            ofdImagen.Filter = "Archivos de imagen|*.jpg;*.png";
+            if (ofdImagen.ShowDialog() == DialogResult.OK)
+            {
+                txbxCargarImagenAA.Text = ofdImagen.FileName;
+            }
+        }
+
+        private void btnCargarImagenUrlAA_Click(object sender, EventArgs e)
+        {
+            if (!txbxCargarImagenAA.Visible)
+            {
+                lbAvisoImagenAA.Visible = false;
+                pboxImagenAA.Image = Properties.Resources.placeholder;
+                txbxCargarImagenAA.Text = "https://...";
+                txbxCargarImagenAA.Visible = true;
+            }
+        }
+
+        private void txbxCargarImagenAA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciar();
+            if (txbxCargarImagenAA.Text != "" && txbxCargarImagenAA.Text != "https://...")
+            {
+                CargarImagenAA(txbxCargarImagenAA.Text);
+            }
+            else
+            {
+                lbAvisoImagenAA.Visible = false;
+            }
+        }
+
+        private void txbxCargarImagenAA_Enter(object sender, EventArgs e)
+        {
+            if (txbxCargarImagenAA.Text == "https://...")
+            {
+                txbxCargarImagenAA.Text = "";
+            }
+        }
+
+        private void txbxCodigoAA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciar();
+        }
+
+        private void txbxNombreAA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciar();
+        }
+
+        private void txbxDescripcionAA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciar();
+        }
+
+        private void comboxMarcaAA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciar();
+        }
+
+        private void comboxCategoriaAA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciar();
+        }
+
+        private void txbxPrecioAA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciar();
+        }
+
+        // --------------------------------------------------------------- //
+        private void btnCerrarFormulario_Click(object sender, EventArgs e)
+        {
+            if (modificacionPendiente)
+            {
+                // Preguntar si quiere descartar los cambios
+            }
+            if (nuevoArticuloPendiente)
+            {
+                if (nuevoArticuloPendiente)
+                {
+                    DialogResult r = MessageBox.Show("Hay información de un nuevo artículo no agregado, " +
+                                                     "¿desea descartarla?", "Nuevo artículo pendiente",
+                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (r == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+            }
+            this.Close();
         }
     }
 }
