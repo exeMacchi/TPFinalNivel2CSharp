@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
@@ -49,6 +49,9 @@
             this.panelDetallesArticulos = new System.Windows.Forms.Panel();
             this.panelModificarArticulo = new System.Windows.Forms.Panel();
             this.panelAgregarArticulo = new System.Windows.Forms.Panel();
+            this.lbAvisoAgregarAA = new System.Windows.Forms.Label();
+            this.lbImpresindibleAA6 = new System.Windows.Forms.Label();
+            this.lbAvisoImagenAA = new System.Windows.Forms.Label();
             this.btnReiniciarAA = new System.Windows.Forms.Button();
             this.lbImpresindibleAA5 = new System.Windows.Forms.Label();
             this.lbImpresindibleAA4 = new System.Windows.Forms.Label();
@@ -92,9 +95,6 @@
             this.btnModificarArticuloDA = new System.Windows.Forms.Button();
             this.pboxImagenDA = new System.Windows.Forms.PictureBox();
             this.ofdImagen = new System.Windows.Forms.OpenFileDialog();
-            this.lbAvisoImagenAA = new System.Windows.Forms.Label();
-            this.lbImpresindibleAA6 = new System.Windows.Forms.Label();
-            this.lbAvisoAgregarAA = new System.Windows.Forms.Label();
             this.panelSuperior.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
             this.panelMetodosVentana.SuspendLayout();
@@ -247,31 +247,31 @@
             this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(778, 676);
@@ -373,6 +373,41 @@
             this.panelAgregarArticulo.Name = "panelAgregarArticulo";
             this.panelAgregarArticulo.Size = new System.Drawing.Size(573, 752);
             this.panelAgregarArticulo.TabIndex = 0;
+            // 
+            // lbAvisoAgregarAA
+            // 
+            this.lbAvisoAgregarAA.AutoSize = true;
+            this.lbAvisoAgregarAA.BackColor = System.Drawing.Color.Transparent;
+            this.lbAvisoAgregarAA.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAvisoAgregarAA.ForeColor = System.Drawing.Color.Red;
+            this.lbAvisoAgregarAA.Location = new System.Drawing.Point(46, 719);
+            this.lbAvisoAgregarAA.Name = "lbAvisoAgregarAA";
+            this.lbAvisoAgregarAA.Size = new System.Drawing.Size(233, 21);
+            this.lbAvisoAgregarAA.TabIndex = 30;
+            this.lbAvisoAgregarAA.Text = "Información impresindible";
+            // 
+            // lbImpresindibleAA6
+            // 
+            this.lbImpresindibleAA6.AutoSize = true;
+            this.lbImpresindibleAA6.BackColor = System.Drawing.Color.Transparent;
+            this.lbImpresindibleAA6.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbImpresindibleAA6.ForeColor = System.Drawing.Color.Red;
+            this.lbImpresindibleAA6.Location = new System.Drawing.Point(24, 718);
+            this.lbImpresindibleAA6.Name = "lbImpresindibleAA6";
+            this.lbImpresindibleAA6.Size = new System.Drawing.Size(27, 34);
+            this.lbImpresindibleAA6.TabIndex = 29;
+            this.lbImpresindibleAA6.Text = "*";
+            // 
+            // lbAvisoImagenAA
+            // 
+            this.lbAvisoImagenAA.AutoSize = true;
+            this.lbAvisoImagenAA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAvisoImagenAA.ForeColor = System.Drawing.Color.Red;
+            this.lbAvisoImagenAA.Location = new System.Drawing.Point(325, 142);
+            this.lbAvisoImagenAA.Name = "lbAvisoImagenAA";
+            this.lbAvisoImagenAA.Size = new System.Drawing.Size(200, 17);
+            this.lbAvisoImagenAA.TabIndex = 28;
+            this.lbAvisoImagenAA.Text = "No se pudo cargar la imagen";
             // 
             // btnReiniciarAA
             // 
@@ -833,41 +868,6 @@
             this.pboxImagenDA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxImagenDA.TabIndex = 7;
             this.pboxImagenDA.TabStop = false;
-            // 
-            // lbAvisoImagenAA
-            // 
-            this.lbAvisoImagenAA.AutoSize = true;
-            this.lbAvisoImagenAA.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAvisoImagenAA.ForeColor = System.Drawing.Color.Red;
-            this.lbAvisoImagenAA.Location = new System.Drawing.Point(325, 142);
-            this.lbAvisoImagenAA.Name = "lbAvisoImagenAA";
-            this.lbAvisoImagenAA.Size = new System.Drawing.Size(200, 17);
-            this.lbAvisoImagenAA.TabIndex = 28;
-            this.lbAvisoImagenAA.Text = "No se pudo cargar la imagen";
-            // 
-            // lbImpresindibleAA6
-            // 
-            this.lbImpresindibleAA6.AutoSize = true;
-            this.lbImpresindibleAA6.BackColor = System.Drawing.Color.Transparent;
-            this.lbImpresindibleAA6.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleAA6.ForeColor = System.Drawing.Color.Red;
-            this.lbImpresindibleAA6.Location = new System.Drawing.Point(24, 718);
-            this.lbImpresindibleAA6.Name = "lbImpresindibleAA6";
-            this.lbImpresindibleAA6.Size = new System.Drawing.Size(27, 34);
-            this.lbImpresindibleAA6.TabIndex = 29;
-            this.lbImpresindibleAA6.Text = "*";
-            // 
-            // lbAvisoAgregarAA
-            // 
-            this.lbAvisoAgregarAA.AutoSize = true;
-            this.lbAvisoAgregarAA.BackColor = System.Drawing.Color.Transparent;
-            this.lbAvisoAgregarAA.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAvisoAgregarAA.ForeColor = System.Drawing.Color.Red;
-            this.lbAvisoAgregarAA.Location = new System.Drawing.Point(46, 719);
-            this.lbAvisoAgregarAA.Name = "lbAvisoAgregarAA";
-            this.lbAvisoAgregarAA.Size = new System.Drawing.Size(233, 21);
-            this.lbAvisoAgregarAA.TabIndex = 30;
-            this.lbAvisoAgregarAA.Text = "Información impresindible";
             // 
             // frmPrincipal
             // 

@@ -104,5 +104,25 @@ namespace LogicaNegocio
                 db.CloseConnection();
             }
         }
+
+        public void BorrarArticulo(Articulo articuloSeleccionado)
+        {
+            Datos db = new Datos();
+
+            try
+            {
+                db.SetQuery("DELETE FROM ARTICULOS WHERE ARTICULOS.Id = @ID;");
+                db.SetParametro("@ID", articuloSeleccionado.ID);
+                db.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
     }
 }

@@ -30,10 +30,9 @@ namespace InterfazUsuario
             ReiniciarPlantillaNuevoArticulo();
         }
 
-        // ====================================================== //
-        // --------------------- Métodos ------------------------ //
-        // ====================================================== //
-
+        // ================================================================== //
+        // ---------------------------- Métodos ----------------------------- //
+        // ================================================================== //
         private void StartUp()
         {
             modificacionPendiente = false;
@@ -46,6 +45,7 @@ namespace InterfazUsuario
 
             CargarComboBoxes();
         }
+
         private void NingunRegistro()
         {
             dgvArticulos.Visible = false;
@@ -55,6 +55,7 @@ namespace InterfazUsuario
             btnCancelarAgregacion.Enabled = false;
             btnNuevoArticulo.Visible = false;
         }
+
         private void MostrarInfoArticulo()
         {
             Articulo articuloSeleccionado = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
@@ -66,12 +67,14 @@ namespace InterfazUsuario
             CargarImagenDA(articuloSeleccionado.Imagen);
             txbxPrecioDA.Text = "$" + articuloSeleccionado.Precio.ToString("N2");
         }
+
         private void OcultarColumnas()
         {
             dgvArticulos.Columns["ID"].Visible = false;
             dgvArticulos.Columns["Descripcion"].Visible = false;
             dgvArticulos.Columns["Imagen"].Visible = false;
         }
+
         private void FormatearDGV()
         {
             OcultarColumnas();
@@ -79,6 +82,7 @@ namespace InterfazUsuario
             dgvArticulos.Columns["Codigo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvArticulos.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
+
         private void CargarImagenDA(string img)
         {
             try
@@ -95,6 +99,86 @@ namespace InterfazUsuario
                 {
                     MessageBox.Show("Error al cargar el placeholder");
                 }
+            }
+        }
+
+        private void CargarComboBoxes()
+        {
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            comboxMarcaAA.DataSource = marcaNegocio.CargarMarcas();
+            comboxMarcaAA.DisplayMember = "Descripcion";
+            comboxMarcaAA.ValueMember = "ID";
+            // ComboBox marca modificacion
+
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            comboxCategoriaAA.DataSource = categoriaNegocio.CargarCategorias();
+            comboxCategoriaAA.DisplayMember = "Descripcion";
+            comboxCategoriaAA.ValueMember = "ID";
+            // ComboBox categoria modificacion
+        }
+
+        private void ActualizarDGV()
+        {
+            ArticuloNegocio artNegocio = new ArticuloNegocio();
+            try
+            {
+                articulos = artNegocio.CargarArticulos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error: cargar articulos");
+            }
+
+            if (articulos != null && articulos.Count > 0)
+            {
+                dgvArticulos.DataSource = articulos;
+                FormatearDGV();
+            }
+            else
+            {
+                NingunRegistro();
+            }
+        }
+
+        // ------------------------- Agregar artículo ----------------------- //
+        private void ReiniciarPlantillaNuevoArticulo()
+        {
+            btnNuevoArticulo.Text = "Nuevo artículo";
+            pboxImagenAA.Image = Properties.Resources.placeholder;
+
+            btnCargarImagenUrlAA.Text = "Imagen URL";
+            imagenLocal = false;
+            lbAvisoImagenAA.Visible = false;
+            txbxCargarImagenAA.Visible = false;
+
+            txbxCargarImagenAA.Text = "";
+            txbxCodigoAA.Text = "";
+            txbxNombreAA.Text = "";
+            txbxDescripcionAA.Text = "";
+            comboxMarcaAA.SelectedIndex = -1;
+            comboxCategoriaAA.SelectedIndex = -1;
+            txbxPrecioAA.Text = "";
+
+            nuevoArticuloPendiente = false;
+            btnReiniciarAA.Visible = false;
+
+            btnAgregarArticulo.Enabled = false;
+            lbImpresindibleAA6.Visible = true;
+            lbAvisoAgregarAA.Visible = true;
+        }
+
+        private void AgregarNuevoArticulo(Articulo nuevoArticulo)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                articuloNegocio.AgregarNuevoArticulo(nuevoArticulo);
+                MessageBox.Show("¡Nuevo artículo agregado con éxito!", "Nuevo artículo",
+                                MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error: agregar nuevo artículo");
             }
         }
 
@@ -126,47 +210,6 @@ namespace InterfazUsuario
                     return false;
                 }
             }
-        }
-
-        private void CargarComboBoxes()
-        {
-            MarcaNegocio marcaNegocio = new MarcaNegocio();
-            comboxMarcaAA.DataSource = marcaNegocio.CargarMarcas();
-            comboxMarcaAA.DisplayMember = "Descripcion";
-            comboxMarcaAA.ValueMember = "ID";
-            // ComboBox marca modificacion
-
-            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            comboxCategoriaAA.DataSource = categoriaNegocio.CargarCategorias();
-            comboxCategoriaAA.DisplayMember = "Descripcion";
-            comboxCategoriaAA.ValueMember = "ID";
-            // ComboBox categoria modificacion
-        }
-
-        private void ReiniciarPlantillaNuevoArticulo()
-        {
-            btnNuevoArticulo.Text = "Nuevo artículo";
-            pboxImagenAA.Image = Properties.Resources.placeholder;
-
-            btnCargarImagenUrlAA.Text = "Imagen URL";
-            imagenLocal = false;
-            lbAvisoImagenAA.Visible = false;
-            txbxCargarImagenAA.Visible = false;
-
-            txbxCargarImagenAA.Text = "";
-            txbxCodigoAA.Text = "";
-            txbxNombreAA.Text = "";
-            txbxDescripcionAA.Text = "";
-            comboxMarcaAA.SelectedIndex = -1;
-            comboxCategoriaAA.SelectedIndex = -1;
-            txbxPrecioAA.Text = "";
-
-            nuevoArticuloPendiente = false;
-            btnReiniciarAA.Visible = false;
-
-            btnAgregarArticulo.Enabled = false;
-            lbImpresindibleAA6.Visible = true;
-            lbAvisoAgregarAA.Visible = true;
         }
 
         private void HabilitarBtnReiniciar()
@@ -206,47 +249,28 @@ namespace InterfazUsuario
             }
         }
 
-        private void AgregarNuevoArticulo(Articulo nuevoArticulo)
+        // ------------------------- Borrar artículo ------------------------ //
+        private void EliminarArticulo(Articulo articuloSeleccionado)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
             try
             {
-                articuloNegocio.AgregarNuevoArticulo(nuevoArticulo);
-                MessageBox.Show("¡Nuevo artículo agregado con éxito!", "Nuevo artículo",
-                                MessageBoxButtons.OK);
+                articuloNegocio.BorrarArticulo(articuloSeleccionado);
+                MessageBox.Show("¡Artículo eliminado con éxito!", "Artículo eliminado",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ActualizarDGV();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString(), "Error: agregar nuevo artículo");
+                // Aviso que no se pudo borrar
+                MessageBox.Show("El artículo seleccionado no se pudo borrar.", "Error: borrar artículo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ActualizarDGV()
-        {
-            ArticuloNegocio artNegocio = new ArticuloNegocio();
-            try
-            {
-                articulos = artNegocio.CargarArticulos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error: cargar articulos");
-            }
-
-            if (articulos != null && articulos.Count > 0)
-            {
-                dgvArticulos.DataSource = articulos;
-                FormatearDGV();
-            }
-            else
-            {
-                NingunRegistro();
-            }
-        }
-
-        // ====================================================== //
-        // ----------------------- Eventos ---------------------- //
-        // ====================================================== //
+        // ================================================================== //
+        // ----------------------------- Eventos ---------------------------- //
+        // ================================================================== //
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             ActualizarDGV();
@@ -342,12 +366,6 @@ namespace InterfazUsuario
             }
         }
 
-        private void btnEliminarArticulo_Click(object sender, EventArgs e)
-        {
-            // Funcionalidad de eliminacion fisica.
-        }
-
-
         // Modificar artículo
         private void btnConfirmarModificacion_Click(object sender, EventArgs e)
         {
@@ -367,6 +385,7 @@ namespace InterfazUsuario
             btnModificacionPendiente.Visible = false;
             panelModificarArticulo.Visible = false;
         }
+
         private void btnModificacionPendiente_Click(object sender, EventArgs e)
         {
             btnModificacionPendiente.Visible = false;
@@ -384,8 +403,7 @@ namespace InterfazUsuario
             panelModificarArticulo.Visible = true;
         }
 
-
-        // ----------------------- Agregar artículo ---------------------- //
+        // ------------------------- Agregar artículo ----------------------- //
         private void btnNuevoArticulo_Click(object sender, EventArgs e)
         {
             // Verificar si hay un nuevo artículo pendiente para saber si reiniciar o no 
@@ -563,7 +581,22 @@ namespace InterfazUsuario
             }
         }
 
-        // --------------------------------------------------------------- //
+        // ------------------------- Borrar artículo ------------------------ //
+        private void btnEliminarArticulo_Click(object sender, EventArgs e)
+        {
+            Articulo articuloSeleccionado = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
+
+            DialogResult r = MessageBox.Show("¿Desea eliminar el siguiente artículo?\n" +
+                                             $"{articuloSeleccionado}", "Aviso: eliminar artículo",
+                                             MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (r == DialogResult.Yes)
+            {
+                EliminarArticulo(articuloSeleccionado);
+            }
+        }
+
+        // ------------------------------------------------------------------ //
         private void btnCerrarFormulario_Click(object sender, EventArgs e)
         {
             if (modificacionPendiente)
