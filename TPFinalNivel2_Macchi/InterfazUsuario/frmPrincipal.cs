@@ -28,6 +28,7 @@ namespace InterfazUsuario
             InitializeComponent();
             StartUp();
             ReiniciarPlantillaNuevoArticulo();
+            ReiniciarPlantillaModificacion();
         }
 
         // ================================================================== //
@@ -77,10 +78,13 @@ namespace InterfazUsuario
 
         private void FormatearDGV()
         {
-            OcultarColumnas();
-            dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "N2";
-            dgvArticulos.Columns["Codigo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvArticulos.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            if (dgvArticulos.CurrentRow != null)
+            {
+                OcultarColumnas();
+                dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "N2";
+                dgvArticulos.Columns["Codigo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dgvArticulos.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
         }
 
         private void CargarImagenDA(string img)
@@ -108,13 +112,19 @@ namespace InterfazUsuario
             comboxMarcaAA.DataSource = marcaNegocio.CargarMarcas();
             comboxMarcaAA.DisplayMember = "Descripcion";
             comboxMarcaAA.ValueMember = "ID";
-            // ComboBox marca modificacion
+
+            comboxMarcaMA.DataSource = marcaNegocio.CargarMarcas();
+            comboxMarcaMA.DisplayMember = "Descripcion";
+            comboxMarcaMA.ValueMember = "ID";
 
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
             comboxCategoriaAA.DataSource = categoriaNegocio.CargarCategorias();
             comboxCategoriaAA.DisplayMember = "Descripcion";
             comboxCategoriaAA.ValueMember = "ID";
-            // ComboBox categoria modificacion
+            
+            comboxCategoriaMA.DataSource = categoriaNegocio.CargarCategorias();
+            comboxCategoriaMA.DisplayMember = "Descripcion";
+            comboxCategoriaMA.ValueMember = "ID";
         }
 
         private void ActualizarDGV()
@@ -212,7 +222,7 @@ namespace InterfazUsuario
             }
         }
 
-        private void HabilitarBtnReiniciar()
+        private void HabilitarBtnReiniciarAA()
         {
             if ((txbxCargarImagenAA.Text != "" && txbxCargarImagenAA.Text != "https://...") ||
                 txbxCodigoAA.Text != "" || txbxNombreAA.Text != "" || txbxDescripcionAA.Text != "" ||
@@ -249,6 +259,18 @@ namespace InterfazUsuario
             }
         }
 
+        private void FocusearUltimoElemento()
+        {
+            int ultimoIndice = dgvArticulos.Rows.Count - 1;
+            dgvArticulos.CurrentCell = dgvArticulos.Rows[ultimoIndice].Cells[1]; 
+
+            if (dgvArticulos.Rows.Count > 0)
+            {
+                dgvArticulos.FirstDisplayedScrollingRowIndex = dgvArticulos.Rows.Count - 1;
+                dgvArticulos.Rows[dgvArticulos.Rows.Count - 1].Selected = true;
+            }
+        }
+
         // ------------------------- Borrar artículo ------------------------ //
         private void EliminarArticulo(Articulo articuloSeleccionado)
         {
@@ -268,6 +290,92 @@ namespace InterfazUsuario
             }
         }
 
+        // ------------------------- Modificar artículo --------------------- //
+        private void PrepararModificacion()
+        {
+            Articulo artSelect = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
+            if (CargarImagenMA(artSelect.Imagen))
+            {
+                if (artSelect.Imagen.Contains("https://") || artSelect.Imagen.Contains("http://"))
+                {
+                    txbxImagenMA.Visible = true;
+                    btnImagenUrlMA.Text = "Borrar URL";
+                }
+                else
+                {
+                    txbxImagenMA.Visible = false;
+                    btnImagenUrlMA.Text = "Imagen URL";
+                }
+                txbxImagenMA.Text = artSelect.Imagen;
+            }
+            txbxCodigoMA.Text = artSelect.Codigo;
+            txbxNombreMA.Text = artSelect.Nombre;
+            txbxDescripcionMA.Text = artSelect.Descripcion;
+            comboxMarcaMA.SelectedValue = artSelect.Marca.ID;
+            comboxCategoriaMA.SelectedValue = artSelect.Categoria.ID;
+            txbxPrecioMA.Text = artSelect.Precio.ToString("N2");
+        }
+
+        private bool CargarImagenMA(string img)
+        {
+            try
+            {
+                pboxImagenMA.Load(img);
+                lbAvisoImagenMA.Visible = false;
+                return true;
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    pboxImagenMA.Image = Properties.Resources.placeholder;
+                    lbAvisoImagenMA.Visible = true;
+                    return false;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error al cargar el placeholder");
+                    return false;
+                }
+            }
+        }
+
+        private void ReiniciarPlantillaModificacion()
+        {
+            pboxImagenMA.Image = Properties.Resources.placeholder;
+            btnImagenUrlMA.Text = "Imagen URL";
+            lbAvisoImagenMA.Visible = false;
+            txbxImagenMA.Visible = false;
+
+            txbxImagenMA.Text = "";
+            txbxCodigoMA.Text = "";
+            txbxNombreMA.Text = "";
+            txbxDescripcionMA.Text = "";
+            comboxMarcaMA.SelectedIndex = -1;
+            comboxCategoriaMA.SelectedIndex = -1;
+            txbxPrecioMA.Text = "";
+
+            btnReiniciarMA.Visible = false;
+            btnConfirmarModificacion.Enabled = false;
+            lbImpresindibleMA6.Visible = true;
+            lbAvisoModificarMA.Visible = true;
+        }
+
+        private void HabilitarBtnReiniciarMA()
+        {
+            if ((txbxImagenMA.Text != "" && txbxImagenMA.Text != "https://...") || 
+                txbxCodigoMA.Text != "" || txbxNombreMA.Text != "" || txbxDescripcionMA.Text != "" ||
+                comboxMarcaMA.SelectedIndex != -1 || comboxCategoriaMA.SelectedIndex != -1 ||
+                txbxPrecioMA.Text != "")
+            {
+                btnReiniciarMA.Visible = true;
+            }
+            else
+            {
+                btnReiniciarMA.Visible = false;
+            }
+        }
+
         // ================================================================== //
         // ----------------------------- Eventos ---------------------------- //
         // ================================================================== //
@@ -276,6 +384,7 @@ namespace InterfazUsuario
             ActualizarDGV();
         }
 
+        // ------------------------- Detalles artículo ----------------------- //
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
             // El botón "Nuevo artículo" o "Nuevo artículo pendiete" se hace visible,
@@ -337,71 +446,6 @@ namespace InterfazUsuario
             }
         }
 
-        // Detalles artículos
-        private void btnModificarArticulo_Click(object sender, EventArgs e)
-        {
-            // Verifico si hay una modificacion pendiente y, si la hay, le pregunto al
-            // usuario si quiere descartar los cambios y modificar el item seleccionado
-            if (modificacionPendiente) 
-            {
-                DialogResult r = MessageBox.Show("Hay una modifición pendiente, ¿quiere descartarla?", 
-                                 "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (r == DialogResult.Yes)
-                {
-                    btnModificacionPendiente.Visible = false;
-                    // Aviso: cambios descartados.
-                    // Nueva modificacion()
-                        panelModificarArticulo.Visible = true;
-                        modificacionPendiente = true;
-                        // indiceModificacionPendiente = dgvArticulos...
-                }
-            }
-            else
-            {
-                // Nueva modificacion()
-                    panelModificarArticulo.Visible = true;
-                    modificacionPendiente = true;
-                    // indiceModificacionPendiente = dgvArticulos...
-            }
-        }
-
-        // Modificar artículo
-        private void btnConfirmarModificacion_Click(object sender, EventArgs e)
-        {
-            // Realizar cambios
-            // Aviso: cambios realizados.
-            modificacionPendiente = false;
-            btnModificacionPendiente.Visible = false;
-            panelModificarArticulo.Visible = false;
-            // Focusear articulo modificado
-        }
-
-        private void btnCancelarModificacion_Click(object sender, EventArgs e)
-        {
-            // Aviso: cambios descartados
-            modificacionPendiente = false;
-            // Focusear articulo modificado
-            btnModificacionPendiente.Visible = false;
-            panelModificarArticulo.Visible = false;
-        }
-
-        private void btnModificacionPendiente_Click(object sender, EventArgs e)
-        {
-            btnModificacionPendiente.Visible = false;
-
-            // Volver a la planilla modificar artículo con la información del artículo
-            // previamente seleccionado.
-            if (panelAgregarArticulo.Visible)
-            {
-                panelAgregarArticulo.Visible = false;
-            }
-
-            // Habilitar el botón Nuevo Artículo
-            btnNuevoArticulo.Visible = true;
-
-            panelModificarArticulo.Visible = true;
-        }
 
         // ------------------------- Agregar artículo ----------------------- //
         private void btnNuevoArticulo_Click(object sender, EventArgs e)
@@ -454,10 +498,15 @@ namespace InterfazUsuario
 
             AgregarNuevoArticulo(nuevoArticulo);
             ActualizarDGV();
-            // Focusear el indice del nuevo articulo para que el usuario vea la info.
-                // Cuando se focuseé, esto ya no va a ser necesario.
-                panelAgregarArticulo.Visible = false;
-                panelModificarArticulo.Visible = false;
+            try
+            {
+                FocusearUltimoElemento();
+                dgvArticulos_SelectionChanged(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error al focusear el nuevo artículo.");
+            }
             btnNuevoArticulo.Visible = true;
             ReiniciarPlantillaNuevoArticulo();
         }
@@ -526,7 +575,7 @@ namespace InterfazUsuario
             {
                 lbAvisoImagenAA.Visible = false;
             }
-            HabilitarBtnReiniciar();
+            HabilitarBtnReiniciarAA();
         }
 
         private void txbxCargarImagenAA_Enter(object sender, EventArgs e)
@@ -539,36 +588,36 @@ namespace InterfazUsuario
 
         private void txbxCodigoAA_TextChanged(object sender, EventArgs e)
         {
-            HabilitarBtnReiniciar();
+            HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
         private void txbxNombreAA_TextChanged(object sender, EventArgs e)
         {
-            HabilitarBtnReiniciar();
+            HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
         private void txbxDescripcionAA_TextChanged(object sender, EventArgs e)
         {
-            HabilitarBtnReiniciar();
+            HabilitarBtnReiniciarAA();
         }
 
         private void comboxMarcaAA_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HabilitarBtnReiniciar();
+            HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
         private void comboxCategoriaAA_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HabilitarBtnReiniciar();
+            HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
         private void txbxPrecioAA_TextChanged(object sender, EventArgs e)
         {
-            HabilitarBtnReiniciar();
+            HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
@@ -596,6 +645,78 @@ namespace InterfazUsuario
             }
         }
 
+        // ------------------------- Modificar artículo ----------------------- //
+        private void btnModificarArticulo_Click(object sender, EventArgs e)
+        {
+            // Verifico si hay una modificacion pendiente y, si la hay, le pregunto al
+            // usuario si quiere descartar los cambios y modificar el item seleccionado
+            if (modificacionPendiente) 
+            {
+                DialogResult r = MessageBox.Show("Hay una modifición pendiente, ¿quiere descartarla?", 
+                                 "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (r == DialogResult.Yes)
+                {
+                    ReiniciarPlantillaModificacion();
+                    btnModificacionPendiente.Visible = false;
+                    MessageBox.Show("Cambios descartados.", "Aviso", MessageBoxButtons.OK, 
+                                    MessageBoxIcon.Information);
+                    PrepararModificacion();
+                    panelModificarArticulo.Visible = true;
+                    modificacionPendiente = true;
+                    // indiceModificacionPendiente = dgvArticulos...
+                }
+            }
+            else
+            {
+                PrepararModificacion();
+                panelModificarArticulo.Visible = true;
+                modificacionPendiente = true;
+                // indiceModificacionPendiente = dgvArticulos...
+            }
+        }
+
+        private void btnConfirmarModificacion_Click(object sender, EventArgs e)
+        {
+            // Realizar cambios
+            // Aviso: cambios realizados.
+            modificacionPendiente = false;
+            btnModificacionPendiente.Visible = false;
+            panelModificarArticulo.Visible = false;
+            // Focusear articulo modificado
+        }
+
+        private void btnCancelarModificacion_Click(object sender, EventArgs e)
+        {
+            // Aviso: cambios descartados
+            modificacionPendiente = false;
+            // Focusear articulo modificado
+            btnModificacionPendiente.Visible = false;
+            panelModificarArticulo.Visible = false;
+        }
+
+        private void btnReiniciarMA_Click(object sender, EventArgs e)
+        {
+            ReiniciarPlantillaModificacion();
+        }
+
+        private void btnModificacionPendiente_Click(object sender, EventArgs e)
+        {
+            btnModificacionPendiente.Visible = false;
+
+            // Volver a la planilla modificar artículo con la información del artículo
+            // previamente seleccionado.
+            if (panelAgregarArticulo.Visible)
+            {
+                panelAgregarArticulo.Visible = false;
+            }
+
+            // Habilitar el botón Nuevo Artículo
+            btnNuevoArticulo.Visible = true;
+
+            panelModificarArticulo.Visible = true;
+        }
+
         // ------------------------------------------------------------------ //
         private void btnCerrarFormulario_Click(object sender, EventArgs e)
         {
@@ -618,6 +739,49 @@ namespace InterfazUsuario
                 }
             }
             this.Close();
+        }
+
+        private void txbxImagenMA_TextChanged(object sender, EventArgs e)
+        {
+            if (txbxImagenMA.Text != "" && txbxImagenMA.Text != "https://...")
+            {
+                CargarImagenMA(txbxImagenMA.Text);
+            }
+            else
+            {
+                lbAvisoImagenMA.Visible = false;
+            }
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void txbxCodigoMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void txbxNombreMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void txbxDescripcionMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void comboxMarcaMA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void comboxCategoriaMA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void txbxPrecioMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
         }
     }
 }
