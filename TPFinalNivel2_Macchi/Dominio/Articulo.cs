@@ -54,7 +54,7 @@ namespace Dominio
                    $"Descripcion: {descripcion}\n" +
                    $"Marca: {marca.Descripcion}\n" +
                    $"Categoria: {categoria.Descripcion}\n" +
-                   $"Precio: ${precio}";
+                   $"Precio: ${precio:N2}";
         }
     }
 }

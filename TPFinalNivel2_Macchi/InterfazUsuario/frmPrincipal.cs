@@ -15,14 +15,22 @@ namespace InterfazUsuario
 {
     public partial class frmPrincipal : Form
     {
-        // Atributos
+        // ================================================================== //
+        // ---------------------------- Atributos --------------------------- //
+        // ================================================================== //
         private List<Articulo> articulos = null;
         private bool nuevoArticuloPendiente;
         private bool modificacionPendiente;
+
+        // Boolean que me ayuda a controlar la validación del botón reiniciar cuando no
+        // carga la imagen local.
         private bool imagenLocal;
+
         private int indiceModificacionPendiente;
         
-        // Constructor
+        // ================================================================== //
+        // ---------------------------- Constructor ------------------------- //
+        // ================================================================== //
         public frmPrincipal()
         {
             InitializeComponent();
@@ -150,6 +158,28 @@ namespace InterfazUsuario
             }
         }
 
+        private Articulo ArticuloSeleccionado()
+        {
+            Articulo artSeleccionado = new Articulo();
+            try
+            {
+                return (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
+            }
+            catch(NullReferenceException)
+            {
+                try
+                {
+                    return (Articulo) dgvArticulos.Rows[0].DataBoundItem;
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Ningún artículo fue seleccionado", "Error", 
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return artSeleccionado;
+                }
+            }
+        }
+
         // ------------------------- Agregar artículo ----------------------- //
         private void ReiniciarPlantillaNuevoArticulo()
         {
@@ -217,6 +247,12 @@ namespace InterfazUsuario
                 catch(Exception)
                 {
                     MessageBox.Show("Error al cargar el placeholder");
+                    if (imagenLocal)
+                    {
+                        txbxCargarImagenAA.Text = "";
+                        imagenLocal = false;
+                    }
+                    lbAvisoImagenAA.Visible = true;
                     return false;
                 }
             }
@@ -293,10 +329,11 @@ namespace InterfazUsuario
         // ------------------------- Modificar artículo --------------------- //
         private void PrepararModificacion()
         {
-            Articulo artSelect = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
-            if (CargarImagenMA(artSelect.Imagen))
+            Articulo artSeleccionado = ArticuloSeleccionado();
+
+            if (CargarImagenMA(artSeleccionado.Imagen))
             {
-                if (artSelect.Imagen.Contains("https://") || artSelect.Imagen.Contains("http://"))
+                if (artSeleccionado.Imagen.Contains("https://") || artSeleccionado.Imagen.Contains("http://"))
                 {
                     txbxImagenMA.Visible = true;
                     btnImagenUrlMA.Text = "Borrar URL";
@@ -306,14 +343,14 @@ namespace InterfazUsuario
                     txbxImagenMA.Visible = false;
                     btnImagenUrlMA.Text = "Imagen URL";
                 }
-                txbxImagenMA.Text = artSelect.Imagen;
+                txbxImagenMA.Text = artSeleccionado.Imagen;
             }
-            txbxCodigoMA.Text = artSelect.Codigo;
-            txbxNombreMA.Text = artSelect.Nombre;
-            txbxDescripcionMA.Text = artSelect.Descripcion;
-            comboxMarcaMA.SelectedValue = artSelect.Marca.ID;
-            comboxCategoriaMA.SelectedValue = artSelect.Categoria.ID;
-            txbxPrecioMA.Text = artSelect.Precio.ToString("N2");
+            txbxCodigoMA.Text = artSeleccionado.Codigo;
+            txbxNombreMA.Text = artSeleccionado.Nombre;
+            txbxDescripcionMA.Text = artSeleccionado.Descripcion;
+            comboxMarcaMA.SelectedValue = artSeleccionado.Marca.ID;
+            comboxCategoriaMA.SelectedValue = artSeleccionado.Categoria.ID;
+            txbxPrecioMA.Text = artSeleccionado.Precio.ToString("N2");
         }
 
         private bool CargarImagenMA(string img)
@@ -322,6 +359,7 @@ namespace InterfazUsuario
             {
                 pboxImagenMA.Load(img);
                 lbAvisoImagenMA.Visible = false;
+                imagenLocal = false;
                 return true;
             }
             catch (Exception)
@@ -329,12 +367,23 @@ namespace InterfazUsuario
                 try
                 {
                     pboxImagenMA.Image = Properties.Resources.placeholder;
+                    if (imagenLocal)
+                    {
+                        txbxImagenMA.Text = "";
+                        imagenLocal = false;
+                    }
                     lbAvisoImagenMA.Visible = true;
                     return false;
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Error al cargar el placeholder");
+                    if (imagenLocal)
+                    {
+                        txbxImagenMA.Text = "";
+                        imagenLocal = false;
+                    }
+                    lbAvisoImagenMA.Visible = true;
                     return false;
                 }
             }
@@ -344,6 +393,7 @@ namespace InterfazUsuario
         {
             pboxImagenMA.Image = Properties.Resources.placeholder;
             btnImagenUrlMA.Text = "Imagen URL";
+            imagenLocal = false;
             lbAvisoImagenMA.Visible = false;
             txbxImagenMA.Visible = false;
 
@@ -373,6 +423,24 @@ namespace InterfazUsuario
             else
             {
                 btnReiniciarMA.Visible = false;
+            }
+        }
+
+        private void HabilitarBtnConfirmarModificacion()
+        {
+            if (txbxCodigoMA.Text != "" && txbxNombreMA.Text != "" && 
+                comboxMarcaMA.SelectedIndex != -1 && comboxCategoriaMA.SelectedIndex != -1 &&
+                txbxPrecioMA.Text != "")
+            {
+                btnConfirmarModificacion.Enabled = true;
+                lbImpresindibleMA6.Visible = false;
+                lbAvisoModificarMA.Visible = false;
+            }
+            else
+            {
+                btnConfirmarModificacion.Enabled = false;
+                lbImpresindibleMA6.Visible = true;
+                lbAvisoModificarMA.Visible = true;
             }
         }
 
@@ -446,7 +514,6 @@ namespace InterfazUsuario
             }
         }
 
-
         // ------------------------- Agregar artículo ----------------------- //
         private void btnNuevoArticulo_Click(object sender, EventArgs e)
         {
@@ -486,7 +553,20 @@ namespace InterfazUsuario
             nuevoArticulo.Descripcion = txbxDescripcionAA.Text;
             nuevoArticulo.Marca = (Marca) comboxMarcaAA.SelectedItem;
             nuevoArticulo.Categoria = (Categoria)comboxCategoriaAA.SelectedItem;
-            nuevoArticulo.Precio = decimal.Parse(txbxPrecioAA.Text);
+
+            if (decimal.TryParse(txbxPrecioAA.Text, out decimal d))
+            {
+                nuevoArticulo.Precio = d;
+            }
+            else
+            {
+                MessageBox.Show("El valor del precio introducido no es válido. " +
+                                "Verifique que la información sea correcta.",
+                                "Error de conversión",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (!CargarImagenAA(txbxCargarImagenAA.Text))
             {
                 nuevoArticulo.Imagen = "";
@@ -535,8 +615,8 @@ namespace InterfazUsuario
         {
             lbAvisoImagenAA.Visible = false;
             pboxImagenAA.Image = Properties.Resources.placeholder;
-            txbxCargarImagenAA.Text = "";
             txbxCargarImagenAA.Visible = false;
+            txbxCargarImagenAA.Text = "";
             btnCargarImagenUrlAA.Text = "Imagen URL";
 
             ofdImagen.Filter = "Archivos de imagen|*.jpg;*.png";
@@ -633,7 +713,8 @@ namespace InterfazUsuario
         // ------------------------- Borrar artículo ------------------------ //
         private void btnEliminarArticulo_Click(object sender, EventArgs e)
         {
-            Articulo articuloSeleccionado = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
+            Articulo articuloSeleccionado = ArticuloSeleccionado();
+
 
             DialogResult r = MessageBox.Show("¿Desea eliminar el siguiente artículo?\n" +
                                              $"{articuloSeleccionado}", "Aviso: eliminar artículo",
@@ -681,9 +762,11 @@ namespace InterfazUsuario
             // Realizar cambios
             // Aviso: cambios realizados.
             modificacionPendiente = false;
-            btnModificacionPendiente.Visible = false;
-            panelModificarArticulo.Visible = false;
-            // Focusear articulo modificado
+            // Actualizar el DGV y focusear el artículo modificado. Esta vez sí debe saltar
+            // el evento SelectionChanged para que muestre la información
+                // Cuando salte el evento SelectionChanged, esto es inútil.
+                btnModificacionPendiente.Visible = false;
+                panelModificarArticulo.Visible = false;
         }
 
         private void btnCancelarModificacion_Click(object sender, EventArgs e)
@@ -704,6 +787,9 @@ namespace InterfazUsuario
         {
             btnModificacionPendiente.Visible = false;
 
+            // ActualizarDGV y focusear indice del elemento a modificar, pero que no salte
+            // el evento SelectionChanged
+            
             // Volver a la planilla modificar artículo con la información del artículo
             // previamente seleccionado.
             if (panelAgregarArticulo.Visible)
@@ -715,6 +801,105 @@ namespace InterfazUsuario
             btnNuevoArticulo.Visible = true;
 
             panelModificarArticulo.Visible = true;
+        }
+
+        private void txbxImagenMA_TextChanged(object sender, EventArgs e)
+        {
+            if (txbxImagenMA.Text != "" && txbxImagenMA.Text != "https://...")
+            {
+                CargarImagenMA(txbxImagenMA.Text);
+            }
+            else
+            {
+                lbAvisoImagenMA.Visible = false;
+            }
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void txbxCodigoMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        private void txbxNombreMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        private void txbxDescripcionMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+        }
+
+        private void comboxMarcaMA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        private void comboxCategoriaMA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        private void txbxPrecioMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        private void btnImagenLocalMA_Click(object sender, EventArgs e)
+        {
+            lbAvisoImagenMA.Visible = false;
+            pboxImagenMA.Image = Properties.Resources.placeholder;
+            txbxImagenMA.Visible = false;
+            txbxImagenMA.Text = "";
+            btnImagenUrlMA.Text = "Imagen URL";
+
+            ofdImagen.Filter = "Archivos de imagen|*.jpg;*.png";
+            if (ofdImagen.ShowDialog() == DialogResult.OK)
+            {
+                imagenLocal = true;
+                txbxImagenMA.Text = ofdImagen.FileName;
+            }
+        }
+
+        private void btnImagenUrlMA_Click(object sender, EventArgs e)
+        {
+            if (!txbxImagenMA.Visible)
+            {
+                lbAvisoImagenMA.Visible = false;
+                pboxImagenMA.Image = Properties.Resources.placeholder;
+                txbxImagenMA.Text = "https://...";
+                txbxImagenMA.Visible = true;
+                btnImagenUrlMA.Text = "Borrar URL";
+            }
+            else
+            {
+                pboxImagenMA.Image = Properties.Resources.placeholder;
+                txbxImagenMA.Text = "";
+                txbxImagenMA.Focus();
+            }
+        }
+
+        private void txbxImagenMA_Enter(object sender, EventArgs e)
+        {
+            if (txbxImagenMA.Text == "https://...")
+            {
+                txbxImagenMA.Text = "";
+            }
+        }
+
+        private void txbxPrecioMA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 &&  
+                 e.KeyChar != 44 && e.KeyChar != 46)
+            {
+                  e.Handled = true;
+            }
         }
 
         // ------------------------------------------------------------------ //
@@ -739,49 +924,6 @@ namespace InterfazUsuario
                 }
             }
             this.Close();
-        }
-
-        private void txbxImagenMA_TextChanged(object sender, EventArgs e)
-        {
-            if (txbxImagenMA.Text != "" && txbxImagenMA.Text != "https://...")
-            {
-                CargarImagenMA(txbxImagenMA.Text);
-            }
-            else
-            {
-                lbAvisoImagenMA.Visible = false;
-            }
-            HabilitarBtnReiniciarMA();
-        }
-
-        private void txbxCodigoMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-        }
-
-        private void txbxNombreMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-        }
-
-        private void txbxDescripcionMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-        }
-
-        private void comboxMarcaMA_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-        }
-
-        private void comboxCategoriaMA_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-        }
-
-        private void txbxPrecioMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
         }
     }
 }
