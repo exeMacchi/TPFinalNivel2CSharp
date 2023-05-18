@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
@@ -43,6 +43,11 @@
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.panelSubPrincipalIzquierda = new System.Windows.Forms.Panel();
             this.panelGridDataView = new System.Windows.Forms.Panel();
+            this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.lbDataGridViewVacio = new System.Windows.Forms.Label();
+            this.panelFiltroAvanzado = new System.Windows.Forms.Panel();
+            this.panelDetallesArticulos = new System.Windows.Forms.Panel();
+            this.panelModificarArticulo = new System.Windows.Forms.Panel();
             this.panelAgregarArticulo = new System.Windows.Forms.Panel();
             this.lbAvisoAgregarAA = new System.Windows.Forms.Label();
             this.lbImpresindibleAA6 = new System.Windows.Forms.Label();
@@ -71,11 +76,6 @@
             this.pboxImagenAA = new System.Windows.Forms.PictureBox();
             this.btnCancelarAgregacion = new System.Windows.Forms.Button();
             this.btnAgregarArticulo = new System.Windows.Forms.Button();
-            this.dgvArticulos = new System.Windows.Forms.DataGridView();
-            this.lbDataGridViewVacio = new System.Windows.Forms.Label();
-            this.panelFiltroAvanzado = new System.Windows.Forms.Panel();
-            this.panelDetallesArticulos = new System.Windows.Forms.Panel();
-            this.panelModificarArticulo = new System.Windows.Forms.Panel();
             this.lbAvisoModificarMA = new System.Windows.Forms.Label();
             this.lbImpresindibleMA6 = new System.Windows.Forms.Label();
             this.lbImpresindibleMA5 = new System.Windows.Forms.Label();
@@ -125,11 +125,11 @@
             this.panelPrincipal.SuspendLayout();
             this.panelSubPrincipalIzquierda.SuspendLayout();
             this.panelGridDataView.SuspendLayout();
-            this.panelAgregarArticulo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxImagenAA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panelDetallesArticulos.SuspendLayout();
             this.panelModificarArticulo.SuspendLayout();
+            this.panelAgregarArticulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxImagenAA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagenMA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagenDA)).BeginInit();
             this.SuspendLayout();
@@ -266,6 +266,126 @@
             this.panelGridDataView.Name = "panelGridDataView";
             this.panelGridDataView.Size = new System.Drawing.Size(787, 695);
             this.panelGridDataView.TabIndex = 1;
+            // 
+            // dgvArticulos
+            // 
+            this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
+            this.dgvArticulos.MultiSelect = false;
+            this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.ReadOnly = true;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvArticulos.RowHeadersWidth = 51;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvArticulos.RowTemplate.Height = 24;
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArticulos.Size = new System.Drawing.Size(778, 676);
+            this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            // 
+            // lbDataGridViewVacio
+            // 
+            this.lbDataGridViewVacio.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbDataGridViewVacio.AutoSize = true;
+            this.lbDataGridViewVacio.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDataGridViewVacio.ForeColor = System.Drawing.Color.White;
+            this.lbDataGridViewVacio.Location = new System.Drawing.Point(43, 250);
+            this.lbDataGridViewVacio.Name = "lbDataGridViewVacio";
+            this.lbDataGridViewVacio.Size = new System.Drawing.Size(675, 44);
+            this.lbDataGridViewVacio.TabIndex = 2;
+            this.lbDataGridViewVacio.Text = "No hay registros en la base de datos.";
+            // 
+            // panelFiltroAvanzado
+            // 
+            this.panelFiltroAvanzado.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelFiltroAvanzado.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFiltroAvanzado.Location = new System.Drawing.Point(0, 0);
+            this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
+            this.panelFiltroAvanzado.Size = new System.Drawing.Size(787, 57);
+            this.panelFiltroAvanzado.TabIndex = 0;
+            // 
+            // panelDetallesArticulos
+            // 
+            this.panelDetallesArticulos.BackColor = System.Drawing.Color.Moccasin;
+            this.panelDetallesArticulos.Controls.Add(this.panelModificarArticulo);
+            this.panelDetallesArticulos.Controls.Add(this.txbxPrecioDA);
+            this.panelDetallesArticulos.Controls.Add(this.txbxCategoriaDA);
+            this.panelDetallesArticulos.Controls.Add(this.txbxMarcaDA);
+            this.panelDetallesArticulos.Controls.Add(this.txbxDescripcionDA);
+            this.panelDetallesArticulos.Controls.Add(this.txbxNombreDA);
+            this.panelDetallesArticulos.Controls.Add(this.txbxCodigoDA);
+            this.panelDetallesArticulos.Controls.Add(this.lbPrecioDA);
+            this.panelDetallesArticulos.Controls.Add(this.lbCategoriaDA);
+            this.panelDetallesArticulos.Controls.Add(this.lbMarcaDA);
+            this.panelDetallesArticulos.Controls.Add(this.lbDescripcionDA);
+            this.panelDetallesArticulos.Controls.Add(this.lbNombreDA);
+            this.panelDetallesArticulos.Controls.Add(this.lbCodigoDA);
+            this.panelDetallesArticulos.Controls.Add(this.btnEliminarArticuloDA);
+            this.panelDetallesArticulos.Controls.Add(this.btnModificarArticuloDA);
+            this.panelDetallesArticulos.Controls.Add(this.pboxImagenDA);
+            this.panelDetallesArticulos.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelDetallesArticulos.Location = new System.Drawing.Point(787, 0);
+            this.panelDetallesArticulos.Name = "panelDetallesArticulos";
+            this.panelDetallesArticulos.Size = new System.Drawing.Size(573, 752);
+            this.panelDetallesArticulos.TabIndex = 0;
+            // 
+            // panelModificarArticulo
+            // 
+            this.panelModificarArticulo.BackColor = System.Drawing.Color.SandyBrown;
+            this.panelModificarArticulo.Controls.Add(this.panelAgregarArticulo);
+            this.panelModificarArticulo.Controls.Add(this.lbAvisoModificarMA);
+            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA6);
+            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA5);
+            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA4);
+            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA3);
+            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA2);
+            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA1);
+            this.panelModificarArticulo.Controls.Add(this.comboxCategoriaMA);
+            this.panelModificarArticulo.Controls.Add(this.comboxMarcaMA);
+            this.panelModificarArticulo.Controls.Add(this.txbxPrecioMA);
+            this.panelModificarArticulo.Controls.Add(this.lbPrecioMA);
+            this.panelModificarArticulo.Controls.Add(this.lbCategoriaMA);
+            this.panelModificarArticulo.Controls.Add(this.lbMarcaMA);
+            this.panelModificarArticulo.Controls.Add(this.txbxDescripcionMA);
+            this.panelModificarArticulo.Controls.Add(this.lbDescripcionMA);
+            this.panelModificarArticulo.Controls.Add(this.txbxNombreMA);
+            this.panelModificarArticulo.Controls.Add(this.lbNombreMA);
+            this.panelModificarArticulo.Controls.Add(this.txbxCodigoMA);
+            this.panelModificarArticulo.Controls.Add(this.lbCodigoMA);
+            this.panelModificarArticulo.Controls.Add(this.txbxImagenMA);
+            this.panelModificarArticulo.Controls.Add(this.lbAvisoImagenMA);
+            this.panelModificarArticulo.Controls.Add(this.btnReiniciarMA);
+            this.panelModificarArticulo.Controls.Add(this.btnImagenUrlMA);
+            this.panelModificarArticulo.Controls.Add(this.btnImagenLocalMA);
+            this.panelModificarArticulo.Controls.Add(this.pboxImagenMA);
+            this.panelModificarArticulo.Controls.Add(this.btnCancelarModificacion);
+            this.panelModificarArticulo.Controls.Add(this.btnConfirmarModificacion);
+            this.panelModificarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelModificarArticulo.Location = new System.Drawing.Point(0, 0);
+            this.panelModificarArticulo.Name = "panelModificarArticulo";
+            this.panelModificarArticulo.Size = new System.Drawing.Size(573, 752);
+            this.panelModificarArticulo.TabIndex = 0;
             // 
             // panelAgregarArticulo
             // 
@@ -605,126 +725,6 @@
             this.btnAgregarArticulo.Text = "AGREGAR";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
-            // 
-            // dgvArticulos
-            // 
-            this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
-            this.dgvArticulos.MultiSelect = false;
-            this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.dgvArticulos.RowTemplate.Height = 24;
-            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(778, 676);
-            this.dgvArticulos.TabIndex = 0;
-            this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
-            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
-            // 
-            // lbDataGridViewVacio
-            // 
-            this.lbDataGridViewVacio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbDataGridViewVacio.AutoSize = true;
-            this.lbDataGridViewVacio.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDataGridViewVacio.ForeColor = System.Drawing.Color.White;
-            this.lbDataGridViewVacio.Location = new System.Drawing.Point(43, 250);
-            this.lbDataGridViewVacio.Name = "lbDataGridViewVacio";
-            this.lbDataGridViewVacio.Size = new System.Drawing.Size(675, 44);
-            this.lbDataGridViewVacio.TabIndex = 2;
-            this.lbDataGridViewVacio.Text = "No hay registros en la base de datos.";
-            // 
-            // panelFiltroAvanzado
-            // 
-            this.panelFiltroAvanzado.BackColor = System.Drawing.Color.Aquamarine;
-            this.panelFiltroAvanzado.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelFiltroAvanzado.Location = new System.Drawing.Point(0, 0);
-            this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
-            this.panelFiltroAvanzado.Size = new System.Drawing.Size(787, 57);
-            this.panelFiltroAvanzado.TabIndex = 0;
-            // 
-            // panelDetallesArticulos
-            // 
-            this.panelDetallesArticulos.BackColor = System.Drawing.Color.Moccasin;
-            this.panelDetallesArticulos.Controls.Add(this.panelModificarArticulo);
-            this.panelDetallesArticulos.Controls.Add(this.txbxPrecioDA);
-            this.panelDetallesArticulos.Controls.Add(this.txbxCategoriaDA);
-            this.panelDetallesArticulos.Controls.Add(this.txbxMarcaDA);
-            this.panelDetallesArticulos.Controls.Add(this.txbxDescripcionDA);
-            this.panelDetallesArticulos.Controls.Add(this.txbxNombreDA);
-            this.panelDetallesArticulos.Controls.Add(this.txbxCodigoDA);
-            this.panelDetallesArticulos.Controls.Add(this.lbPrecioDA);
-            this.panelDetallesArticulos.Controls.Add(this.lbCategoriaDA);
-            this.panelDetallesArticulos.Controls.Add(this.lbMarcaDA);
-            this.panelDetallesArticulos.Controls.Add(this.lbDescripcionDA);
-            this.panelDetallesArticulos.Controls.Add(this.lbNombreDA);
-            this.panelDetallesArticulos.Controls.Add(this.lbCodigoDA);
-            this.panelDetallesArticulos.Controls.Add(this.btnEliminarArticuloDA);
-            this.panelDetallesArticulos.Controls.Add(this.btnModificarArticuloDA);
-            this.panelDetallesArticulos.Controls.Add(this.pboxImagenDA);
-            this.panelDetallesArticulos.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDetallesArticulos.Location = new System.Drawing.Point(787, 0);
-            this.panelDetallesArticulos.Name = "panelDetallesArticulos";
-            this.panelDetallesArticulos.Size = new System.Drawing.Size(573, 752);
-            this.panelDetallesArticulos.TabIndex = 0;
-            // 
-            // panelModificarArticulo
-            // 
-            this.panelModificarArticulo.BackColor = System.Drawing.Color.SandyBrown;
-            this.panelModificarArticulo.Controls.Add(this.panelAgregarArticulo);
-            this.panelModificarArticulo.Controls.Add(this.lbAvisoModificarMA);
-            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA6);
-            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA5);
-            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA4);
-            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA3);
-            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA2);
-            this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA1);
-            this.panelModificarArticulo.Controls.Add(this.comboxCategoriaMA);
-            this.panelModificarArticulo.Controls.Add(this.comboxMarcaMA);
-            this.panelModificarArticulo.Controls.Add(this.txbxPrecioMA);
-            this.panelModificarArticulo.Controls.Add(this.lbPrecioMA);
-            this.panelModificarArticulo.Controls.Add(this.lbCategoriaMA);
-            this.panelModificarArticulo.Controls.Add(this.lbMarcaMA);
-            this.panelModificarArticulo.Controls.Add(this.txbxDescripcionMA);
-            this.panelModificarArticulo.Controls.Add(this.lbDescripcionMA);
-            this.panelModificarArticulo.Controls.Add(this.txbxNombreMA);
-            this.panelModificarArticulo.Controls.Add(this.lbNombreMA);
-            this.panelModificarArticulo.Controls.Add(this.txbxCodigoMA);
-            this.panelModificarArticulo.Controls.Add(this.lbCodigoMA);
-            this.panelModificarArticulo.Controls.Add(this.txbxImagenMA);
-            this.panelModificarArticulo.Controls.Add(this.lbAvisoImagenMA);
-            this.panelModificarArticulo.Controls.Add(this.btnReiniciarMA);
-            this.panelModificarArticulo.Controls.Add(this.btnImagenUrlMA);
-            this.panelModificarArticulo.Controls.Add(this.btnImagenLocalMA);
-            this.panelModificarArticulo.Controls.Add(this.pboxImagenMA);
-            this.panelModificarArticulo.Controls.Add(this.btnCancelarModificacion);
-            this.panelModificarArticulo.Controls.Add(this.btnConfirmarModificacion);
-            this.panelModificarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelModificarArticulo.Location = new System.Drawing.Point(0, 0);
-            this.panelModificarArticulo.Name = "panelModificarArticulo";
-            this.panelModificarArticulo.Size = new System.Drawing.Size(573, 752);
-            this.panelModificarArticulo.TabIndex = 0;
             // 
             // lbAvisoModificarMA
             // 
@@ -1206,14 +1206,14 @@
             this.panelSubPrincipalIzquierda.ResumeLayout(false);
             this.panelGridDataView.ResumeLayout(false);
             this.panelGridDataView.PerformLayout();
-            this.panelAgregarArticulo.ResumeLayout(false);
-            this.panelAgregarArticulo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pboxImagenAA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.panelDetallesArticulos.ResumeLayout(false);
             this.panelDetallesArticulos.PerformLayout();
             this.panelModificarArticulo.ResumeLayout(false);
             this.panelModificarArticulo.PerformLayout();
+            this.panelAgregarArticulo.ResumeLayout(false);
+            this.panelAgregarArticulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxImagenAA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagenMA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pboxImagenDA)).EndInit();
             this.ResumeLayout(false);

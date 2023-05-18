@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using AccesoDatos;
+using System.Runtime.Serialization;
 
 namespace LogicaNegocio
 {
@@ -117,6 +118,39 @@ namespace LogicaNegocio
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+            finally
+            {
+                db.CloseConnection();
+            }
+        }
+
+        public void ModificarArticulo(Articulo articuloModificado)
+        {
+            Datos db = new Datos();
+
+            try
+            {
+                db.SetQuery("UPDATE ARTICULOS " +
+                            "SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, " +
+                            "    IdMarca = @IdMarca, IdCategoria = @IdCategoria, ImagenUrl = @Imagen, " + 
+                            "    Precio = @Precio " +
+                            "WHERE ARTICULOS.Id = @ID;");
+                db.SetParametro("@Codigo", articuloModificado.Codigo);
+                db.SetParametro("@Nombre", articuloModificado.Nombre);
+                db.SetParametro("@Descripcion", articuloModificado.Descripcion);
+                db.SetParametro("@IdMarca", articuloModificado.Marca.ID);
+                db.SetParametro("@IdCategoria", articuloModificado.Categoria.ID);
+                db.SetParametro("@Imagen", articuloModificado.Imagen);
+                db.SetParametro("@Precio", articuloModificado.Precio);
+                db.SetParametro("@ID", articuloModificado.ID);
+
+                db.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
             finally

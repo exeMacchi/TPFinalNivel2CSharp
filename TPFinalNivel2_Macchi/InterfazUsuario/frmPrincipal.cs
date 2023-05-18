@@ -19,14 +19,19 @@ namespace InterfazUsuario
         // ---------------------------- Atributos --------------------------- //
         // ================================================================== //
         private List<Articulo> articulos = null;
+        
+        // Banderas
         private bool nuevoArticuloPendiente;
         private bool modificacionPendiente;
 
         // Boolean que me ayuda a controlar la validación del botón reiniciar cuando no
-        // carga la imagen local.
+        // carga la imagen local tanto en la plantilla agregar como en la de modificar artículo.
         private bool imagenLocal;
 
-        private int indiceModificacionPendiente;
+        // ID del artículo que se está modificando. Sirve para realizar la modificación en
+        // la base de datos y para focusear el artículo en el DGB con el fin de mostrar al
+        // usuario su información modificada.
+        private int idArticuloModificacionPendiente;
         
         // ================================================================== //
         // ---------------------------- Constructor ------------------------- //
@@ -214,7 +219,7 @@ namespace InterfazUsuario
             {
                 articuloNegocio.AgregarNuevoArticulo(nuevoArticulo);
                 MessageBox.Show("¡Nuevo artículo agregado con éxito!", "Nuevo artículo",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -307,6 +312,17 @@ namespace InterfazUsuario
             }
         }
 
+        private void FocusearElementoModificado()
+        {
+            int indiceArticuloModificado = articulos.FindIndex(articulo => articulo.ID == idArticuloModificacionPendiente);
+
+            if (indiceArticuloModificado >= 0)
+            {
+                dgvArticulos.CurrentCell = dgvArticulos.Rows[indiceArticuloModificado].Cells[1];
+                dgvArticulos.Rows[indiceArticuloModificado].Selected = true;
+            }
+        }
+
         // ------------------------- Borrar artículo ------------------------ //
         private void EliminarArticulo(Articulo articuloSeleccionado)
         {
@@ -330,6 +346,7 @@ namespace InterfazUsuario
         private void PrepararModificacion()
         {
             Articulo artSeleccionado = ArticuloSeleccionado();
+            idArticuloModificacionPendiente = artSeleccionado.ID;
 
             if (CargarImagenMA(artSeleccionado.Imagen))
             {
@@ -441,6 +458,22 @@ namespace InterfazUsuario
                 btnConfirmarModificacion.Enabled = false;
                 lbImpresindibleMA6.Visible = true;
                 lbAvisoModificarMA.Visible = true;
+            }
+        }
+
+        private void ModificarArticulo(Articulo articuloModificado)
+        {
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            try
+            {
+                articuloNegocio.ModificarArticulo(articuloModificado);
+                MessageBox.Show("¡Artículo modificado con éxito!", "Nuevo artículo",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString(), "Error: modificar artículo");
             }
         }
 
@@ -730,11 +763,11 @@ namespace InterfazUsuario
         private void btnModificarArticulo_Click(object sender, EventArgs e)
         {
             // Verifico si hay una modificacion pendiente y, si la hay, le pregunto al
-            // usuario si quiere descartar los cambios y modificar el item seleccionado
+            // usuario si quiere descartar los cambios y modificar el nuevo artículo seleccionado
             if (modificacionPendiente) 
             {
-                DialogResult r = MessageBox.Show("Hay una modifición pendiente, ¿quiere descartarla?", 
-                                 "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult r = MessageBox.Show("Hay una modificación pendiente, ¿quiere descartarla?", 
+                                                 "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (r == DialogResult.Yes)
                 {
@@ -745,7 +778,6 @@ namespace InterfazUsuario
                     PrepararModificacion();
                     panelModificarArticulo.Visible = true;
                     modificacionPendiente = true;
-                    // indiceModificacionPendiente = dgvArticulos...
                 }
             }
             else
@@ -753,29 +785,70 @@ namespace InterfazUsuario
                 PrepararModificacion();
                 panelModificarArticulo.Visible = true;
                 modificacionPendiente = true;
-                // indiceModificacionPendiente = dgvArticulos...
             }
         }
 
         private void btnConfirmarModificacion_Click(object sender, EventArgs e)
         {
-            // Realizar cambios
-            // Aviso: cambios realizados.
+            // Crear el artículo con las modificaciones.
+            Articulo articuloModificado = new Articulo();
+            articuloModificado.ID = idArticuloModificacionPendiente;
+            articuloModificado.Codigo = txbxCodigoMA.Text;
+            articuloModificado.Nombre = txbxNombreMA.Text;
+            articuloModificado.Descripcion = txbxDescripcionMA.Text;
+            articuloModificado.Marca = (Marca) comboxMarcaMA.SelectedItem;
+            articuloModificado.Categoria = (Categoria) comboxCategoriaMA.SelectedItem;
+
+            if (decimal.TryParse(txbxPrecioMA.Text, out decimal d))
+            {
+                articuloModificado.Precio = d;
+            }
+            else
+            {
+                MessageBox.Show("El valor del precio introducido no es válido. " +
+                                "Verifique que la información sea correcta.",
+                                "Error de conversión",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!CargarImagenAA(txbxImagenMA.Text))
+            {
+                articuloModificado.Imagen = "";
+            }
+            else
+            {
+                articuloModificado.Imagen = txbxImagenMA.Text;
+            }
+
+            // Realizar la modificacion en la base de datos.
+            ModificarArticulo(articuloModificado);
             modificacionPendiente = false;
-            // Actualizar el DGV y focusear el artículo modificado. Esta vez sí debe saltar
-            // el evento SelectionChanged para que muestre la información
-                // Cuando salte el evento SelectionChanged, esto es inútil.
-                btnModificacionPendiente.Visible = false;
-                panelModificarArticulo.Visible = false;
+
+            // Mostrar la modificación al usuario.
+            ActualizarDGV();
+            try
+            {
+                FocusearElementoModificado();
+                dgvArticulos_SelectionChanged(sender, e);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No se pudo focusear el elemento modificado.", "Error");
+            }
+
+            ReiniciarPlantillaModificacion();
         }
 
         private void btnCancelarModificacion_Click(object sender, EventArgs e)
         {
             // Aviso: cambios descartados
+            MessageBox.Show("Cambios descartados.", "Aviso", MessageBoxButtons.OK, 
+                            MessageBoxIcon.Information);
             modificacionPendiente = false;
-            // Focusear articulo modificado
             btnModificacionPendiente.Visible = false;
             panelModificarArticulo.Visible = false;
+            ReiniciarPlantillaModificacion();
         }
 
         private void btnReiniciarMA_Click(object sender, EventArgs e)
@@ -787,9 +860,6 @@ namespace InterfazUsuario
         {
             btnModificacionPendiente.Visible = false;
 
-            // ActualizarDGV y focusear indice del elemento a modificar, pero que no salte
-            // el evento SelectionChanged
-            
             // Volver a la planilla modificar artículo con la información del artículo
             // previamente seleccionado.
             if (panelAgregarArticulo.Visible)
@@ -907,20 +977,25 @@ namespace InterfazUsuario
         {
             if (modificacionPendiente)
             {
-                // Preguntar si quiere descartar los cambios
+                DialogResult r = MessageBox.Show("Hay una modificación pendiente, ¿quiere descartarla?", 
+                                                 "Modificación pendiente", MessageBoxButtons.YesNo, 
+                                                 MessageBoxIcon.Warning);
+
+                if (r == DialogResult.No)
+                {
+                    return;
+                }
             }
+
             if (nuevoArticuloPendiente)
             {
-                if (nuevoArticuloPendiente)
-                {
-                    DialogResult r = MessageBox.Show("Hay información de un nuevo artículo no agregado, " +
-                                                     "¿desea descartarla?", "Nuevo artículo pendiente",
-                                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult r = MessageBox.Show("Hay información de un nuevo artículo no agregado, " +
+                                                 "¿quiere descartarla?", "Nuevo artículo pendiente",
+                                                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                    if (r == DialogResult.No)
-                    {
-                        return;
-                    }
+                if (r == DialogResult.No)
+                {
+                    return;
                 }
             }
             this.Close();
