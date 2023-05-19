@@ -29,9 +29,12 @@ namespace InterfazUsuario
         private bool imagenLocal;
 
         // ID del artículo que se está modificando. Sirve para realizar la modificación en
-        // la base de datos y para focusear el artículo en el DGB con el fin de mostrar al
+        // la base de datos y para focusear el artículo en el DGV con el fin de mostrar al
         // usuario su información modificada.
         private int idArticuloModificacionPendiente;
+
+        // Entero que suma la cantidad de artículos presentes en el DGV.
+        private int cantArticulos;
         
         // ================================================================== //
         // ---------------------------- Constructor ------------------------- //
@@ -98,6 +101,10 @@ namespace InterfazUsuario
                 dgvArticulos.Columns["Codigo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 dgvArticulos.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
+            else
+            {
+                OcultarColumnas();
+            }
         }
 
         private void CargarImagenDA(string img)
@@ -157,7 +164,7 @@ namespace InterfazUsuario
                 dgvArticulos.DataSource = articulos;
                 FormatearDGV();
             }
-            else
+            else if (articulos.Count <= 0)
             {
                 NingunRegistro();
             }
@@ -183,6 +190,12 @@ namespace InterfazUsuario
                     return artSeleccionado;
                 }
             }
+        }
+
+        private void ActualizarResultados()
+        {
+            cantArticulos = dgvArticulos.RowCount;
+            lbResultadosBusqueda.Text = $"Resultados: {cantArticulos}";
         }
 
         // ------------------------- Agregar artículo ----------------------- //
@@ -477,12 +490,29 @@ namespace InterfazUsuario
             }
         }
 
+        // ----------------------- Búsqueda de artículos -------------------- //
+        private void BusquedaPredeterminada()
+        {
+            string filtro = txbxBuscar.Text;
+
+            List<Articulo> articulosFiltrados = articulos.FindAll(art => art.Nombre.ToUpper().Contains(filtro.ToUpper()));
+
+            if (articulosFiltrados != null)
+            {
+                dgvArticulos.DataSource = null;
+                dgvArticulos.DataSource = articulosFiltrados;
+                FormatearDGV();
+                ActualizarResultados();
+            }
+        }
+
         // ================================================================== //
         // ----------------------------- Eventos ---------------------------- //
         // ================================================================== //
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             ActualizarDGV();
+            ActualizarResultados();
         }
 
         // ------------------------- Detalles artículo ----------------------- //
@@ -518,7 +548,7 @@ namespace InterfazUsuario
                     MostrarInfoArticulo();
                 }
             }
-            else
+            else if (articulos.Count <= 0)
             {
                 NingunRegistro();
             }
@@ -537,13 +567,17 @@ namespace InterfazUsuario
         // Filtro avanzado
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
+            txbxBuscar.Text = "";
+
             if (panelFiltroAvanzado.Visible)
             {
                 panelFiltroAvanzado.Visible = false;
+                lbBusqueda.Text = "Búsqueda predeterminada";
             }    
             else if (!panelFiltroAvanzado.Visible)
             {
                 panelFiltroAvanzado.Visible = true;
+                lbBusqueda.Text = "Búsqueda avanzada";
             }
         }
 
@@ -842,7 +876,6 @@ namespace InterfazUsuario
 
         private void btnCancelarModificacion_Click(object sender, EventArgs e)
         {
-            // Aviso: cambios descartados
             MessageBox.Show("Cambios descartados.", "Aviso", MessageBoxButtons.OK, 
                             MessageBoxIcon.Information);
             modificacionPendiente = false;
@@ -999,6 +1032,28 @@ namespace InterfazUsuario
                 }
             }
             this.Close();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (panelFiltroAvanzado.Visible)
+            {
+                // Búsqueda avanzada.
+                MessageBox.Show("Búsqueda avanzada.");
+            }
+            else
+            {
+                // Búsqueda predeterminada.
+                BusquedaPredeterminada();
+            }
+        }
+
+        private void txbxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (!panelFiltroAvanzado.Visible)
+            {
+                btnBuscar_Click(sender, e);
+            }
         }
     }
 }

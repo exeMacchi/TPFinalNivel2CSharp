@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txbxBuscar = new System.Windows.Forms.TextBox();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
             this.panelMetodosVentana = new System.Windows.Forms.Panel();
             this.btnMinimizarFormulario = new System.Windows.Forms.Button();
@@ -119,6 +121,8 @@
             this.btnModificarArticuloDA = new System.Windows.Forms.Button();
             this.pboxImagenDA = new System.Windows.Forms.PictureBox();
             this.ofdImagen = new System.Windows.Forms.OpenFileDialog();
+            this.lbBusqueda = new System.Windows.Forms.Label();
+            this.lbResultadosBusqueda = new System.Windows.Forms.Label();
             this.panelSuperior.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
             this.panelMetodosVentana.SuspendLayout();
@@ -142,28 +146,53 @@
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.Location = new System.Drawing.Point(0, 0);
             this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new System.Drawing.Size(1360, 54);
+            this.panelSuperior.Size = new System.Drawing.Size(1360, 62);
             this.panelSuperior.TabIndex = 0;
             // 
             // panelFiltroRapido
             // 
             this.panelFiltroRapido.BackColor = System.Drawing.Color.Chocolate;
+            this.panelFiltroRapido.Controls.Add(this.lbResultadosBusqueda);
+            this.panelFiltroRapido.Controls.Add(this.lbBusqueda);
+            this.panelFiltroRapido.Controls.Add(this.btnBuscar);
+            this.panelFiltroRapido.Controls.Add(this.txbxBuscar);
             this.panelFiltroRapido.Controls.Add(this.btnFiltroAvanzado);
             this.panelFiltroRapido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFiltroRapido.Location = new System.Drawing.Point(0, 0);
             this.panelFiltroRapido.Name = "panelFiltroRapido";
-            this.panelFiltroRapido.Size = new System.Drawing.Size(787, 54);
+            this.panelFiltroRapido.Size = new System.Drawing.Size(787, 62);
             this.panelFiltroRapido.TabIndex = 0;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(457, 5);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(159, 28);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txbxBuscar
+            // 
+            this.txbxBuscar.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbxBuscar.Location = new System.Drawing.Point(12, 5);
+            this.txbxBuscar.Name = "txbxBuscar";
+            this.txbxBuscar.Size = new System.Drawing.Size(439, 28);
+            this.txbxBuscar.TabIndex = 1;
+            this.txbxBuscar.TextChanged += new System.EventHandler(this.txbxBuscar_TextChanged);
             // 
             // btnFiltroAvanzado
             // 
             this.btnFiltroAvanzado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFiltroAvanzado.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltroAvanzado.Location = new System.Drawing.Point(622, 3);
+            this.btnFiltroAvanzado.Location = new System.Drawing.Point(622, 5);
             this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
-            this.btnFiltroAvanzado.Size = new System.Drawing.Size(159, 45);
+            this.btnFiltroAvanzado.Size = new System.Drawing.Size(159, 28);
             this.btnFiltroAvanzado.TabIndex = 0;
-            this.btnFiltroAvanzado.Text = "Filtro avanzado";
+            this.btnFiltroAvanzado.Text = "Búsqueda avanzada";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
             this.btnFiltroAvanzado.Click += new System.EventHandler(this.btnFiltroAvanzado_Click);
             // 
@@ -178,13 +207,13 @@
             this.panelMetodosVentana.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelMetodosVentana.Location = new System.Drawing.Point(787, 0);
             this.panelMetodosVentana.Name = "panelMetodosVentana";
-            this.panelMetodosVentana.Size = new System.Drawing.Size(573, 54);
+            this.panelMetodosVentana.Size = new System.Drawing.Size(573, 62);
             this.panelMetodosVentana.TabIndex = 1;
             // 
             // btnMinimizarFormulario
             // 
             this.btnMinimizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimizarFormulario.Location = new System.Drawing.Point(426, 3);
+            this.btnMinimizarFormulario.Location = new System.Drawing.Point(424, 14);
             this.btnMinimizarFormulario.Name = "btnMinimizarFormulario";
             this.btnMinimizarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnMinimizarFormulario.TabIndex = 4;
@@ -194,7 +223,7 @@
             // btnMaximizarFormulario
             // 
             this.btnMaximizarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaximizarFormulario.Location = new System.Drawing.Point(476, 3);
+            this.btnMaximizarFormulario.Location = new System.Drawing.Point(475, 14);
             this.btnMaximizarFormulario.Name = "btnMaximizarFormulario";
             this.btnMaximizarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnMaximizarFormulario.TabIndex = 3;
@@ -204,7 +233,7 @@
             // btnCerrarFormulario
             // 
             this.btnCerrarFormulario.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrarFormulario.Location = new System.Drawing.Point(526, 3);
+            this.btnCerrarFormulario.Location = new System.Drawing.Point(525, 14);
             this.btnCerrarFormulario.Name = "btnCerrarFormulario";
             this.btnCerrarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnCerrarFormulario.TabIndex = 2;
@@ -217,7 +246,7 @@
             this.btnModificacionPendiente.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificacionPendiente.Location = new System.Drawing.Point(205, 3);
             this.btnModificacionPendiente.Name = "btnModificacionPendiente";
-            this.btnModificacionPendiente.Size = new System.Drawing.Size(192, 45);
+            this.btnModificacionPendiente.Size = new System.Drawing.Size(192, 56);
             this.btnModificacionPendiente.TabIndex = 1;
             this.btnModificacionPendiente.Text = "Modificación pendiente";
             this.btnModificacionPendiente.UseVisualStyleBackColor = true;
@@ -228,7 +257,7 @@
             this.btnNuevoArticulo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoArticulo.Location = new System.Drawing.Point(7, 3);
             this.btnNuevoArticulo.Name = "btnNuevoArticulo";
-            this.btnNuevoArticulo.Size = new System.Drawing.Size(192, 45);
+            this.btnNuevoArticulo.Size = new System.Drawing.Size(192, 56);
             this.btnNuevoArticulo.TabIndex = 0;
             this.btnNuevoArticulo.Text = "Nuevo artículo";
             this.btnNuevoArticulo.UseVisualStyleBackColor = true;
@@ -240,9 +269,9 @@
             this.panelPrincipal.Controls.Add(this.panelSubPrincipalIzquierda);
             this.panelPrincipal.Controls.Add(this.panelDetallesArticulos);
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPrincipal.Location = new System.Drawing.Point(0, 54);
+            this.panelPrincipal.Location = new System.Drawing.Point(0, 62);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1360, 752);
+            this.panelPrincipal.Size = new System.Drawing.Size(1360, 744);
             this.panelPrincipal.TabIndex = 1;
             // 
             // panelSubPrincipalIzquierda
@@ -253,7 +282,7 @@
             this.panelSubPrincipalIzquierda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSubPrincipalIzquierda.Location = new System.Drawing.Point(0, 0);
             this.panelSubPrincipalIzquierda.Name = "panelSubPrincipalIzquierda";
-            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(787, 752);
+            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(787, 744);
             this.panelSubPrincipalIzquierda.TabIndex = 1;
             // 
             // panelGridDataView
@@ -264,7 +293,7 @@
             this.panelGridDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGridDataView.Location = new System.Drawing.Point(0, 57);
             this.panelGridDataView.Name = "panelGridDataView";
-            this.panelGridDataView.Size = new System.Drawing.Size(787, 695);
+            this.panelGridDataView.Size = new System.Drawing.Size(787, 687);
             this.panelGridDataView.TabIndex = 1;
             // 
             // dgvArticulos
@@ -272,34 +301,34 @@
             this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(778, 676);
+            this.dgvArticulos.Size = new System.Drawing.Size(778, 668);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
@@ -347,7 +376,7 @@
             this.panelDetallesArticulos.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelDetallesArticulos.Location = new System.Drawing.Point(787, 0);
             this.panelDetallesArticulos.Name = "panelDetallesArticulos";
-            this.panelDetallesArticulos.Size = new System.Drawing.Size(573, 752);
+            this.panelDetallesArticulos.Size = new System.Drawing.Size(573, 744);
             this.panelDetallesArticulos.TabIndex = 0;
             // 
             // panelModificarArticulo
@@ -384,7 +413,7 @@
             this.panelModificarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelModificarArticulo.Location = new System.Drawing.Point(0, 0);
             this.panelModificarArticulo.Name = "panelModificarArticulo";
-            this.panelModificarArticulo.Size = new System.Drawing.Size(573, 752);
+            this.panelModificarArticulo.Size = new System.Drawing.Size(573, 744);
             this.panelModificarArticulo.TabIndex = 0;
             // 
             // panelAgregarArticulo
@@ -420,7 +449,7 @@
             this.panelAgregarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAgregarArticulo.Location = new System.Drawing.Point(0, 0);
             this.panelAgregarArticulo.Name = "panelAgregarArticulo";
-            this.panelAgregarArticulo.Size = new System.Drawing.Size(573, 752);
+            this.panelAgregarArticulo.Size = new System.Drawing.Size(573, 744);
             this.panelAgregarArticulo.TabIndex = 0;
             // 
             // lbAvisoAgregarAA
@@ -706,7 +735,7 @@
             // 
             this.btnCancelarAgregacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelarAgregacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarAgregacion.Location = new System.Drawing.Point(352, 675);
+            this.btnCancelarAgregacion.Location = new System.Drawing.Point(352, 667);
             this.btnCancelarAgregacion.Name = "btnCancelarAgregacion";
             this.btnCancelarAgregacion.Size = new System.Drawing.Size(145, 41);
             this.btnCancelarAgregacion.TabIndex = 5;
@@ -718,7 +747,7 @@
             // 
             this.btnAgregarArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgregarArticulo.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(79, 675);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(79, 667);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(145, 41);
             this.btnAgregarArticulo.TabIndex = 4;
@@ -1009,7 +1038,7 @@
             // 
             this.btnCancelarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelarModificacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarModificacion.Location = new System.Drawing.Point(354, 678);
+            this.btnCancelarModificacion.Location = new System.Drawing.Point(354, 670);
             this.btnCancelarModificacion.Name = "btnCancelarModificacion";
             this.btnCancelarModificacion.Size = new System.Drawing.Size(145, 41);
             this.btnCancelarModificacion.TabIndex = 4;
@@ -1021,7 +1050,7 @@
             // 
             this.btnConfirmarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfirmarModificacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarModificacion.Location = new System.Drawing.Point(90, 678);
+            this.btnConfirmarModificacion.Location = new System.Drawing.Point(90, 670);
             this.btnConfirmarModificacion.Name = "btnConfirmarModificacion";
             this.btnConfirmarModificacion.Size = new System.Drawing.Size(145, 41);
             this.btnConfirmarModificacion.TabIndex = 3;
@@ -1157,7 +1186,7 @@
             // 
             this.btnEliminarArticuloDA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminarArticuloDA.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarArticuloDA.Location = new System.Drawing.Point(325, 687);
+            this.btnEliminarArticuloDA.Location = new System.Drawing.Point(325, 679);
             this.btnEliminarArticuloDA.Name = "btnEliminarArticuloDA";
             this.btnEliminarArticuloDA.Size = new System.Drawing.Size(145, 41);
             this.btnEliminarArticuloDA.TabIndex = 3;
@@ -1169,7 +1198,7 @@
             // 
             this.btnModificarArticuloDA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificarArticuloDA.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarArticuloDA.Location = new System.Drawing.Point(93, 687);
+            this.btnModificarArticuloDA.Location = new System.Drawing.Point(93, 679);
             this.btnModificarArticuloDA.Name = "btnModificarArticuloDA";
             this.btnModificarArticuloDA.Size = new System.Drawing.Size(145, 41);
             this.btnModificarArticuloDA.TabIndex = 2;
@@ -1188,6 +1217,30 @@
             this.pboxImagenDA.TabIndex = 7;
             this.pboxImagenDA.TabStop = false;
             // 
+            // lbBusqueda
+            // 
+            this.lbBusqueda.AutoSize = true;
+            this.lbBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.lbBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBusqueda.ForeColor = System.Drawing.Color.Black;
+            this.lbBusqueda.Location = new System.Drawing.Point(12, 36);
+            this.lbBusqueda.Name = "lbBusqueda";
+            this.lbBusqueda.Size = new System.Drawing.Size(237, 21);
+            this.lbBusqueda.TabIndex = 31;
+            this.lbBusqueda.Text = "Búsqueda predeterminada";
+            // 
+            // lbResultadosBusqueda
+            // 
+            this.lbResultadosBusqueda.AutoSize = true;
+            this.lbResultadosBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.lbResultadosBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadosBusqueda.ForeColor = System.Drawing.Color.Black;
+            this.lbResultadosBusqueda.Location = new System.Drawing.Point(635, 38);
+            this.lbResultadosBusqueda.Name = "lbResultadosBusqueda";
+            this.lbResultadosBusqueda.Size = new System.Drawing.Size(105, 21);
+            this.lbResultadosBusqueda.TabIndex = 32;
+            this.lbResultadosBusqueda.Text = "Resultados:";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1201,6 +1254,7 @@
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.panelSuperior.ResumeLayout(false);
             this.panelFiltroRapido.ResumeLayout(false);
+            this.panelFiltroRapido.PerformLayout();
             this.panelMetodosVentana.ResumeLayout(false);
             this.panelPrincipal.ResumeLayout(false);
             this.panelSubPrincipalIzquierda.ResumeLayout(false);
@@ -1310,6 +1364,10 @@
         private System.Windows.Forms.PictureBox pboxImagenMA;
         private System.Windows.Forms.Label lbAvisoModificarMA;
         private System.Windows.Forms.Label lbImpresindibleMA6;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txbxBuscar;
+        private System.Windows.Forms.Label lbBusqueda;
+        private System.Windows.Forms.Label lbResultadosBusqueda;
     }
 }
 
