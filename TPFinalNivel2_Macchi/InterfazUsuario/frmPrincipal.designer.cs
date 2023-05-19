@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
+            this.lbResultadosBusqueda = new System.Windows.Forms.Label();
+            this.lbBusqueda = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txbxBuscar = new System.Windows.Forms.TextBox();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
@@ -121,8 +123,8 @@
             this.btnModificarArticuloDA = new System.Windows.Forms.Button();
             this.pboxImagenDA = new System.Windows.Forms.PictureBox();
             this.ofdImagen = new System.Windows.Forms.OpenFileDialog();
-            this.lbBusqueda = new System.Windows.Forms.Label();
-            this.lbResultadosBusqueda = new System.Windows.Forms.Label();
+            this.comboxCampoBusqueda = new System.Windows.Forms.ComboBox();
+            this.comboxCriterioBusqueda = new System.Windows.Forms.ComboBox();
             this.panelSuperior.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
             this.panelMetodosVentana.SuspendLayout();
@@ -130,6 +132,7 @@
             this.panelSubPrincipalIzquierda.SuspendLayout();
             this.panelGridDataView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            this.panelFiltroAvanzado.SuspendLayout();
             this.panelDetallesArticulos.SuspendLayout();
             this.panelModificarArticulo.SuspendLayout();
             this.panelAgregarArticulo.SuspendLayout();
@@ -163,13 +166,37 @@
             this.panelFiltroRapido.Size = new System.Drawing.Size(787, 62);
             this.panelFiltroRapido.TabIndex = 0;
             // 
+            // lbResultadosBusqueda
+            // 
+            this.lbResultadosBusqueda.AutoSize = true;
+            this.lbResultadosBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.lbResultadosBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbResultadosBusqueda.ForeColor = System.Drawing.Color.Black;
+            this.lbResultadosBusqueda.Location = new System.Drawing.Point(635, 38);
+            this.lbResultadosBusqueda.Name = "lbResultadosBusqueda";
+            this.lbResultadosBusqueda.Size = new System.Drawing.Size(105, 21);
+            this.lbResultadosBusqueda.TabIndex = 32;
+            this.lbResultadosBusqueda.Text = "Resultados:";
+            // 
+            // lbBusqueda
+            // 
+            this.lbBusqueda.AutoSize = true;
+            this.lbBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.lbBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBusqueda.ForeColor = System.Drawing.Color.Black;
+            this.lbBusqueda.Location = new System.Drawing.Point(8, 38);
+            this.lbBusqueda.Name = "lbBusqueda";
+            this.lbBusqueda.Size = new System.Drawing.Size(237, 21);
+            this.lbBusqueda.TabIndex = 31;
+            this.lbBusqueda.Text = "Búsqueda predeterminada";
+            // 
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Location = new System.Drawing.Point(457, 5);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(159, 28);
+            this.btnBuscar.Size = new System.Drawing.Size(108, 28);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -188,9 +215,9 @@
             // 
             this.btnFiltroAvanzado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFiltroAvanzado.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltroAvanzado.Location = new System.Drawing.Point(622, 5);
+            this.btnFiltroAvanzado.Location = new System.Drawing.Point(571, 5);
             this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
-            this.btnFiltroAvanzado.Size = new System.Drawing.Size(159, 28);
+            this.btnFiltroAvanzado.Size = new System.Drawing.Size(210, 28);
             this.btnFiltroAvanzado.TabIndex = 0;
             this.btnFiltroAvanzado.Text = "Búsqueda avanzada";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
@@ -301,31 +328,31 @@
             this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(778, 668);
@@ -348,6 +375,8 @@
             // panelFiltroAvanzado
             // 
             this.panelFiltroAvanzado.BackColor = System.Drawing.Color.Aquamarine;
+            this.panelFiltroAvanzado.Controls.Add(this.comboxCriterioBusqueda);
+            this.panelFiltroAvanzado.Controls.Add(this.comboxCampoBusqueda);
             this.panelFiltroAvanzado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltroAvanzado.Location = new System.Drawing.Point(0, 0);
             this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
@@ -1217,29 +1246,26 @@
             this.pboxImagenDA.TabIndex = 7;
             this.pboxImagenDA.TabStop = false;
             // 
-            // lbBusqueda
+            // comboxCampoBusqueda
             // 
-            this.lbBusqueda.AutoSize = true;
-            this.lbBusqueda.BackColor = System.Drawing.Color.Transparent;
-            this.lbBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBusqueda.ForeColor = System.Drawing.Color.Black;
-            this.lbBusqueda.Location = new System.Drawing.Point(12, 36);
-            this.lbBusqueda.Name = "lbBusqueda";
-            this.lbBusqueda.Size = new System.Drawing.Size(237, 21);
-            this.lbBusqueda.TabIndex = 31;
-            this.lbBusqueda.Text = "Búsqueda predeterminada";
+            this.comboxCampoBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboxCampoBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboxCampoBusqueda.FormattingEnabled = true;
+            this.comboxCampoBusqueda.Location = new System.Drawing.Point(12, 17);
+            this.comboxCampoBusqueda.Name = "comboxCampoBusqueda";
+            this.comboxCampoBusqueda.Size = new System.Drawing.Size(377, 29);
+            this.comboxCampoBusqueda.TabIndex = 0;
+            this.comboxCampoBusqueda.SelectedIndexChanged += new System.EventHandler(this.comboxCampoBusqueda_SelectedIndexChanged);
             // 
-            // lbResultadosBusqueda
+            // comboxCriterioBusqueda
             // 
-            this.lbResultadosBusqueda.AutoSize = true;
-            this.lbResultadosBusqueda.BackColor = System.Drawing.Color.Transparent;
-            this.lbResultadosBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbResultadosBusqueda.ForeColor = System.Drawing.Color.Black;
-            this.lbResultadosBusqueda.Location = new System.Drawing.Point(635, 38);
-            this.lbResultadosBusqueda.Name = "lbResultadosBusqueda";
-            this.lbResultadosBusqueda.Size = new System.Drawing.Size(105, 21);
-            this.lbResultadosBusqueda.TabIndex = 32;
-            this.lbResultadosBusqueda.Text = "Resultados:";
+            this.comboxCriterioBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboxCriterioBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboxCriterioBusqueda.FormattingEnabled = true;
+            this.comboxCriterioBusqueda.Location = new System.Drawing.Point(404, 17);
+            this.comboxCriterioBusqueda.Name = "comboxCriterioBusqueda";
+            this.comboxCriterioBusqueda.Size = new System.Drawing.Size(377, 29);
+            this.comboxCriterioBusqueda.TabIndex = 1;
             // 
             // frmPrincipal
             // 
@@ -1261,6 +1287,7 @@
             this.panelGridDataView.ResumeLayout(false);
             this.panelGridDataView.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            this.panelFiltroAvanzado.ResumeLayout(false);
             this.panelDetallesArticulos.ResumeLayout(false);
             this.panelDetallesArticulos.PerformLayout();
             this.panelModificarArticulo.ResumeLayout(false);
@@ -1368,6 +1395,8 @@
         private System.Windows.Forms.TextBox txbxBuscar;
         private System.Windows.Forms.Label lbBusqueda;
         private System.Windows.Forms.Label lbResultadosBusqueda;
+        private System.Windows.Forms.ComboBox comboxCriterioBusqueda;
+        private System.Windows.Forms.ComboBox comboxCampoBusqueda;
     }
 }
 

@@ -71,6 +71,7 @@ namespace InterfazUsuario
             panelAgregarArticulo.Visible = true;
             btnCancelarAgregacion.Enabled = false;
             btnNuevoArticulo.Visible = false;
+            btnBuscar.Enabled = false;
         }
 
         private void MostrarInfoArticulo()
@@ -128,23 +129,35 @@ namespace InterfazUsuario
 
         private void CargarComboBoxes()
         {
+            // Cargar marcas
             MarcaNegocio marcaNegocio = new MarcaNegocio();
+            // En la plantilla agregar artículo
             comboxMarcaAA.DataSource = marcaNegocio.CargarMarcas();
             comboxMarcaAA.DisplayMember = "Descripcion";
             comboxMarcaAA.ValueMember = "ID";
-
+            // En la plantilla modificar artículo
             comboxMarcaMA.DataSource = marcaNegocio.CargarMarcas();
             comboxMarcaMA.DisplayMember = "Descripcion";
             comboxMarcaMA.ValueMember = "ID";
 
+            // Cargar categorías
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            // En la plantilla agregar artículo
             comboxCategoriaAA.DataSource = categoriaNegocio.CargarCategorias();
             comboxCategoriaAA.DisplayMember = "Descripcion";
             comboxCategoriaAA.ValueMember = "ID";
-            
+            // En la plantilla modificar artículo
             comboxCategoriaMA.DataSource = categoriaNegocio.CargarCategorias();
             comboxCategoriaMA.DisplayMember = "Descripcion";
             comboxCategoriaMA.ValueMember = "ID";
+
+            // Cargar campos de búsqueda avanzada (los criterios se cargan luego,
+            // dependiento del campo).
+            comboxCampoBusqueda.Items.Add("Código");
+            comboxCampoBusqueda.Items.Add("Nombre");
+            comboxCampoBusqueda.Items.Add("Marca");
+            comboxCampoBusqueda.Items.Add("Categoría");
+            comboxCampoBusqueda.Items.Add("Precio");
         }
 
         private void ActualizarDGV()
@@ -163,6 +176,7 @@ namespace InterfazUsuario
             {
                 dgvArticulos.DataSource = articulos;
                 FormatearDGV();
+                ActualizarResultados();
             }
             else if (articulos.Count <= 0)
             {
@@ -512,7 +526,6 @@ namespace InterfazUsuario
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             ActualizarDGV();
-            ActualizarResultados();
         }
 
         // ------------------------- Detalles artículo ----------------------- //
@@ -556,11 +569,12 @@ namespace InterfazUsuario
 
         private void dgvArticulos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            // Verificar si hay mínimo un dato en el DGV para mostrarlo.
+            // Verificar si hay mínimo un dato en el DGV para mostrarlo y habilitar la búsqueda.
             if (!dgvArticulos.Visible)
             {
                 dgvArticulos.Visible = true;
                 FormatearDGV();
+                btnBuscar.Enabled = true;
             }
         }
 
@@ -576,6 +590,7 @@ namespace InterfazUsuario
             }    
             else if (!panelFiltroAvanzado.Visible)
             {
+                comboxCampoBusqueda.SelectedIndex = 0;
                 panelFiltroAvanzado.Visible = true;
                 lbBusqueda.Text = "Búsqueda avanzada";
             }
@@ -1005,6 +1020,51 @@ namespace InterfazUsuario
             }
         }
 
+        // ----------------------- Búsqueda por criterios ------------------- //
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (panelFiltroAvanzado.Visible)
+            {
+                // Búsqueda avanzada.
+                MessageBox.Show("Búsqueda avanzada.");
+            }
+            else
+            {
+                // Búsqueda predeterminada.
+                BusquedaPredeterminada();
+            }
+        }
+
+        private void txbxBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (!panelFiltroAvanzado.Visible)
+            {
+                btnBuscar_Click(sender, e);
+            }
+        }
+
+        private void comboxCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = comboxCampoBusqueda.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                // Cargar numérico
+                comboxCriterioBusqueda.Items.Clear();
+                comboxCriterioBusqueda.Items.Add("Mayor a...");
+                comboxCriterioBusqueda.Items.Add("Menor a...");
+                comboxCriterioBusqueda.Items.Add("Igual a...");
+                comboxCriterioBusqueda.SelectedIndex = 0;
+            }
+            else
+            {
+                // Cargar texto
+                comboxCriterioBusqueda.Items.Clear();
+                comboxCriterioBusqueda.Items.Add("Comience con...");
+                comboxCriterioBusqueda.Items.Add("Termine con...");
+                comboxCriterioBusqueda.Items.Add("Contenga...");
+                comboxCriterioBusqueda.SelectedIndex = 0;
+            }
+        }
         // ------------------------------------------------------------------ //
         private void btnCerrarFormulario_Click(object sender, EventArgs e)
         {
@@ -1032,28 +1092,6 @@ namespace InterfazUsuario
                 }
             }
             this.Close();
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            if (panelFiltroAvanzado.Visible)
-            {
-                // Búsqueda avanzada.
-                MessageBox.Show("Búsqueda avanzada.");
-            }
-            else
-            {
-                // Búsqueda predeterminada.
-                BusquedaPredeterminada();
-            }
-        }
-
-        private void txbxBuscar_TextChanged(object sender, EventArgs e)
-        {
-            if (!panelFiltroAvanzado.Visible)
-            {
-                btnBuscar_Click(sender, e);
-            }
         }
     }
 }
