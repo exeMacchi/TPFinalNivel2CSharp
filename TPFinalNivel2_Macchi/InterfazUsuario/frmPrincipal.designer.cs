@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.lbResultadosBusqueda = new System.Windows.Forms.Label();
@@ -50,6 +50,8 @@
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.lbDataGridViewVacio = new System.Windows.Forms.Label();
             this.panelFiltroAvanzado = new System.Windows.Forms.Panel();
+            this.comboxCriterioBusqueda = new System.Windows.Forms.ComboBox();
+            this.comboxCampoBusqueda = new System.Windows.Forms.ComboBox();
             this.panelDetallesArticulos = new System.Windows.Forms.Panel();
             this.panelModificarArticulo = new System.Windows.Forms.Panel();
             this.panelAgregarArticulo = new System.Windows.Forms.Panel();
@@ -123,8 +125,6 @@
             this.btnModificarArticuloDA = new System.Windows.Forms.Button();
             this.pboxImagenDA = new System.Windows.Forms.PictureBox();
             this.ofdImagen = new System.Windows.Forms.OpenFileDialog();
-            this.comboxCampoBusqueda = new System.Windows.Forms.ComboBox();
-            this.comboxCriterioBusqueda = new System.Windows.Forms.ComboBox();
             this.panelSuperior.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
             this.panelMetodosVentana.SuspendLayout();
@@ -210,6 +210,8 @@
             this.txbxBuscar.Size = new System.Drawing.Size(439, 28);
             this.txbxBuscar.TabIndex = 1;
             this.txbxBuscar.TextChanged += new System.EventHandler(this.txbxBuscar_TextChanged);
+            this.txbxBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbxBuscar_KeyDown);
+            this.txbxBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbxBuscar_KeyPress);
             // 
             // btnFiltroAvanzado
             // 
@@ -328,31 +330,31 @@
             this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 7);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(778, 668);
@@ -382,6 +384,27 @@
             this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
             this.panelFiltroAvanzado.Size = new System.Drawing.Size(787, 57);
             this.panelFiltroAvanzado.TabIndex = 0;
+            // 
+            // comboxCriterioBusqueda
+            // 
+            this.comboxCriterioBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboxCriterioBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboxCriterioBusqueda.FormattingEnabled = true;
+            this.comboxCriterioBusqueda.Location = new System.Drawing.Point(404, 17);
+            this.comboxCriterioBusqueda.Name = "comboxCriterioBusqueda";
+            this.comboxCriterioBusqueda.Size = new System.Drawing.Size(377, 29);
+            this.comboxCriterioBusqueda.TabIndex = 1;
+            // 
+            // comboxCampoBusqueda
+            // 
+            this.comboxCampoBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboxCampoBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboxCampoBusqueda.FormattingEnabled = true;
+            this.comboxCampoBusqueda.Location = new System.Drawing.Point(12, 17);
+            this.comboxCampoBusqueda.Name = "comboxCampoBusqueda";
+            this.comboxCampoBusqueda.Size = new System.Drawing.Size(377, 29);
+            this.comboxCampoBusqueda.TabIndex = 0;
+            this.comboxCampoBusqueda.SelectedIndexChanged += new System.EventHandler(this.comboxCampoBusqueda_SelectedIndexChanged);
             // 
             // panelDetallesArticulos
             // 
@@ -1245,27 +1268,6 @@
             this.pboxImagenDA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxImagenDA.TabIndex = 7;
             this.pboxImagenDA.TabStop = false;
-            // 
-            // comboxCampoBusqueda
-            // 
-            this.comboxCampoBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboxCampoBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboxCampoBusqueda.FormattingEnabled = true;
-            this.comboxCampoBusqueda.Location = new System.Drawing.Point(12, 17);
-            this.comboxCampoBusqueda.Name = "comboxCampoBusqueda";
-            this.comboxCampoBusqueda.Size = new System.Drawing.Size(377, 29);
-            this.comboxCampoBusqueda.TabIndex = 0;
-            this.comboxCampoBusqueda.SelectedIndexChanged += new System.EventHandler(this.comboxCampoBusqueda_SelectedIndexChanged);
-            // 
-            // comboxCriterioBusqueda
-            // 
-            this.comboxCriterioBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboxCriterioBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboxCriterioBusqueda.FormattingEnabled = true;
-            this.comboxCriterioBusqueda.Location = new System.Drawing.Point(404, 17);
-            this.comboxCriterioBusqueda.Name = "comboxCriterioBusqueda";
-            this.comboxCriterioBusqueda.Size = new System.Drawing.Size(377, 29);
-            this.comboxCriterioBusqueda.TabIndex = 1;
             // 
             // frmPrincipal
             // 

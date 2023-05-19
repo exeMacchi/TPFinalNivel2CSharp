@@ -5,6 +5,7 @@ using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -520,6 +521,105 @@ namespace InterfazUsuario
             }
         }
 
+        private void BusquedaAvanzada()
+        {
+            string campo = comboxCampoBusqueda.SelectedItem.ToString();
+            string criterio = comboxCriterioBusqueda.SelectedItem.ToString();
+            string filtro;
+            if (campo == "Precio")
+            {
+                if (decimal.TryParse(txbxBuscar.Text, out decimal d))
+                {
+                    filtro = txbxBuscar.Text;
+                }
+                else
+                {
+                    MessageBox.Show("El valor del precio introducido no es válido. " +
+                                    "Verifique que la información sea correcta.",
+                                    "Error de conversión",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                filtro = txbxBuscar.Text;
+            }
+
+            string condicion = CrearClausulaWhere(campo, criterio, filtro);
+
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            List<Articulo> articulosFiltrados = articuloNegocio.Buscar(condicion);
+
+            if (articulosFiltrados != null)
+            {
+
+                dgvArticulos.DataSource = null;
+                dgvArticulos.DataSource = articulosFiltrados;
+                FormatearDGV();
+                ActualizarResultados();
+            }
+        }
+
+        private string CrearClausulaWhere(string campo, string criterio, string filtro)
+        {
+            string condicion = null;
+            switch(campo)
+            {
+                case "Código":
+                    condicion = CondicionCampoTexto("A.Codigo", criterio, filtro);
+                    break;
+
+                case "Nombre":
+                    condicion = CondicionCampoTexto("A.Nombre", criterio, filtro);
+                    break;
+
+                case "Marca":
+                    condicion = CondicionCampoTexto("M.Descripcion", criterio, filtro);
+                    break;
+
+                case "Categoría":
+                    condicion = CondicionCampoTexto("C.Descripcion", criterio, filtro);
+                    break;
+
+                case "Precio":
+                    condicion = CondicionCampoNumero("A.Precio", criterio, filtro);
+                    break;
+            }
+
+            return $"WHERE {condicion};";
+        }
+
+        private string CondicionCampoTexto(string campo, string criterio, string filtro)
+        {
+            switch (criterio)
+            {
+                case "Comience con...":
+                    return $"{campo} LIKE '{filtro}%'";
+
+                case "Termine con...":
+                    return $"{campo} LIKE '%{filtro}'";
+
+                default:
+                    return $"{campo} LIKE '%{filtro}%'";
+            }
+        }
+
+        private string CondicionCampoNumero(string campo, string criterio, string filtro)
+        {
+            switch (criterio)
+            {
+                case "Mayor a...":
+                    return $"{campo} > {filtro}";
+
+                case "Menor a...":
+                    return $"{campo} < {filtro}";
+
+                default:
+                    return $"{campo} = {filtro}";
+            }
+        }
+
         // ================================================================== //
         // ----------------------------- Eventos ---------------------------- //
         // ================================================================== //
@@ -575,24 +675,6 @@ namespace InterfazUsuario
                 dgvArticulos.Visible = true;
                 FormatearDGV();
                 btnBuscar.Enabled = true;
-            }
-        }
-
-        // Filtro avanzado
-        private void btnFiltroAvanzado_Click(object sender, EventArgs e)
-        {
-            txbxBuscar.Text = "";
-
-            if (panelFiltroAvanzado.Visible)
-            {
-                panelFiltroAvanzado.Visible = false;
-                lbBusqueda.Text = "Búsqueda predeterminada";
-            }    
-            else if (!panelFiltroAvanzado.Visible)
-            {
-                comboxCampoBusqueda.SelectedIndex = 0;
-                panelFiltroAvanzado.Visible = true;
-                lbBusqueda.Text = "Búsqueda avanzada";
             }
         }
 
@@ -1021,22 +1103,38 @@ namespace InterfazUsuario
         }
 
         // ----------------------- Búsqueda por criterios ------------------- //
+        private void btnFiltroAvanzado_Click(object sender, EventArgs e)
+        {
+            txbxBuscar.Text = "";
+
+            if (panelFiltroAvanzado.Visible)
+            {
+                panelFiltroAvanzado.Visible = false;
+                lbBusqueda.Text = "Búsqueda predeterminada";
+            }    
+            else if (!panelFiltroAvanzado.Visible)
+            {
+                comboxCampoBusqueda.SelectedIndex = 0;
+                panelFiltroAvanzado.Visible = true;
+                lbBusqueda.Text = "Búsqueda avanzada";
+            }
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (panelFiltroAvanzado.Visible)
             {
-                // Búsqueda avanzada.
-                MessageBox.Show("Búsqueda avanzada.");
+                BusquedaAvanzada();
             }
             else
             {
-                // Búsqueda predeterminada.
                 BusquedaPredeterminada();
             }
         }
 
         private void txbxBuscar_TextChanged(object sender, EventArgs e)
         {
+            // Este evento solo ocurre cuando está establecido la búsqueda predeterminada.
             if (!panelFiltroAvanzado.Visible)
             {
                 btnBuscar_Click(sender, e);
@@ -1045,10 +1143,10 @@ namespace InterfazUsuario
 
         private void comboxCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Según la selección de campo (texto o numérico) se cargan los criterios.
             string opcion = comboxCampoBusqueda.SelectedItem.ToString();
             if (opcion == "Precio")
             {
-                // Cargar numérico
                 comboxCriterioBusqueda.Items.Clear();
                 comboxCriterioBusqueda.Items.Add("Mayor a...");
                 comboxCriterioBusqueda.Items.Add("Menor a...");
@@ -1057,17 +1155,50 @@ namespace InterfazUsuario
             }
             else
             {
-                // Cargar texto
                 comboxCriterioBusqueda.Items.Clear();
                 comboxCriterioBusqueda.Items.Add("Comience con...");
                 comboxCriterioBusqueda.Items.Add("Termine con...");
                 comboxCriterioBusqueda.Items.Add("Contenga...");
                 comboxCriterioBusqueda.SelectedIndex = 0;
             }
+
+            // Se reinicia el TextBox Buscar para evitar posibles errores al seleccionar
+            // campos con criterios diferentes.
+            txbxBuscar.Text = "";
+        }
+
+        private void txbxBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Si está activada la búsqueda avanzada y seleccionada el campo Precio, solo
+            // se pueden escribir y borrar números, comas y puntos.
+            if (panelFiltroAvanzado.Visible && comboxCampoBusqueda.SelectedItem.ToString() == "Precio")
+            {
+                if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 &&  
+                     e.KeyChar != 44 && e.KeyChar != 46)
+                {
+                      e.Handled = true;
+                }
+            }
+        }
+
+        private void txbxBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Si está activado la búsqueda avanzada, se puede hacer click en el botón
+            // enter para activar el evento buscar.
+            if (panelFiltroAvanzado.Visible)
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    btnBuscar_Click(sender, e);
+                }
+            }
         }
         // ------------------------------------------------------------------ //
         private void btnCerrarFormulario_Click(object sender, EventArgs e)
         {
+            // Antes de cerrar la aplicación se verifica si hay una modificación pendiente
+            // y/o información de un nuevo artículo no agregado y se le pregunta al usuario
+            // si quiere descartar dicha modificación y/o agregación.
             if (modificacionPendiente)
             {
                 DialogResult r = MessageBox.Show("Hay una modificación pendiente, ¿quiere descartarla?", 
