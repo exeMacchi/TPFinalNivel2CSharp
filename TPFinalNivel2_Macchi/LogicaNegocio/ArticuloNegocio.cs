@@ -11,6 +11,11 @@ namespace LogicaNegocio
 {
     public class ArticuloNegocio
     { 
+        /// <summary>
+        /// Leer y devolver de la base de datos los registros de la entidad "ARTICULOS" en 
+        /// combinación con las entidades "MARCAS" y "CATEGORIAS".
+        /// </summary>
+        /// <returns>Lista con objetos de tipo clase Articulo</returns>
         public List<Articulo> CargarArticulos()
         {
             List<Articulo> articulos = new List<Articulo>();
@@ -78,6 +83,11 @@ namespace LogicaNegocio
             }
         }
 
+
+        /// <summary>
+        /// Insertar en la base de datos un nuevo artículo.
+        /// </summary>
+        /// <param name="nuevoArticulo">Nuevo artículo que se agregará a la base de datos.</param>
         public void AgregarNuevoArticulo(Articulo nuevoArticulo)
         {
             Datos db = new Datos();
@@ -106,6 +116,11 @@ namespace LogicaNegocio
             }
         }
 
+
+        /// <summary>
+        /// Borrar de la base de datos un artículo seleccionado.
+        /// </summary>
+        /// <param name="articuloSeleccionado">Artículo seleccionado por el usuario.</param>
         public void BorrarArticulo(Articulo articuloSeleccionado)
         {
             Datos db = new Datos();
@@ -126,6 +141,11 @@ namespace LogicaNegocio
             }
         }
 
+
+        /// <summary>
+        /// Modificar en la base de datos un artículo seleccionado.
+        /// </summary>
+        /// <param name="articuloModificado">Artículo seleccionado por el usuario.</param>
         public void ModificarArticulo(Articulo articuloModificado)
         {
             Datos db = new Datos();
@@ -159,6 +179,14 @@ namespace LogicaNegocio
             }
         }
 
+
+        /// <summary>
+        /// Leer y devolver de la base de datos los registros de la entidad "ARTICULO", en
+        /// combinación con las entidades "MARCAS" y "CATEGORIAS", que cumplan con la condición
+        /// especificada.
+        /// </summary>
+        /// <param name="condicion"></param>
+        /// <returns></returns>
         public List<Articulo> Buscar(string condicion)
         {
             List<Articulo> articulosEncontrados = new List<Articulo>();

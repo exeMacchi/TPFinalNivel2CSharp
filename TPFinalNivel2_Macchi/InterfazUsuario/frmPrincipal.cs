@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
@@ -19,22 +20,38 @@ namespace InterfazUsuario
         // ================================================================== //
         // ---------------------------- Atributos --------------------------- //
         // ================================================================== //
+        /// <summary>
+        /// DataSource fundamental del DGV.
+        /// </summary>
         private List<Articulo> articulos = null;
         
-        // Banderas
+        /// <summary>
+        /// Atributo bandera que me permite verificar si hay un nuevo artículo pendiente.
+        /// </summary>
         private bool nuevoArticuloPendiente;
+
+        /// <summary>
+        /// Atributo bandera que me permite verificar si hay una modificación pendiente.
+        /// </summary>
         private bool modificacionPendiente;
 
-        // Boolean que me ayuda a controlar la validación del botón reiniciar cuando no
-        // carga la imagen local tanto en la plantilla agregar como en la de modificar artículo.
+        /// <summary>
+        /// Boolean que me ayuda a controlar la validación del botón <see cref="btnReiniciarAA"/>
+        /// y la del botón <see cref="btnReiniciarMA"/> cuando no carga la imagen local tanto 
+        /// en la plantilla "Agregar artículo" como en la plantilla "Modificar artículo".
+        /// </summary>
         private bool imagenLocal;
 
-        // ID del artículo que se está modificando. Sirve para realizar la modificación en
-        // la base de datos y para focusear el artículo en el DGV con el fin de mostrar al
-        // usuario su información modificada.
+        /// <summary>
+        /// ID del artículo que se está modificando. Sirve para realizar la modificación
+        /// en la base de datos y para focusear el artículo en el DGV con el fin de mostrar
+        /// al usuario su información modificada.
+        /// </summary>
         private int idArticuloModificacionPendiente;
 
-        // Entero que suma la cantidad de artículos presentes en el DGV.
+        /// <summary>
+        /// Entero que almacena la cantidad de artículos presentes en el DGV.
+        /// </summary>
         private int cantArticulos;
         
         // ================================================================== //
@@ -51,6 +68,9 @@ namespace InterfazUsuario
         // ================================================================== //
         // ---------------------------- Métodos ----------------------------- //
         // ================================================================== //
+        /// <summary>
+        /// Configuración básica de la aplicación.
+        /// </summary>
         private void StartUp()
         {
             modificacionPendiente = false;
@@ -62,8 +82,17 @@ namespace InterfazUsuario
             panelAgregarArticulo.Visible = false;
 
             CargarComboBoxes();
+
+            toolTip.SetToolTip(lbBusqueda, "Búsqueda predeterminada: filtro según el nombre del artículo.\n" +
+                                           "Búsqueda avanzada: filtro según campos y criterios.");
         }
 
+        /// <summary>
+        /// Configuración que ocurre cuando no hay ningún registro en la lista "artículos",
+        /// es decir, no hay ningún artículo registrado en la base de datos. Principalmente,
+        /// este método obliga a agregar un artículo nuevo para poder seguir utilizando la
+        /// aplicación.
+        /// </summary>
         private void NingunRegistro()
         {
             dgvArticulos.Visible = false;
@@ -75,6 +104,10 @@ namespace InterfazUsuario
             btnBuscar.Enabled = false;
         }
 
+        /// <summary>
+        /// Mostrar en la plantilla "Detalles artículos" la información del artículo 
+        /// seleccionado en DGV.
+        /// </summary>
         private void MostrarInfoArticulo()
         {
             Articulo articuloSeleccionado = (Articulo) dgvArticulos.CurrentRow.DataBoundItem;
@@ -87,6 +120,9 @@ namespace InterfazUsuario
             txbxPrecioDA.Text = "$" + articuloSeleccionado.Precio.ToString("N2");
         }
 
+        /// <summary>
+        /// Ocultar columnas que no son importantes de mostrar en el DGV.
+        /// </summary>
         private void OcultarColumnas()
         {
             dgvArticulos.Columns["ID"].Visible = false;
@@ -94,6 +130,11 @@ namespace InterfazUsuario
             dgvArticulos.Columns["Imagen"].Visible = false;
         }
 
+        /// <summary>
+        /// Estilizar el formato del DGV. Si este tiene registros, además de ocultar columnas,
+        /// formatea cómo se ve la columna Precio, Codigo y Nombre; en cambio, si no tiene
+        /// registros, solo oculta columnas.
+        /// </summary>
         private void FormatearDGV()
         {
             if (dgvArticulos.CurrentRow != null)
@@ -109,6 +150,13 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Cargar la imagen del PictureBox de la plantilla "Detalles artículos" con una
+        /// ruta de archivo local o URL.
+        /// </summary>
+        /// <param name="img">Ruta de archivo local o URL</param>
+        /// <exception cref="Exception">Si no se carga la imagen en el PictureBox con la
+        /// ruta o URL dada, o si tampoco carga la imagen por defecto</exception>
         private void CargarImagenDA(string img)
         {
             try
@@ -128,32 +176,35 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Cargar todos los ComboBoxes de la aplicación excepto los criterios de búsqueda,
+        /// ya que se cargan luego dependiendo del campo seleccionado por el usuario.
+        /// </summary>
         private void CargarComboBoxes()
         {
-            // Cargar marcas
+            // Marcas
             MarcaNegocio marcaNegocio = new MarcaNegocio();
-            // En la plantilla agregar artículo
+            // Plantilla "Agregar artículo"
             comboxMarcaAA.DataSource = marcaNegocio.CargarMarcas();
             comboxMarcaAA.DisplayMember = "Descripcion";
             comboxMarcaAA.ValueMember = "ID";
-            // En la plantilla modificar artículo
+            // Plantilla "Modificar artículo"
             comboxMarcaMA.DataSource = marcaNegocio.CargarMarcas();
             comboxMarcaMA.DisplayMember = "Descripcion";
             comboxMarcaMA.ValueMember = "ID";
 
-            // Cargar categorías
+            // Categorías
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
-            // En la plantilla agregar artículo
+            // Plantilla "Agregar artículo"
             comboxCategoriaAA.DataSource = categoriaNegocio.CargarCategorias();
             comboxCategoriaAA.DisplayMember = "Descripcion";
             comboxCategoriaAA.ValueMember = "ID";
-            // En la plantilla modificar artículo
+            // Plantilla "Modificar artículo"
             comboxCategoriaMA.DataSource = categoriaNegocio.CargarCategorias();
             comboxCategoriaMA.DisplayMember = "Descripcion";
             comboxCategoriaMA.ValueMember = "ID";
 
-            // Cargar campos de búsqueda avanzada (los criterios se cargan luego,
-            // dependiento del campo).
+            // Campos de búsqueda avanzada
             comboxCampoBusqueda.Items.Add("Código");
             comboxCampoBusqueda.Items.Add("Nombre");
             comboxCampoBusqueda.Items.Add("Marca");
@@ -161,6 +212,10 @@ namespace InterfazUsuario
             comboxCampoBusqueda.Items.Add("Precio");
         }
 
+        /// <summary>
+        /// Refrescar y formatear el DGV con todos los artículos que se lean de la base de
+        /// datos. Si no hay ningún registro, se lanza <see cref="NingunRegistro"/>
+        /// </summary>
         private void ActualizarDGV()
         {
             ArticuloNegocio artNegocio = new ArticuloNegocio();
@@ -185,6 +240,14 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Devolver el artículo seleccionado por el usuario en el DGV.
+        /// </summary>
+        /// <returns>Artículo asociado a la fila seleccionada en el DGV.</returns>
+        /// <exception cref="NullReferenceException">Se lanza si no se puede devolver el
+        /// artículo enlazado a la fila seleccionada.</exception>
+        /// <exception cref="Exception">Se lanza si tampoco se puede devolver el primer
+        /// artículo del DGV.</exception>
         private Articulo ArticuloSeleccionado()
         {
             Articulo artSeleccionado = new Articulo();
@@ -207,6 +270,10 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Actualiza el recuento de registros (filas) que almacena el DGV y muestra dicha 
+        /// cantidad en la interfaz de usuario.
+        /// </summary>
         private void ActualizarResultados()
         {
             cantArticulos = dgvArticulos.RowCount;
@@ -214,6 +281,9 @@ namespace InterfazUsuario
         }
 
         // ------------------------- Agregar artículo ----------------------- //
+        /// <summary>
+        /// Configuración básica de la plantilla "Nuevo artículo".
+        /// </summary>
         private void ReiniciarPlantillaNuevoArticulo()
         {
             btnNuevoArticulo.Text = "Nuevo artículo";
@@ -240,6 +310,12 @@ namespace InterfazUsuario
             lbAvisoAgregarAA.Visible = true;
         }
 
+        /// <summary>
+        /// Agregar un nuevo artículo en la base de datos.
+        /// </summary>
+        /// <param name="nuevoArticulo">Artículo con la nueva información</param>
+        /// <exception cref="Exception">Se lanza cuando no se pudo agregar el nuevo artículo
+        /// en la base de datos.</exception>
         private void AgregarNuevoArticulo(Articulo nuevoArticulo)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -255,6 +331,14 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Cargar la imagen del PictureBox de la plantilla "Agregar artículo" con una
+        /// ruta de archivo local o URL.
+        /// </summary>
+        /// <param name="img">Ruta de archivo local o URL.</param>
+        /// <returns>Booleano que representa si cargó o no la imagen.</returns>
+        /// <exception cref="Exception">Si no se carga la imagen en el PictureBox con la
+        /// ruta o URL dada, o si tampoco carga la imagen por defecto</exception>
         private bool CargarImagenAA(string img)
         {
             try
@@ -291,6 +375,11 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Permitir al usuario apretar el botón <see cref="btnReiniciarAA"/> si se modificó
+        /// alguno de los controles de la plantilla "Agregar artículo" con el fin de que esta
+        /// vuelva a su forma básica.
+        /// </summary>
         private void HabilitarBtnReiniciarAA()
         {
             if ((txbxCargarImagenAA.Text != "" && txbxCargarImagenAA.Text != "https://...") ||
@@ -310,6 +399,10 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Permitir al usuario apretar el botón <see cref="btnAgregarArticulo"/> si se
+        /// rellenan los campos impresindibles.
+        /// </summary>
         private void HabilitarBtnAgregar()
         {
             if (txbxCodigoAA.Text != "" && txbxNombreAA.Text != "" && 
@@ -328,6 +421,10 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Focusear el índice del nuevo artículo agregado en la base de datos para que su
+        /// información se muestre en la plantilla "Detalles artículos".
+        /// </summary>
         private void FocusearUltimoElemento()
         {
             int ultimoIndice = dgvArticulos.Rows.Count - 1;
@@ -340,6 +437,10 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Focusear el índice del artículo modificado para mostrar su información en la
+        /// plantilla "Detalles artículos".
+        /// </summary>
         private void FocusearElementoModificado()
         {
             int indiceArticuloModificado = articulos.FindIndex(articulo => articulo.ID == idArticuloModificacionPendiente);
@@ -352,6 +453,12 @@ namespace InterfazUsuario
         }
 
         // ------------------------- Borrar artículo ------------------------ //
+        /// <summary>
+        /// Eliminar de la base de datos un artículo seleccionado por el usuario.
+        /// </summary>
+        /// <param name="articuloSeleccionado">Artículo seleccionado en el DGV.</param>
+        /// <exception cref="Exception">Se lanza si no se pudo borrar el artículo seleccionado.
+        /// </exception>
         private void EliminarArticulo(Articulo articuloSeleccionado)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -364,13 +471,16 @@ namespace InterfazUsuario
             }
             catch (Exception)
             {
-                // Aviso que no se pudo borrar
                 MessageBox.Show("El artículo seleccionado no se pudo borrar.", "Error: borrar artículo",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         // ------------------------- Modificar artículo --------------------- //
+        /// <summary>
+        /// Preparar la plantilla "Modificar artículo" con la información del artículo
+        /// seleccionado por el usuario en el DGV.
+        /// </summary>
         private void PrepararModificacion()
         {
             Articulo artSeleccionado = ArticuloSeleccionado();
@@ -398,6 +508,14 @@ namespace InterfazUsuario
             txbxPrecioMA.Text = artSeleccionado.Precio.ToString("N2");
         }
 
+        /// <summary>
+        /// Cargar la imagen del PictureBox de la plantilla "Modificar artículo" con una
+        /// ruta de archivo local o URL.
+        /// </summary>
+        /// <param name="img">Ruta de archivo local o URL.</param>
+        /// <returns>Booleano que representa si cargó o no la imagen.</returns>
+        /// <exception cref="Exception">Si no se carga la imagen en el PictureBox con la
+        /// ruta o URL dada, o si tampoco carga la imagen por defecto</exception>
         private bool CargarImagenMA(string img)
         {
             try
@@ -434,6 +552,9 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Configuración básica de la plantilla "Modificar artículo".
+        /// </summary>
         private void ReiniciarPlantillaModificacion()
         {
             pboxImagenMA.Image = Properties.Resources.placeholder;
@@ -456,6 +577,11 @@ namespace InterfazUsuario
             lbAvisoModificarMA.Visible = true;
         }
 
+        /// <summary>
+        /// Permitir al usuario apretar el botón <see cref="btnReiniciarMA"/> si se modificó
+        /// alguno de los controles de la plantilla "Modificar artículo" con el fin de que esta
+        /// vuelva a su forma básica.
+        /// </summary>
         private void HabilitarBtnReiniciarMA()
         {
             if ((txbxImagenMA.Text != "" && txbxImagenMA.Text != "https://...") || 
@@ -471,6 +597,10 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Permitir al usuario apretar el botón <see cref="btnConfirmarModificacion"/> si 
+        /// se rellenan los campos impresindibles.
+        /// </summary>
         private void HabilitarBtnConfirmarModificacion()
         {
             if (txbxCodigoMA.Text != "" && txbxNombreMA.Text != "" && 
@@ -489,6 +619,11 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Modificar en la base de datos un artículo seleccionado.
+        /// </summary>
+        /// <param name="articuloModificado">Artículo modificado en la plantilla "Modificar
+        /// artículo".</param>
         private void ModificarArticulo(Articulo articuloModificado)
         {
             ArticuloNegocio articuloNegocio = new ArticuloNegocio();
@@ -506,6 +641,10 @@ namespace InterfazUsuario
         }
 
         // ----------------------- Búsqueda de artículos -------------------- //
+        /// <summary>
+        /// Búsqueda de artículos en la lista <see cref="articulos"/> según un filtro 
+        /// basado en el nombre de estos.
+        /// </summary>
         private void BusquedaPredeterminada()
         {
             string filtro = txbxBuscar.Text;
@@ -521,6 +660,9 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Búsqueda de artículos en la base de datos según un campo, un criterio y un filtro.
+        /// </summary>
         private void BusquedaAvanzada()
         {
             string campo = comboxCampoBusqueda.SelectedItem.ToString();
@@ -561,6 +703,13 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Crear la cláusula WHERE que se utilizará como condición en la consulta SQL.
+        /// </summary>
+        /// <param name="campo">Campo seleccionado en el <see cref="comboxCampoBusqueda"/>.</param>
+        /// <param name="criterio">Criterio seleccionado en el <see cref="comboxCriterioBusqueda"/>.</param>
+        /// <param name="filtro">Filtro escrito en el <see cref="txbxBuscar"/>.</param>
+        /// <returns>Cláusula WHERE completa.</returns>
         private string CrearClausulaWhere(string campo, string criterio, string filtro)
         {
             string condicion = null;
@@ -590,6 +739,13 @@ namespace InterfazUsuario
             return $"WHERE {condicion};";
         }
 
+        /// <summary>
+        /// Devolver la condición después del WHERE con el operador de comparación textual (LIKE).
+        /// </summary>
+        /// <param name="campo">Campo correspondiente en la base de datos.</param>
+        /// <param name="criterio">Criterio seleccionado en el <see cref="comboxCriterioBusqueda"/>.</param>
+        /// <param name="filtro">Filtro escrito en el <see cref="txbxBuscar"/>.</param>
+        /// <returns></returns>
         private string CondicionCampoTexto(string campo, string criterio, string filtro)
         {
             switch (criterio)
@@ -605,6 +761,13 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Devolver la condición después del WHERE con el operador de comparación numérico.
+        /// </summary>
+        /// <param name="campo">Campo correspondiente en la base de datos.</param>
+        /// <param name="criterio">Criterio seleccioando en el <see cref="comboxCriterioBusqueda"/>.</param>
+        /// <param name="filtro">Filtro escrito en el <see cref="txbxBuscar"/>.</param>
+        /// <returns></returns>
         private string CondicionCampoNumero(string campo, string criterio, string filtro)
         {
             switch (criterio)
@@ -623,30 +786,37 @@ namespace InterfazUsuario
         // ================================================================== //
         // ----------------------------- Eventos ---------------------------- //
         // ================================================================== //
+
+        /// <summary>
+        /// Cargar al iniciar la aplicación los artículos al DGV.
+        /// </summary>
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             ActualizarDGV();
         }
 
+
         // ------------------------- Detalles artículo ----------------------- //
+        /// <summary>
+        /// Mostrar la información del artículo seleccionado en la plantilla "Detalles artículos"
+        /// </summary>
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            // El botón "Nuevo artículo" o "Nuevo artículo pendiete" se hace visible,
+            // El botón "Nuevo artículo" o "Nuevo artículo pendiente" se hace visible,
             // sea el caso que sea.
             btnNuevoArticulo.Visible = true;
 
-            // Verificar si hay articulos disponibles. Si no los hay, activar
-            // la pestaña de Agregar artículo.
+            // Verificar si hay articulos disponibles. Si no los hay, activar método NingunRegistro()
             if (dgvArticulos.CurrentRow != null)
             {
-                // Verifica si la capa de articulos está abierta; si lo está, la oculta.
+                // Verificar si la capa "Agregar articulo" está abierta; si lo está, la oculta.
                 if (panelAgregarArticulo.Visible) 
                 {
                     MostrarInfoArticulo();
                     panelAgregarArticulo.Visible = false;
                     panelModificarArticulo.Visible = false;
                 }
-                // Verifica si la capa de modificación está abierta; si lo está, la oculta.
+                // Verificar si la capa "Modificar artículo" está abierta; si lo está, la oculta.
                 else if (panelModificarArticulo.Visible) 
                 {
                     MostrarInfoArticulo();
@@ -667,9 +837,12 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Verificar que haya mínimo un registro en el DGV para mostrarlo y habilitar la
+        /// búsqueda
+        /// </summary>
         private void dgvArticulos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            // Verificar si hay mínimo un dato en el DGV para mostrarlo y habilitar la búsqueda.
             if (!dgvArticulos.Visible)
             {
                 dgvArticulos.Visible = true;
@@ -678,7 +851,11 @@ namespace InterfazUsuario
             }
         }
 
+
         // ------------------------- Agregar artículo ----------------------- //
+        /// <summary>
+        /// Hacer visible la plantilla "Agregar artículo".
+        /// </summary>
         private void btnNuevoArticulo_Click(object sender, EventArgs e)
         {
             // Verificar si hay un nuevo artículo pendiente para saber si reiniciar o no 
@@ -692,25 +869,28 @@ namespace InterfazUsuario
             // hasta que se agregue, cancele o se cambie la selección de artículo.
             btnNuevoArticulo.Visible = false;
 
-            // Verificar si se apretó el botón desde la plantilla de modificación de un
-            // artículo para habilitar el botón de "Modificación pendiente".
+            // Verificar si se apretó este botón desde la plantilla "Modificar artículo"
+            // para habilitar el botón de "Modificación pendiente".
             if (modificacionPendiente)
             {
                 btnModificacionPendiente.Visible = true;
             }
 
-            // Hacer visible la plantilla nuevo artículo.
             panelModificarArticulo.Visible = true;
             panelAgregarArticulo.Visible = true;
         }
 
+        /// <summary>
+        /// Crear un nuevo artículo, agregarlo a la base de datos y mostrar su información
+        /// en la plantilla "Detalles artículos".
+        /// </summary>
         private void btnAgregarArticulo_Click(object sender, EventArgs e)
         {
-            // Se habilita el botón de cancelar porque hay, mínimo, un registro en la DB.
+            // Verificar a través del botón Cancelar si hay o no registros en el DGV. Si hay
+            // mínimo un registro, se habilita el botón; si no lo hay, no se permite cancelar.
             if (!btnCancelarAgregacion.Enabled)
                 btnCancelarAgregacion.Enabled = true;
 
-            // Crear el nuevo articulo
             Articulo nuevoArticulo = new Articulo();
             nuevoArticulo.Codigo = txbxCodigoAA.Text;
             nuevoArticulo.Nombre = txbxNombreAA.Text;
@@ -755,11 +935,14 @@ namespace InterfazUsuario
             ReiniciarPlantillaNuevoArticulo();
         }
 
+        /// <summary>
+        /// Cancelar la agregación de un nuevo artículo a la base de datos. Se reinicia la
+        /// plantilla a su configuración básica.
+        /// </summary>
         private void btnCancelarAgregacion_Click(object sender, EventArgs e)
         {
             if (nuevoArticuloPendiente)
             {
-                // Aviso: articulo descartado
                 MessageBox.Show("Información del nuevo artículo descartada.", "Información descartada",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -770,11 +953,17 @@ namespace InterfazUsuario
             ReiniciarPlantillaNuevoArticulo();
         }
 
+        /// <summary>
+        /// Reiniciar la plantilla "Agregar artículo" a su configuración básica.
+        /// </summary>
         private void btnReiniciarAA_Click(object sender, EventArgs e)
         {
             ReiniciarPlantillaNuevoArticulo();
         }
 
+        /// <summary>
+        /// Cargar <see cref="pboxImagenAA"/> con una imagen local.
+        /// </summary>
         private void btnCargarImagenLocalAA_Click(object sender, EventArgs e)
         {
             lbAvisoImagenAA.Visible = false;
@@ -791,6 +980,9 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Habilitar <see cref="txbxCargarImagenAA"/> para escribir una URL.
+        /// </summary>
         private void btnCargarImagenUrlAA_Click(object sender, EventArgs e)
         {
             if (!txbxCargarImagenAA.Visible)
@@ -809,6 +1001,11 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Cargar <see cref="pboxImagenAA"/> con el <see cref="txbxCargarImagenAA"/> si el
+        /// texto de este último es diferente a los dos posibles valores por defecto (vacío o
+        /// "https://...")
+        /// </summary>
         private void txbxCargarImagenAA_TextChanged(object sender, EventArgs e)
         {
             if (txbxCargarImagenAA.Text != "" && txbxCargarImagenAA.Text != "https://...")
@@ -822,6 +1019,9 @@ namespace InterfazUsuario
             HabilitarBtnReiniciarAA();
         }
 
+        /// <summary>
+        /// Borrar el valor por defecto "https://..." cuando se hace focus en <see cref="txbxCargarImagenAA"/>
+        /// </summary>
         private void txbxCargarImagenAA_Enter(object sender, EventArgs e)
         {
             if (txbxCargarImagenAA.Text == "https://...")
@@ -830,41 +1030,62 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Validación <see cref="btnReiniciarAA"/> y <see cref="btnAgregarArticulo"/>
+        /// </summary>
         private void txbxCodigoAA_TextChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
+        /// <summary>
+        /// Validación <see cref="btnReiniciarAA"/> y <see cref="btnAgregarArticulo"/>
+        /// </summary>
         private void txbxNombreAA_TextChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
+        /// <summary>
+        /// Validación <see cref="btnReiniciarAA"/>
+        /// </summary>
         private void txbxDescripcionAA_TextChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciarAA();
         }
 
+        /// <summary>
+        /// Validación <see cref="btnReiniciarAA"/> y <see cref="btnAgregarArticulo"/>
+        /// </summary>
         private void comboxMarcaAA_SelectedIndexChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
+        /// <summary>
+        /// Validación <see cref="btnReiniciarAA"/> y <see cref="btnAgregarArticulo"/>
+        /// </summary>
         private void comboxCategoriaAA_SelectedIndexChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
+        /// <summary>
+        /// Validación <see cref="btnReiniciarAA"/> y <see cref="btnAgregarArticulo"/>
+        /// </summary>
         private void txbxPrecioAA_TextChanged(object sender, EventArgs e)
         {
             HabilitarBtnReiniciarAA();
             HabilitarBtnAgregar();
         }
 
+        /// <summary>
+        /// Permitir solo escribir números, comas y puntos en el <see cref="txbxPrecioAA"/>
+        /// </summary>
         private void txbxPrecioAA_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 &&  
@@ -874,7 +1095,11 @@ namespace InterfazUsuario
             }
         }
 
+
         // ------------------------- Borrar artículo ------------------------ //
+        /// <summary>
+        /// Eliminar el artículo seleccionado en el DGV.
+        /// </summary>
         private void btnEliminarArticulo_Click(object sender, EventArgs e)
         {
             Articulo articuloSeleccionado = ArticuloSeleccionado();
@@ -890,11 +1115,16 @@ namespace InterfazUsuario
             }
         }
 
+
+
         // ------------------------- Modificar artículo ----------------------- //
+        /// <summary>
+        /// Modificar un artículo seleccionado en el DGV.
+        /// </summary>
         private void btnModificarArticulo_Click(object sender, EventArgs e)
         {
-            // Verifico si hay una modificacion pendiente y, si la hay, le pregunto al
-            // usuario si quiere descartar los cambios y modificar el nuevo artículo seleccionado
+            // Verificar si hay una modificacion pendiente y, si la hay, preguntar al usuario
+            // si quiere descartar los cambios y modificar el nuevo artículo seleccionado.
             if (modificacionPendiente) 
             {
                 DialogResult r = MessageBox.Show("Hay una modificación pendiente, ¿quiere descartarla?", 
@@ -919,6 +1149,10 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Confirmar la modificación del artículo seleccionado, la cual se verá reflejada 
+        /// en la base de datos, y mostrar la nueva información en la plantilla "Detalles artículos".
+        /// </summary>
         private void btnConfirmarModificacion_Click(object sender, EventArgs e)
         {
             // Crear el artículo con las modificaciones.
@@ -971,6 +1205,9 @@ namespace InterfazUsuario
             ReiniciarPlantillaModificacion();
         }
 
+        /// <summary>
+        /// Cancelar la modificación del artículo seleccionado.
+        /// </summary>
         private void btnCancelarModificacion_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Cambios descartados.", "Aviso", MessageBoxButtons.OK, 
@@ -981,17 +1218,22 @@ namespace InterfazUsuario
             ReiniciarPlantillaModificacion();
         }
 
+        /// <summary>
+        /// Reiniciar la plantilla "Modificar artículo" a su configuración básica.
+        /// </summary>
         private void btnReiniciarMA_Click(object sender, EventArgs e)
         {
             ReiniciarPlantillaModificacion();
         }
 
+        /// <summary>
+        /// Volver a la plantilla "Modificar artículo" con la información del artículo
+        /// previamente seleccionado.
+        /// </summary>
         private void btnModificacionPendiente_Click(object sender, EventArgs e)
         {
             btnModificacionPendiente.Visible = false;
 
-            // Volver a la planilla modificar artículo con la información del artículo
-            // previamente seleccionado.
             if (panelAgregarArticulo.Visible)
             {
                 panelAgregarArticulo.Visible = false;
@@ -1003,6 +1245,10 @@ namespace InterfazUsuario
             panelModificarArticulo.Visible = true;
         }
 
+        /// <summary>
+        /// Cargar <see cref="pboxImagenMA"/> con el <see cref="txbxImagenMA"/> si el texto 
+        /// de este último es diferente a los dos posibles valores por defecto (vacío o "https://...")
+        /// </summary>
         private void txbxImagenMA_TextChanged(object sender, EventArgs e)
         {
             if (txbxImagenMA.Text != "" && txbxImagenMA.Text != "https://...")
@@ -1016,41 +1262,9 @@ namespace InterfazUsuario
             HabilitarBtnReiniciarMA();
         }
 
-        private void txbxCodigoMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-            HabilitarBtnConfirmarModificacion();
-        }
-
-        private void txbxNombreMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-            HabilitarBtnConfirmarModificacion();
-        }
-
-        private void txbxDescripcionMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-        }
-
-        private void comboxMarcaMA_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-            HabilitarBtnConfirmarModificacion();
-        }
-
-        private void comboxCategoriaMA_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-            HabilitarBtnConfirmarModificacion();
-        }
-
-        private void txbxPrecioMA_TextChanged(object sender, EventArgs e)
-        {
-            HabilitarBtnReiniciarMA();
-            HabilitarBtnConfirmarModificacion();
-        }
-
+        /// <summary>
+        /// Cargar <see cref="pboxImagenMA"/> con una imagen local.
+        /// </summary>
         private void btnImagenLocalMA_Click(object sender, EventArgs e)
         {
             lbAvisoImagenMA.Visible = false;
@@ -1067,6 +1281,9 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Habilitar <see cref="txbxImagenMA"/> para escribir una URL.
+        /// </summary>
         private void btnImagenUrlMA_Click(object sender, EventArgs e)
         {
             if (!txbxImagenMA.Visible)
@@ -1085,6 +1302,9 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Borrar el valor por defecto "https://..." cuando se hace focus en <see cref="txbxImagenMA"/>
+        /// </summary>
         private void txbxImagenMA_Enter(object sender, EventArgs e)
         {
             if (txbxImagenMA.Text == "https://...")
@@ -1093,6 +1313,62 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Validación <see cref="btnReiniciarMA"/> y <see cref="btnConfirmarModificacion"/>
+        /// </summary>
+        private void txbxCodigoMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        /// <summary>
+        /// Validación <see cref="btnReiniciarMA"/> y <see cref="btnConfirmarModificacion"/>
+        /// </summary>
+        private void txbxNombreMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        /// <summary>
+        /// Validación <see cref="btnReiniciarMA"/>
+        /// </summary>
+        private void txbxDescripcionMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+        }
+
+        /// <summary>
+        /// Validación <see cref="btnReiniciarMA"/> y <see cref="btnConfirmarModificacion"/>
+        /// </summary>
+        private void comboxMarcaMA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        /// <summary>
+        /// Validación <see cref="btnReiniciarMA"/> y <see cref="btnConfirmarModificacion"/>
+        /// </summary>
+        private void comboxCategoriaMA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        /// <summary>
+        /// Validación <see cref="btnReiniciarMA"/> y <see cref="btnConfirmarModificacion"/>
+        /// </summary>
+        private void txbxPrecioMA_TextChanged(object sender, EventArgs e)
+        {
+            HabilitarBtnReiniciarMA();
+            HabilitarBtnConfirmarModificacion();
+        }
+
+        /// <summary>
+        /// Permitir solo escribir números, comas y puntos en <see cref="txbxPrecioMA"/>
+        /// </summary>
         private void txbxPrecioMA_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 &&  
@@ -1102,7 +1378,12 @@ namespace InterfazUsuario
             }
         }
 
+
         // ----------------------- Búsqueda por criterios ------------------- //
+        /// <summary>
+        /// Habilitar la búsqueda predeterminada por nombre o la búsqueda avanzada por campo
+        /// y criterio.
+        /// </summary>
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
             txbxBuscar.Text = "";
@@ -1118,8 +1399,12 @@ namespace InterfazUsuario
                 panelFiltroAvanzado.Visible = true;
                 lbBusqueda.Text = "Búsqueda avanzada";
             }
+            ActualizarDGV();
         }
 
+        /// <summary>
+        /// Realizar la búsqueda.
+        /// </summary>
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (panelFiltroAvanzado.Visible)
@@ -1132,18 +1417,22 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Evento que solo ocurre cuando está establecido la búsqueda predeterminada.
+        /// </summary>
         private void txbxBuscar_TextChanged(object sender, EventArgs e)
         {
-            // Este evento solo ocurre cuando está establecido la búsqueda predeterminada.
             if (!panelFiltroAvanzado.Visible)
             {
                 btnBuscar_Click(sender, e);
             }
         }
 
+        /// <summary>
+        /// Cargar <see cref="comboxCriterioBusqueda"/> según el campo que el usuario seleccione.
+        /// </summary>
         private void comboxCampoBusqueda_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Según la selección de campo (texto o numérico) se cargan los criterios.
             string opcion = comboxCampoBusqueda.SelectedItem.ToString();
             if (opcion == "Precio")
             {
@@ -1167,10 +1456,12 @@ namespace InterfazUsuario
             txbxBuscar.Text = "";
         }
 
+        /// <summary>
+        /// Permitir solo escribir números, comas y puntos cuando la búsqueda avanzada esté
+        /// activada y el campo Precio esté seleccionado.
+        /// </summary>
         private void txbxBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Si está activada la búsqueda avanzada y seleccionada el campo Precio, solo
-            // se pueden escribir y borrar números, comas y puntos.
             if (panelFiltroAvanzado.Visible && comboxCampoBusqueda.SelectedItem.ToString() == "Precio")
             {
                 if ( (e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8 &&  
@@ -1181,10 +1472,12 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Lanzar el evento <see cref="btnBuscar_Click(object, EventArgs)"/> con la tecla
+        /// "Enter" si la búsqueda avanzada está activada.
+        /// </summary>
         private void txbxBuscar_KeyDown(object sender, KeyEventArgs e)
         {
-            // Si está activado la búsqueda avanzada, se puede hacer click en el botón
-            // enter para activar el evento buscar.
             if (panelFiltroAvanzado.Visible)
             {
                 if (e.KeyCode == Keys.Enter)
@@ -1193,12 +1486,16 @@ namespace InterfazUsuario
                 }
             }
         }
+
+
         // ------------------------------------------------------------------ //
+        /// <summary>
+        /// Verificar antes de que se cierre la aplicación si hay una modificación pendiente
+        /// y/o información de un nuevo artículo no agregado. Si lo hubiera, se le pregunta
+        /// al usuario si quiere descartar dicha modificación y/o agregación.
+        /// </summary>
         private void btnCerrarFormulario_Click(object sender, EventArgs e)
         {
-            // Antes de cerrar la aplicación se verifica si hay una modificación pendiente
-            // y/o información de un nuevo artículo no agregado y se le pregunta al usuario
-            // si quiere descartar dicha modificación y/o agregación.
             if (modificacionPendiente)
             {
                 DialogResult r = MessageBox.Show("Hay una modificación pendiente, ¿quiere descartarla?", 

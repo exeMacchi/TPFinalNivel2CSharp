@@ -10,6 +10,10 @@ namespace LogicaNegocio
 {
     public class MarcaNegocio
     {
+        /// <summary>
+        /// Leer y devolver de la base de datos los registros de la entidad "MARCAS".
+        /// </summary>
+        /// <returns>Lista con objetos de tipo clase Marca</returns>
         public List<Marca> CargarMarcas()
         {
             List<Marca> marcas = new List<Marca>();

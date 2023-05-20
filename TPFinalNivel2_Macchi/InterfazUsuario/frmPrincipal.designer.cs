@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -125,6 +126,7 @@
             this.btnModificarArticuloDA = new System.Windows.Forms.Button();
             this.pboxImagenDA = new System.Windows.Forms.PictureBox();
             this.ofdImagen = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panelSuperior.SuspendLayout();
             this.panelFiltroRapido.SuspendLayout();
             this.panelMetodosVentana.SuspendLayout();
@@ -172,7 +174,7 @@
             this.lbResultadosBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.lbResultadosBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbResultadosBusqueda.ForeColor = System.Drawing.Color.Black;
-            this.lbResultadosBusqueda.Location = new System.Drawing.Point(635, 38);
+            this.lbResultadosBusqueda.Location = new System.Drawing.Point(635, 37);
             this.lbResultadosBusqueda.Name = "lbResultadosBusqueda";
             this.lbResultadosBusqueda.Size = new System.Drawing.Size(105, 21);
             this.lbResultadosBusqueda.TabIndex = 32;
@@ -184,7 +186,7 @@
             this.lbBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.lbBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbBusqueda.ForeColor = System.Drawing.Color.Black;
-            this.lbBusqueda.Location = new System.Drawing.Point(8, 38);
+            this.lbBusqueda.Location = new System.Drawing.Point(8, 37);
             this.lbBusqueda.Name = "lbBusqueda";
             this.lbBusqueda.Size = new System.Drawing.Size(237, 21);
             this.lbBusqueda.TabIndex = 31;
@@ -197,7 +199,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(457, 5);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(108, 28);
-            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -208,7 +210,7 @@
             this.txbxBuscar.Location = new System.Drawing.Point(12, 5);
             this.txbxBuscar.Name = "txbxBuscar";
             this.txbxBuscar.Size = new System.Drawing.Size(439, 28);
-            this.txbxBuscar.TabIndex = 1;
+            this.txbxBuscar.TabIndex = 0;
             this.txbxBuscar.TextChanged += new System.EventHandler(this.txbxBuscar_TextChanged);
             this.txbxBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbxBuscar_KeyDown);
             this.txbxBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbxBuscar_KeyPress);
@@ -220,7 +222,7 @@
             this.btnFiltroAvanzado.Location = new System.Drawing.Point(571, 5);
             this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
             this.btnFiltroAvanzado.Size = new System.Drawing.Size(210, 28);
-            this.btnFiltroAvanzado.TabIndex = 0;
+            this.btnFiltroAvanzado.TabIndex = 2;
             this.btnFiltroAvanzado.Text = "Búsqueda avanzada";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
             this.btnFiltroAvanzado.Click += new System.EventHandler(this.btnFiltroAvanzado_Click);
@@ -246,6 +248,7 @@
             this.btnMinimizarFormulario.Name = "btnMinimizarFormulario";
             this.btnMinimizarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnMinimizarFormulario.TabIndex = 4;
+            this.btnMinimizarFormulario.TabStop = false;
             this.btnMinimizarFormulario.Text = "-";
             this.btnMinimizarFormulario.UseVisualStyleBackColor = true;
             // 
@@ -256,6 +259,7 @@
             this.btnMaximizarFormulario.Name = "btnMaximizarFormulario";
             this.btnMaximizarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnMaximizarFormulario.TabIndex = 3;
+            this.btnMaximizarFormulario.TabStop = false;
             this.btnMaximizarFormulario.Text = "■";
             this.btnMaximizarFormulario.UseVisualStyleBackColor = true;
             // 
@@ -266,6 +270,7 @@
             this.btnCerrarFormulario.Name = "btnCerrarFormulario";
             this.btnCerrarFormulario.Size = new System.Drawing.Size(44, 36);
             this.btnCerrarFormulario.TabIndex = 2;
+            this.btnCerrarFormulario.TabStop = false;
             this.btnCerrarFormulario.Text = "X";
             this.btnCerrarFormulario.UseVisualStyleBackColor = true;
             this.btnCerrarFormulario.Click += new System.EventHandler(this.btnCerrarFormulario_Click);
@@ -277,6 +282,7 @@
             this.btnModificacionPendiente.Name = "btnModificacionPendiente";
             this.btnModificacionPendiente.Size = new System.Drawing.Size(192, 56);
             this.btnModificacionPendiente.TabIndex = 1;
+            this.btnModificacionPendiente.TabStop = false;
             this.btnModificacionPendiente.Text = "Modificación pendiente";
             this.btnModificacionPendiente.UseVisualStyleBackColor = true;
             this.btnModificacionPendiente.Click += new System.EventHandler(this.btnModificacionPendiente_Click);
@@ -288,6 +294,7 @@
             this.btnNuevoArticulo.Name = "btnNuevoArticulo";
             this.btnNuevoArticulo.Size = new System.Drawing.Size(192, 56);
             this.btnNuevoArticulo.TabIndex = 0;
+            this.btnNuevoArticulo.TabStop = false;
             this.btnNuevoArticulo.Text = "Nuevo artículo";
             this.btnNuevoArticulo.UseVisualStyleBackColor = true;
             this.btnNuevoArticulo.Click += new System.EventHandler(this.btnNuevoArticulo_Click);
@@ -359,6 +366,7 @@
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(778, 668);
             this.dgvArticulos.TabIndex = 0;
+            this.dgvArticulos.TabStop = false;
             this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
@@ -507,7 +515,7 @@
             // lbAvisoAgregarAA
             // 
             this.lbAvisoAgregarAA.AutoSize = true;
-            this.lbAvisoAgregarAA.BackColor = System.Drawing.Color.Transparent;
+            this.lbAvisoAgregarAA.BackColor = System.Drawing.Color.SaddleBrown;
             this.lbAvisoAgregarAA.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAvisoAgregarAA.ForeColor = System.Drawing.Color.Red;
             this.lbAvisoAgregarAA.Location = new System.Drawing.Point(46, 719);
@@ -545,7 +553,7 @@
             this.btnReiniciarAA.Location = new System.Drawing.Point(325, 9);
             this.btnReiniciarAA.Name = "btnReiniciarAA";
             this.btnReiniciarAA.Size = new System.Drawing.Size(195, 45);
-            this.btnReiniciarAA.TabIndex = 27;
+            this.btnReiniciarAA.TabIndex = 11;
             this.btnReiniciarAA.Text = "Reiniciar";
             this.btnReiniciarAA.UseVisualStyleBackColor = true;
             this.btnReiniciarAA.Click += new System.EventHandler(this.btnReiniciarAA_Click);
@@ -618,7 +626,7 @@
             this.comboxCategoriaAA.Location = new System.Drawing.Point(53, 578);
             this.comboxCategoriaAA.Name = "comboxCategoriaAA";
             this.comboxCategoriaAA.Size = new System.Drawing.Size(468, 25);
-            this.comboxCategoriaAA.TabIndex = 21;
+            this.comboxCategoriaAA.TabIndex = 7;
             this.comboxCategoriaAA.SelectedIndexChanged += new System.EventHandler(this.comboxCategoriaAA_SelectedIndexChanged);
             // 
             // comboxMarcaAA
@@ -629,7 +637,7 @@
             this.comboxMarcaAA.Location = new System.Drawing.Point(53, 527);
             this.comboxMarcaAA.Name = "comboxMarcaAA";
             this.comboxMarcaAA.Size = new System.Drawing.Size(467, 25);
-            this.comboxMarcaAA.TabIndex = 20;
+            this.comboxMarcaAA.TabIndex = 6;
             this.comboxMarcaAA.SelectedIndexChanged += new System.EventHandler(this.comboxMarcaAA_SelectedIndexChanged);
             // 
             // txbxPrecioAA
@@ -639,7 +647,7 @@
             this.txbxPrecioAA.MaxLength = 50;
             this.txbxPrecioAA.Name = "txbxPrecioAA";
             this.txbxPrecioAA.Size = new System.Drawing.Size(468, 23);
-            this.txbxPrecioAA.TabIndex = 19;
+            this.txbxPrecioAA.TabIndex = 8;
             this.txbxPrecioAA.TextChanged += new System.EventHandler(this.txbxPrecioAA_TextChanged);
             this.txbxPrecioAA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbxPrecioAA_KeyPress);
             // 
@@ -684,7 +692,7 @@
             this.txbxDescripcionAA.Multiline = true;
             this.txbxDescripcionAA.Name = "txbxDescripcionAA";
             this.txbxDescripcionAA.Size = new System.Drawing.Size(468, 96);
-            this.txbxDescripcionAA.TabIndex = 15;
+            this.txbxDescripcionAA.TabIndex = 5;
             this.txbxDescripcionAA.TextChanged += new System.EventHandler(this.txbxDescripcionAA_TextChanged);
             // 
             // lbDescripcionAA
@@ -705,7 +713,7 @@
             this.txbxNombreAA.MaxLength = 50;
             this.txbxNombreAA.Name = "txbxNombreAA";
             this.txbxNombreAA.Size = new System.Drawing.Size(467, 23);
-            this.txbxNombreAA.TabIndex = 13;
+            this.txbxNombreAA.TabIndex = 4;
             this.txbxNombreAA.TextChanged += new System.EventHandler(this.txbxNombreAA_TextChanged);
             // 
             // lbNombreAA
@@ -726,7 +734,7 @@
             this.txbxCodigoAA.MaxLength = 50;
             this.txbxCodigoAA.Name = "txbxCodigoAA";
             this.txbxCodigoAA.Size = new System.Drawing.Size(467, 23);
-            this.txbxCodigoAA.TabIndex = 11;
+            this.txbxCodigoAA.TabIndex = 3;
             this.txbxCodigoAA.TextChanged += new System.EventHandler(this.txbxCodigoAA_TextChanged);
             // 
             // lbCodigoAA
@@ -747,7 +755,7 @@
             this.txbxCargarImagenAA.MaxLength = 1000;
             this.txbxCargarImagenAA.Name = "txbxCargarImagenAA";
             this.txbxCargarImagenAA.Size = new System.Drawing.Size(470, 23);
-            this.txbxCargarImagenAA.TabIndex = 9;
+            this.txbxCargarImagenAA.TabIndex = 2;
             this.txbxCargarImagenAA.TextChanged += new System.EventHandler(this.txbxCargarImagenAA_TextChanged);
             this.txbxCargarImagenAA.Enter += new System.EventHandler(this.txbxCargarImagenAA_Enter);
             // 
@@ -757,7 +765,7 @@
             this.btnCargarImagenUrlAA.Location = new System.Drawing.Point(325, 220);
             this.btnCargarImagenUrlAA.Name = "btnCargarImagenUrlAA";
             this.btnCargarImagenUrlAA.Size = new System.Drawing.Size(195, 45);
-            this.btnCargarImagenUrlAA.TabIndex = 8;
+            this.btnCargarImagenUrlAA.TabIndex = 1;
             this.btnCargarImagenUrlAA.Text = "Imagen URL";
             this.btnCargarImagenUrlAA.UseVisualStyleBackColor = true;
             this.btnCargarImagenUrlAA.Click += new System.EventHandler(this.btnCargarImagenUrlAA_Click);
@@ -768,7 +776,7 @@
             this.btnCargarImagenLocalAA.Location = new System.Drawing.Point(325, 164);
             this.btnCargarImagenLocalAA.Name = "btnCargarImagenLocalAA";
             this.btnCargarImagenLocalAA.Size = new System.Drawing.Size(195, 45);
-            this.btnCargarImagenLocalAA.TabIndex = 7;
+            this.btnCargarImagenLocalAA.TabIndex = 0;
             this.btnCargarImagenLocalAA.Text = "Imagen local";
             this.btnCargarImagenLocalAA.UseVisualStyleBackColor = true;
             this.btnCargarImagenLocalAA.Click += new System.EventHandler(this.btnCargarImagenLocalAA_Click);
@@ -790,7 +798,7 @@
             this.btnCancelarAgregacion.Location = new System.Drawing.Point(352, 667);
             this.btnCancelarAgregacion.Name = "btnCancelarAgregacion";
             this.btnCancelarAgregacion.Size = new System.Drawing.Size(145, 41);
-            this.btnCancelarAgregacion.TabIndex = 5;
+            this.btnCancelarAgregacion.TabIndex = 10;
             this.btnCancelarAgregacion.Text = "CANCELAR";
             this.btnCancelarAgregacion.UseVisualStyleBackColor = true;
             this.btnCancelarAgregacion.Click += new System.EventHandler(this.btnCancelarAgregacion_Click);
@@ -802,7 +810,7 @@
             this.btnAgregarArticulo.Location = new System.Drawing.Point(79, 667);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(145, 41);
-            this.btnAgregarArticulo.TabIndex = 4;
+            this.btnAgregarArticulo.TabIndex = 9;
             this.btnAgregarArticulo.Text = "AGREGAR";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
@@ -899,7 +907,7 @@
             this.comboxCategoriaMA.Location = new System.Drawing.Point(58, 595);
             this.comboxCategoriaMA.Name = "comboxCategoriaMA";
             this.comboxCategoriaMA.Size = new System.Drawing.Size(468, 25);
-            this.comboxCategoriaMA.TabIndex = 45;
+            this.comboxCategoriaMA.TabIndex = 7;
             this.comboxCategoriaMA.SelectedIndexChanged += new System.EventHandler(this.comboxCategoriaMA_SelectedIndexChanged);
             // 
             // comboxMarcaMA
@@ -910,7 +918,7 @@
             this.comboxMarcaMA.Location = new System.Drawing.Point(58, 544);
             this.comboxMarcaMA.Name = "comboxMarcaMA";
             this.comboxMarcaMA.Size = new System.Drawing.Size(467, 25);
-            this.comboxMarcaMA.TabIndex = 44;
+            this.comboxMarcaMA.TabIndex = 6;
             this.comboxMarcaMA.SelectedIndexChanged += new System.EventHandler(this.comboxMarcaMA_SelectedIndexChanged);
             // 
             // txbxPrecioMA
@@ -920,7 +928,7 @@
             this.txbxPrecioMA.MaxLength = 50;
             this.txbxPrecioMA.Name = "txbxPrecioMA";
             this.txbxPrecioMA.Size = new System.Drawing.Size(468, 23);
-            this.txbxPrecioMA.TabIndex = 43;
+            this.txbxPrecioMA.TabIndex = 8;
             this.txbxPrecioMA.TextChanged += new System.EventHandler(this.txbxPrecioMA_TextChanged);
             this.txbxPrecioMA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbxPrecioMA_KeyPress);
             // 
@@ -965,7 +973,7 @@
             this.txbxDescripcionMA.Multiline = true;
             this.txbxDescripcionMA.Name = "txbxDescripcionMA";
             this.txbxDescripcionMA.Size = new System.Drawing.Size(468, 96);
-            this.txbxDescripcionMA.TabIndex = 39;
+            this.txbxDescripcionMA.TabIndex = 5;
             this.txbxDescripcionMA.TextChanged += new System.EventHandler(this.txbxDescripcionMA_TextChanged);
             // 
             // lbDescripcionMA
@@ -986,7 +994,7 @@
             this.txbxNombreMA.MaxLength = 50;
             this.txbxNombreMA.Name = "txbxNombreMA";
             this.txbxNombreMA.Size = new System.Drawing.Size(467, 23);
-            this.txbxNombreMA.TabIndex = 37;
+            this.txbxNombreMA.TabIndex = 4;
             this.txbxNombreMA.TextChanged += new System.EventHandler(this.txbxNombreMA_TextChanged);
             // 
             // lbNombreMA
@@ -1007,7 +1015,7 @@
             this.txbxCodigoMA.MaxLength = 50;
             this.txbxCodigoMA.Name = "txbxCodigoMA";
             this.txbxCodigoMA.Size = new System.Drawing.Size(467, 23);
-            this.txbxCodigoMA.TabIndex = 35;
+            this.txbxCodigoMA.TabIndex = 3;
             this.txbxCodigoMA.TextChanged += new System.EventHandler(this.txbxCodigoMA_TextChanged);
             // 
             // lbCodigoMA
@@ -1028,7 +1036,7 @@
             this.txbxImagenMA.MaxLength = 1000;
             this.txbxImagenMA.Name = "txbxImagenMA";
             this.txbxImagenMA.Size = new System.Drawing.Size(470, 23);
-            this.txbxImagenMA.TabIndex = 33;
+            this.txbxImagenMA.TabIndex = 2;
             this.txbxImagenMA.TextChanged += new System.EventHandler(this.txbxImagenMA_TextChanged);
             this.txbxImagenMA.Enter += new System.EventHandler(this.txbxImagenMA_Enter);
             // 
@@ -1049,7 +1057,7 @@
             this.btnReiniciarMA.Location = new System.Drawing.Point(331, 17);
             this.btnReiniciarMA.Name = "btnReiniciarMA";
             this.btnReiniciarMA.Size = new System.Drawing.Size(194, 45);
-            this.btnReiniciarMA.TabIndex = 31;
+            this.btnReiniciarMA.TabIndex = 11;
             this.btnReiniciarMA.Text = "Reiniciar";
             this.btnReiniciarMA.UseVisualStyleBackColor = true;
             this.btnReiniciarMA.Click += new System.EventHandler(this.btnReiniciarMA_Click);
@@ -1060,7 +1068,7 @@
             this.btnImagenUrlMA.Location = new System.Drawing.Point(331, 228);
             this.btnImagenUrlMA.Name = "btnImagenUrlMA";
             this.btnImagenUrlMA.Size = new System.Drawing.Size(195, 45);
-            this.btnImagenUrlMA.TabIndex = 30;
+            this.btnImagenUrlMA.TabIndex = 1;
             this.btnImagenUrlMA.Text = "Imagen URL";
             this.btnImagenUrlMA.UseVisualStyleBackColor = true;
             this.btnImagenUrlMA.Click += new System.EventHandler(this.btnImagenUrlMA_Click);
@@ -1071,7 +1079,7 @@
             this.btnImagenLocalMA.Location = new System.Drawing.Point(331, 172);
             this.btnImagenLocalMA.Name = "btnImagenLocalMA";
             this.btnImagenLocalMA.Size = new System.Drawing.Size(195, 45);
-            this.btnImagenLocalMA.TabIndex = 29;
+            this.btnImagenLocalMA.TabIndex = 0;
             this.btnImagenLocalMA.Text = "Imagen local";
             this.btnImagenLocalMA.UseVisualStyleBackColor = true;
             this.btnImagenLocalMA.Click += new System.EventHandler(this.btnImagenLocalMA_Click);
@@ -1090,10 +1098,10 @@
             // 
             this.btnCancelarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelarModificacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarModificacion.Location = new System.Drawing.Point(354, 670);
+            this.btnCancelarModificacion.Location = new System.Drawing.Point(354, 678);
             this.btnCancelarModificacion.Name = "btnCancelarModificacion";
             this.btnCancelarModificacion.Size = new System.Drawing.Size(145, 41);
-            this.btnCancelarModificacion.TabIndex = 4;
+            this.btnCancelarModificacion.TabIndex = 10;
             this.btnCancelarModificacion.Text = "CANCELAR";
             this.btnCancelarModificacion.UseVisualStyleBackColor = true;
             this.btnCancelarModificacion.Click += new System.EventHandler(this.btnCancelarModificacion_Click);
@@ -1102,10 +1110,10 @@
             // 
             this.btnConfirmarModificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfirmarModificacion.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmarModificacion.Location = new System.Drawing.Point(90, 670);
+            this.btnConfirmarModificacion.Location = new System.Drawing.Point(90, 678);
             this.btnConfirmarModificacion.Name = "btnConfirmarModificacion";
             this.btnConfirmarModificacion.Size = new System.Drawing.Size(145, 41);
-            this.btnConfirmarModificacion.TabIndex = 3;
+            this.btnConfirmarModificacion.TabIndex = 9;
             this.btnConfirmarModificacion.Text = "CONFIRMAR";
             this.btnConfirmarModificacion.UseVisualStyleBackColor = true;
             this.btnConfirmarModificacion.Click += new System.EventHandler(this.btnConfirmarModificacion_Click);
@@ -1118,7 +1126,7 @@
             this.txbxPrecioDA.Name = "txbxPrecioDA";
             this.txbxPrecioDA.ReadOnly = true;
             this.txbxPrecioDA.Size = new System.Drawing.Size(377, 23);
-            this.txbxPrecioDA.TabIndex = 19;
+            this.txbxPrecioDA.TabIndex = 5;
             // 
             // txbxCategoriaDA
             // 
@@ -1128,7 +1136,7 @@
             this.txbxCategoriaDA.Name = "txbxCategoriaDA";
             this.txbxCategoriaDA.ReadOnly = true;
             this.txbxCategoriaDA.Size = new System.Drawing.Size(377, 23);
-            this.txbxCategoriaDA.TabIndex = 18;
+            this.txbxCategoriaDA.TabIndex = 4;
             // 
             // txbxMarcaDA
             // 
@@ -1138,7 +1146,7 @@
             this.txbxMarcaDA.Name = "txbxMarcaDA";
             this.txbxMarcaDA.ReadOnly = true;
             this.txbxMarcaDA.Size = new System.Drawing.Size(377, 23);
-            this.txbxMarcaDA.TabIndex = 17;
+            this.txbxMarcaDA.TabIndex = 3;
             // 
             // txbxDescripcionDA
             // 
@@ -1150,7 +1158,7 @@
             this.txbxDescripcionDA.Name = "txbxDescripcionDA";
             this.txbxDescripcionDA.ReadOnly = true;
             this.txbxDescripcionDA.Size = new System.Drawing.Size(377, 92);
-            this.txbxDescripcionDA.TabIndex = 16;
+            this.txbxDescripcionDA.TabIndex = 2;
             // 
             // txbxNombreDA
             // 
@@ -1161,7 +1169,7 @@
             this.txbxNombreDA.Name = "txbxNombreDA";
             this.txbxNombreDA.ReadOnly = true;
             this.txbxNombreDA.Size = new System.Drawing.Size(377, 23);
-            this.txbxNombreDA.TabIndex = 15;
+            this.txbxNombreDA.TabIndex = 1;
             // 
             // txbxCodigoDA
             // 
@@ -1172,7 +1180,7 @@
             this.txbxCodigoDA.Name = "txbxCodigoDA";
             this.txbxCodigoDA.ReadOnly = true;
             this.txbxCodigoDA.Size = new System.Drawing.Size(377, 23);
-            this.txbxCodigoDA.TabIndex = 14;
+            this.txbxCodigoDA.TabIndex = 0;
             // 
             // lbPrecioDA
             // 
@@ -1241,7 +1249,7 @@
             this.btnEliminarArticuloDA.Location = new System.Drawing.Point(325, 679);
             this.btnEliminarArticuloDA.Name = "btnEliminarArticuloDA";
             this.btnEliminarArticuloDA.Size = new System.Drawing.Size(145, 41);
-            this.btnEliminarArticuloDA.TabIndex = 3;
+            this.btnEliminarArticuloDA.TabIndex = 7;
             this.btnEliminarArticuloDA.Text = "ELIMINAR";
             this.btnEliminarArticuloDA.UseVisualStyleBackColor = true;
             this.btnEliminarArticuloDA.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
@@ -1253,7 +1261,7 @@
             this.btnModificarArticuloDA.Location = new System.Drawing.Point(93, 679);
             this.btnModificarArticuloDA.Name = "btnModificarArticuloDA";
             this.btnModificarArticuloDA.Size = new System.Drawing.Size(145, 41);
-            this.btnModificarArticuloDA.TabIndex = 2;
+            this.btnModificarArticuloDA.TabIndex = 6;
             this.btnModificarArticuloDA.Text = "MODIFICAR";
             this.btnModificarArticuloDA.UseVisualStyleBackColor = true;
             this.btnModificarArticuloDA.Click += new System.EventHandler(this.btnModificarArticulo_Click);
@@ -1268,6 +1276,12 @@
             this.pboxImagenDA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pboxImagenDA.TabIndex = 7;
             this.pboxImagenDA.TabStop = false;
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 20000;
+            this.toolTip.InitialDelay = 200;
+            this.toolTip.ReshowDelay = 100;
             // 
             // frmPrincipal
             // 
@@ -1399,6 +1413,7 @@
         private System.Windows.Forms.Label lbResultadosBusqueda;
         private System.Windows.Forms.ComboBox comboxCriterioBusqueda;
         private System.Windows.Forms.ComboBox comboxCampoBusqueda;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

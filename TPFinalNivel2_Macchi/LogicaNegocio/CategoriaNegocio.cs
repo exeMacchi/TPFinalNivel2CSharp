@@ -10,6 +10,10 @@ namespace LogicaNegocio
 {
     public class CategoriaNegocio
     {
+        /// <summary>
+        /// Leer y devolver de la base de datos los registros de la entidad "CATEGORIAS".
+        /// </summary>
+        /// <returns>Lista con objetos de tipo clase Categoria</returns>
         public List<Categoria> CargarCategorias()
         {
             List<Categoria> categorias = new List<Categoria>();
