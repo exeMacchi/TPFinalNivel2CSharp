@@ -203,6 +203,8 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.MouseLeave += new System.EventHandler(this.btnBuscar_MouseLeave);
+            this.btnBuscar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnBuscar_MouseMove);
             // 
             // txbxBuscar
             // 
@@ -226,6 +228,8 @@
             this.btnFiltroAvanzado.Text = "Búsqueda avanzada";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
             this.btnFiltroAvanzado.Click += new System.EventHandler(this.btnFiltroAvanzado_Click);
+            this.btnFiltroAvanzado.MouseLeave += new System.EventHandler(this.btnFiltroAvanzado_MouseLeave);
+            this.btnFiltroAvanzado.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnFiltroAvanzado_MouseMove);
             // 
             // panelMetodosVentana
             // 
@@ -286,6 +290,8 @@
             this.btnModificacionPendiente.Text = "Modificación pendiente";
             this.btnModificacionPendiente.UseVisualStyleBackColor = true;
             this.btnModificacionPendiente.Click += new System.EventHandler(this.btnModificacionPendiente_Click);
+            this.btnModificacionPendiente.MouseLeave += new System.EventHandler(this.btnModificacionPendiente_MouseLeave);
+            this.btnModificacionPendiente.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnModificacionPendiente_MouseMove);
             // 
             // btnNuevoArticulo
             // 
@@ -298,6 +304,8 @@
             this.btnNuevoArticulo.Text = "Nuevo artículo";
             this.btnNuevoArticulo.UseVisualStyleBackColor = true;
             this.btnNuevoArticulo.Click += new System.EventHandler(this.btnNuevoArticulo_Click);
+            this.btnNuevoArticulo.MouseLeave += new System.EventHandler(this.btnNuevoArticulo_MouseLeave);
+            this.btnNuevoArticulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnNuevoArticulo_MouseMove);
             // 
             // panelPrincipal
             // 
@@ -557,6 +565,8 @@
             this.btnReiniciarAA.Text = "Reiniciar";
             this.btnReiniciarAA.UseVisualStyleBackColor = true;
             this.btnReiniciarAA.Click += new System.EventHandler(this.btnReiniciarAA_Click);
+            this.btnReiniciarAA.MouseLeave += new System.EventHandler(this.btnReiniciarAA_MouseLeave);
+            this.btnReiniciarAA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnReiniciarAA_MouseMove);
             // 
             // lbImpresindibleAA5
             // 
@@ -769,6 +779,8 @@
             this.btnCargarImagenUrlAA.Text = "Imagen URL";
             this.btnCargarImagenUrlAA.UseVisualStyleBackColor = true;
             this.btnCargarImagenUrlAA.Click += new System.EventHandler(this.btnCargarImagenUrlAA_Click);
+            this.btnCargarImagenUrlAA.MouseLeave += new System.EventHandler(this.btnCargarImagenUrlAA_MouseLeave);
+            this.btnCargarImagenUrlAA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCargarImagenUrlAA_MouseMove);
             // 
             // btnCargarImagenLocalAA
             // 
@@ -780,6 +792,8 @@
             this.btnCargarImagenLocalAA.Text = "Imagen local";
             this.btnCargarImagenLocalAA.UseVisualStyleBackColor = true;
             this.btnCargarImagenLocalAA.Click += new System.EventHandler(this.btnCargarImagenLocalAA_Click);
+            this.btnCargarImagenLocalAA.MouseLeave += new System.EventHandler(this.btnCargarImagenLocalAA_MouseLeave);
+            this.btnCargarImagenLocalAA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCargarImagenLocalAA_MouseMove);
             // 
             // pboxImagenAA
             // 
@@ -802,6 +816,8 @@
             this.btnCancelarAgregacion.Text = "CANCELAR";
             this.btnCancelarAgregacion.UseVisualStyleBackColor = true;
             this.btnCancelarAgregacion.Click += new System.EventHandler(this.btnCancelarAgregacion_Click);
+            this.btnCancelarAgregacion.MouseLeave += new System.EventHandler(this.btnCancelarAgregacion_MouseLeave);
+            this.btnCancelarAgregacion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancelarAgregacion_MouseMove);
             // 
             // btnAgregarArticulo
             // 
@@ -814,6 +830,8 @@
             this.btnAgregarArticulo.Text = "AGREGAR";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
+            this.btnAgregarArticulo.MouseLeave += new System.EventHandler(this.btnAgregarArticulo_MouseLeave);
+            this.btnAgregarArticulo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAgregarArticulo_MouseMove);
             // 
             // lbAvisoModificarMA
             // 
@@ -1061,6 +1079,8 @@
             this.btnReiniciarMA.Text = "Reiniciar";
             this.btnReiniciarMA.UseVisualStyleBackColor = true;
             this.btnReiniciarMA.Click += new System.EventHandler(this.btnReiniciarMA_Click);
+            this.btnReiniciarMA.MouseLeave += new System.EventHandler(this.btnReiniciarMA_MouseLeave);
+            this.btnReiniciarMA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnReiniciarMA_MouseMove);
             // 
             // btnImagenUrlMA
             // 
@@ -1072,6 +1092,8 @@
             this.btnImagenUrlMA.Text = "Imagen URL";
             this.btnImagenUrlMA.UseVisualStyleBackColor = true;
             this.btnImagenUrlMA.Click += new System.EventHandler(this.btnImagenUrlMA_Click);
+            this.btnImagenUrlMA.MouseLeave += new System.EventHandler(this.btnImagenUrlMA_MouseLeave);
+            this.btnImagenUrlMA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnImagenUrlMA_MouseMove);
             // 
             // btnImagenLocalMA
             // 
@@ -1083,6 +1105,8 @@
             this.btnImagenLocalMA.Text = "Imagen local";
             this.btnImagenLocalMA.UseVisualStyleBackColor = true;
             this.btnImagenLocalMA.Click += new System.EventHandler(this.btnImagenLocalMA_Click);
+            this.btnImagenLocalMA.MouseLeave += new System.EventHandler(this.btnImagenLocalMA_MouseLeave);
+            this.btnImagenLocalMA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnImagenLocalMA_MouseMove);
             // 
             // pboxImagenMA
             // 
@@ -1105,6 +1129,8 @@
             this.btnCancelarModificacion.Text = "CANCELAR";
             this.btnCancelarModificacion.UseVisualStyleBackColor = true;
             this.btnCancelarModificacion.Click += new System.EventHandler(this.btnCancelarModificacion_Click);
+            this.btnCancelarModificacion.MouseLeave += new System.EventHandler(this.btnCancelarModificacion_MouseLeave);
+            this.btnCancelarModificacion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancelarModificacion_MouseMove);
             // 
             // btnConfirmarModificacion
             // 
@@ -1117,6 +1143,8 @@
             this.btnConfirmarModificacion.Text = "CONFIRMAR";
             this.btnConfirmarModificacion.UseVisualStyleBackColor = true;
             this.btnConfirmarModificacion.Click += new System.EventHandler(this.btnConfirmarModificacion_Click);
+            this.btnConfirmarModificacion.MouseLeave += new System.EventHandler(this.btnConfirmarModificacion_MouseLeave);
+            this.btnConfirmarModificacion.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnConfirmarModificacion_MouseMove);
             // 
             // txbxPrecioDA
             // 
@@ -1253,6 +1281,8 @@
             this.btnEliminarArticuloDA.Text = "ELIMINAR";
             this.btnEliminarArticuloDA.UseVisualStyleBackColor = true;
             this.btnEliminarArticuloDA.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
+            this.btnEliminarArticuloDA.MouseLeave += new System.EventHandler(this.btnEliminarArticuloDA_MouseLeave);
+            this.btnEliminarArticuloDA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnEliminarArticuloDA_MouseMove);
             // 
             // btnModificarArticuloDA
             // 
@@ -1265,6 +1295,8 @@
             this.btnModificarArticuloDA.Text = "MODIFICAR";
             this.btnModificarArticuloDA.UseVisualStyleBackColor = true;
             this.btnModificarArticuloDA.Click += new System.EventHandler(this.btnModificarArticulo_Click);
+            this.btnModificarArticuloDA.MouseLeave += new System.EventHandler(this.btnModificarArticuloDA_MouseLeave);
+            this.btnModificarArticuloDA.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnModificarArticuloDA_MouseMove);
             // 
             // pboxImagenDA
             // 

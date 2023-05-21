@@ -774,5 +774,174 @@ namespace InterfazUsuario
                     return $"{campo} = {filtro}";
             }
         }
+
+
+        // ================================================================== //
+        // ------------------------------- Otros ---------------------------- //
+        // ================================================================== //
+
+        // ----------------- Cambio de cursores en botones ------------------ //
+        // Plantilla "Detalles artículos"
+        private void btnModificarArticuloDA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnModificarArticuloDA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnEliminarArticuloDA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnEliminarArticuloDA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+
+        // Plantilla "Agregar artículo"
+        private void btnNuevoArticulo_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnNuevoArticulo_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnAgregarArticulo_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (btnAgregarArticulo.Enabled)
+            {
+                Cursor = Cursors.Hand;
+            }
+        }
+        private void btnAgregarArticulo_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnCancelarAgregacion_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (btnCancelarAgregacion.Enabled)
+            {
+                Cursor = Cursors.Hand;
+            }
+        }
+        private void btnCancelarAgregacion_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnReiniciarAA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnReiniciarAA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnCargarImagenLocalAA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnCargarImagenLocalAA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnCargarImagenUrlAA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnCargarImagenUrlAA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+
+        // Plantilla "Modificar artículo"
+        private void btnModificacionPendiente_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnModificacionPendiente_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnConfirmarModificacion_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (btnConfirmarModificacion.Enabled)
+            {
+                Cursor = Cursors.Hand;
+            }
+        }
+        private void btnConfirmarModificacion_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnCancelarModificacion_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnCancelarModificacion_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnReiniciarMA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnReiniciarMA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnImagenLocalMA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnImagenLocalMA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnImagenUrlMA_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnImagenUrlMA_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+
+        // Plantilla "Búsqueda de artículos"
+        private void btnBuscar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (btnBuscar.Enabled)
+            {
+                Cursor = Cursors.Hand;
+            }
+        }
+        private void btnBuscar_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        private void btnFiltroAvanzado_MouseMove(object sender, MouseEventArgs e)
+        {
+            Cursor = Cursors.Hand;
+        }
+        private void btnFiltroAvanzado_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
     }
 }
