@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace InterfazUsuario
 
             CargarComboBoxes();
 
-            toolTip.SetToolTip(lbBusqueda, "Búsqueda predeterminada: filtro según el nombre del artículo.\n" +
+            toolTip.SetToolTip(lbBusqueda, "Búsqueda básica: filtro según el nombre del artículo.\n" +
                                            "Búsqueda avanzada: filtro según campo y criterio.");
         }
 
@@ -251,7 +252,7 @@ namespace InterfazUsuario
             btnNuevoArticulo.Text = "Nuevo artículo";
             pboxImagenAA.Image = Properties.Resources.placeholder;
 
-            btnCargarImagenUrlAA.Text = "Imagen URL";
+            btnCargarImagenUrlAA.Text = "IMAGEN URL";
             imagenLocal = false;
             lbAvisoImagenAA.Visible = false;
             txbxCargarImagenAA.Visible = false;
@@ -375,12 +376,14 @@ namespace InterfazUsuario
                 comboxMarcaAA.SelectedIndex != -1 && comboxCategoriaAA.SelectedIndex != -1 &&
                 txbxPrecioAA.Text != "")
             {
+                btnAgregarArticulo.BackColor = Color.FromArgb(173, 149, 116);
                 btnAgregarArticulo.Enabled = true;
                 lbImpresindibleAA6.Visible = false;
                 lbAvisoAgregarAA.Visible = false;
             }
             else
             {
+                btnAgregarArticulo.BackColor = Color.FromArgb(85, 98, 115); 
                 btnAgregarArticulo.Enabled = false;
                 lbImpresindibleAA6.Visible = true;
                 lbAvisoAgregarAA.Visible = true;
@@ -469,12 +472,12 @@ namespace InterfazUsuario
                 if (artSeleccionado.Imagen.Contains("https://") || artSeleccionado.Imagen.Contains("http://"))
                 {
                     txbxImagenMA.Visible = true;
-                    btnImagenUrlMA.Text = "Borrar URL";
+                    btnImagenUrlMA.Text = "BORRAR URL";
                 }
                 else
                 {
                     txbxImagenMA.Visible = false;
-                    btnImagenUrlMA.Text = "Imagen URL";
+                    btnImagenUrlMA.Text = "IMAGEN URL";
                 }
                 txbxImagenMA.Text = artSeleccionado.Imagen;
             }
@@ -538,7 +541,7 @@ namespace InterfazUsuario
         private void ReiniciarPlantillaModificacion()
         {
             pboxImagenMA.Image = Properties.Resources.placeholder;
-            btnImagenUrlMA.Text = "Imagen URL";
+            btnImagenUrlMA.Text = "IMAGEN URL";
             imagenLocal = false;
             lbAvisoImagenMA.Visible = false;
             txbxImagenMA.Visible = false;
@@ -589,12 +592,14 @@ namespace InterfazUsuario
                 comboxMarcaMA.SelectedIndex != -1 && comboxCategoriaMA.SelectedIndex != -1 &&
                 txbxPrecioMA.Text != "")
             {
+                btnConfirmarModificacion.BackColor = Color.FromArgb(173, 149, 116);
                 btnConfirmarModificacion.Enabled = true;
                 lbImpresindibleMA6.Visible = false;
                 lbAvisoModificarMA.Visible = false;
             }
             else
             {
+                btnConfirmarModificacion.BackColor = Color.FromArgb(85, 98, 115);
                 btnConfirmarModificacion.Enabled = false;
                 lbImpresindibleMA6.Visible = true;
                 lbAvisoModificarMA.Visible = true;
@@ -633,7 +638,7 @@ namespace InterfazUsuario
         /// Búsqueda de artículos en la lista <see cref="articulos"/> según un filtro 
         /// basado en el nombre de estos.
         /// </summary>
-        private void BusquedaPredeterminada()
+        private void BusquedaBasica()
         {
             string filtro = txbxBuscar.Text;
 
@@ -776,172 +781,5 @@ namespace InterfazUsuario
         }
 
 
-        // ================================================================== //
-        // ------------------------------- Otros ---------------------------- //
-        // ================================================================== //
-
-        // ----------------- Cambio de cursores en botones ------------------ //
-        // Plantilla "Detalles artículos"
-        private void btnModificarArticuloDA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnModificarArticuloDA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnEliminarArticuloDA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnEliminarArticuloDA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-
-        // Plantilla "Agregar artículo"
-        private void btnNuevoArticulo_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnNuevoArticulo_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnAgregarArticulo_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (btnAgregarArticulo.Enabled)
-            {
-                Cursor = Cursors.Hand;
-            }
-        }
-        private void btnAgregarArticulo_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnCancelarAgregacion_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (btnCancelarAgregacion.Enabled)
-            {
-                Cursor = Cursors.Hand;
-            }
-        }
-        private void btnCancelarAgregacion_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnReiniciarAA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnReiniciarAA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnCargarImagenLocalAA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnCargarImagenLocalAA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnCargarImagenUrlAA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnCargarImagenUrlAA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-
-        // Plantilla "Modificar artículo"
-        private void btnModificacionPendiente_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnModificacionPendiente_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnConfirmarModificacion_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (btnConfirmarModificacion.Enabled)
-            {
-                Cursor = Cursors.Hand;
-            }
-        }
-        private void btnConfirmarModificacion_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnCancelarModificacion_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnCancelarModificacion_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnReiniciarMA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnReiniciarMA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnImagenLocalMA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnImagenLocalMA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnImagenUrlMA_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnImagenUrlMA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-
-        // Plantilla "Búsqueda de artículos"
-        private void btnBuscar_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (btnBuscar.Enabled)
-            {
-                Cursor = Cursors.Hand;
-            }
-        }
-        private void btnBuscar_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void btnFiltroAvanzado_MouseMove(object sender, MouseEventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-        private void btnFiltroAvanzado_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
     }
 }

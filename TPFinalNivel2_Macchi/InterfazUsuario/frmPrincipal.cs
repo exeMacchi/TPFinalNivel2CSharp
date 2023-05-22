@@ -63,8 +63,5 @@ namespace InterfazUsuario
             ReiniciarPlantillaNuevoArticulo();
             ReiniciarPlantillaModificacion();
         }
-
-
-
     }
 }
