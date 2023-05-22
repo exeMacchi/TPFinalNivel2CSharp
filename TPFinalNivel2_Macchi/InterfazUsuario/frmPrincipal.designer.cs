@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle121 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle122 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle123 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.lbResultadosBusqueda = new System.Windows.Forms.Label();
@@ -268,7 +268,7 @@
             this.btnModificacionPendiente.Location = new System.Drawing.Point(232, 4);
             this.btnModificacionPendiente.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificacionPendiente.Name = "btnModificacionPendiente";
-            this.btnModificacionPendiente.Size = new System.Drawing.Size(209, 46);
+            this.btnModificacionPendiente.Size = new System.Drawing.Size(209, 50);
             this.btnModificacionPendiente.TabIndex = 1;
             this.btnModificacionPendiente.TabStop = false;
             this.btnModificacionPendiente.Text = "Modificación pendiente";
@@ -286,7 +286,7 @@
             this.btnNuevoArticulo.Location = new System.Drawing.Point(1, 4);
             this.btnNuevoArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoArticulo.Name = "btnNuevoArticulo";
-            this.btnNuevoArticulo.Size = new System.Drawing.Size(227, 46);
+            this.btnNuevoArticulo.Size = new System.Drawing.Size(227, 50);
             this.btnNuevoArticulo.TabIndex = 0;
             this.btnNuevoArticulo.TabStop = false;
             this.btnNuevoArticulo.Text = "Nuevo artículo";
@@ -333,39 +333,50 @@
             // 
             // dgvArticulos
             // 
-            this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle121.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle121.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle121.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle121.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle121.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle121.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle121.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle121;
+            this.dgvArticulos.AllowUserToResizeColumns = false;
+            this.dgvArticulos.AllowUserToResizeRows = false;
+            this.dgvArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
+            this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.dgvArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvArticulos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(9, 4);
+            this.dgvArticulos.EnableHeadersVisualStyles = false;
+            this.dgvArticulos.Location = new System.Drawing.Point(0, 0);
             this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle122.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle122.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle122.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle122.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle122.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle122.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle122.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle122;
-            this.dgvArticulos.RowHeadersWidth = 51;
-            dataGridViewCellStyle123.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle123;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgvArticulos.RowHeadersVisible = false;
+            this.dgvArticulos.RowHeadersWidth = 100;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(98)))), ((int)(((byte)(115)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(149)))), ((int)(((byte)(116)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(762, 669);
+            this.dgvArticulos.Size = new System.Drawing.Size(775, 678);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.TabStop = false;
             this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
@@ -377,7 +388,7 @@
             this.lbDataGridViewVacio.AutoSize = true;
             this.lbDataGridViewVacio.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDataGridViewVacio.ForeColor = System.Drawing.Color.White;
-            this.lbDataGridViewVacio.Location = new System.Drawing.Point(116, 203);
+            this.lbDataGridViewVacio.Location = new System.Drawing.Point(102, 288);
             this.lbDataGridViewVacio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDataGridViewVacio.Name = "lbDataGridViewVacio";
             this.lbDataGridViewVacio.Size = new System.Drawing.Size(553, 37);
@@ -404,7 +415,7 @@
             this.comboxCriterioBusqueda.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboxCriterioBusqueda.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.comboxCriterioBusqueda.FormattingEnabled = true;
-            this.comboxCriterioBusqueda.Location = new System.Drawing.Point(389, 10);
+            this.comboxCriterioBusqueda.Location = new System.Drawing.Point(394, 10);
             this.comboxCriterioBusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.comboxCriterioBusqueda.Name = "comboxCriterioBusqueda";
             this.comboxCriterioBusqueda.Size = new System.Drawing.Size(377, 27);
@@ -453,7 +464,7 @@
             // 
             // panelModificarArticulo
             // 
-            this.panelModificarArticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(153)))), ((int)(((byte)(166)))));
+            this.panelModificarArticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
             this.panelModificarArticulo.Controls.Add(this.panelAgregarArticulo);
             this.panelModificarArticulo.Controls.Add(this.lbAvisoModificarMA);
             this.panelModificarArticulo.Controls.Add(this.lbImpresindibleMA6);
@@ -491,7 +502,7 @@
             // 
             // panelAgregarArticulo
             // 
-            this.panelAgregarArticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(153)))), ((int)(((byte)(166)))));
+            this.panelAgregarArticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
             this.panelAgregarArticulo.Controls.Add(this.lbAvisoAgregarAA);
             this.panelAgregarArticulo.Controls.Add(this.lbImpresindibleAA6);
             this.panelAgregarArticulo.Controls.Add(this.lbAvisoImagenAA);
@@ -528,11 +539,12 @@
             // 
             // lbAvisoAgregarAA
             // 
+            this.lbAvisoAgregarAA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbAvisoAgregarAA.AutoSize = true;
             this.lbAvisoAgregarAA.BackColor = System.Drawing.Color.Transparent;
             this.lbAvisoAgregarAA.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAvisoAgregarAA.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbAvisoAgregarAA.Location = new System.Drawing.Point(29, 700);
+            this.lbAvisoAgregarAA.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbAvisoAgregarAA.Location = new System.Drawing.Point(30, 702);
             this.lbAvisoAgregarAA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAvisoAgregarAA.Name = "lbAvisoAgregarAA";
             this.lbAvisoAgregarAA.Size = new System.Drawing.Size(197, 20);
@@ -541,11 +553,12 @@
             // 
             // lbImpresindibleAA6
             // 
+            this.lbImpresindibleAA6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbImpresindibleAA6.AutoSize = true;
             this.lbImpresindibleAA6.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA6.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleAA6.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbImpresindibleAA6.Location = new System.Drawing.Point(14, 702);
+            this.lbImpresindibleAA6.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbImpresindibleAA6.Location = new System.Drawing.Point(15, 704);
             this.lbImpresindibleAA6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleAA6.Name = "lbImpresindibleAA6";
             this.lbImpresindibleAA6.Size = new System.Drawing.Size(22, 25);
@@ -556,7 +569,7 @@
             // 
             this.lbAvisoImagenAA.AutoSize = true;
             this.lbAvisoImagenAA.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAvisoImagenAA.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbAvisoImagenAA.ForeColor = System.Drawing.Color.IndianRed;
             this.lbAvisoImagenAA.Location = new System.Drawing.Point(233, 105);
             this.lbAvisoImagenAA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAvisoImagenAA.Name = "lbAvisoImagenAA";
@@ -586,8 +599,8 @@
             this.lbImpresindibleAA5.AutoSize = true;
             this.lbImpresindibleAA5.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA5.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleAA5.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbImpresindibleAA5.Location = new System.Drawing.Point(12, 626);
+            this.lbImpresindibleAA5.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbImpresindibleAA5.Location = new System.Drawing.Point(11, 626);
             this.lbImpresindibleAA5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleAA5.Name = "lbImpresindibleAA5";
             this.lbImpresindibleAA5.Size = new System.Drawing.Size(22, 25);
@@ -599,8 +612,8 @@
             this.lbImpresindibleAA4.AutoSize = true;
             this.lbImpresindibleAA4.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA4.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleAA4.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbImpresindibleAA4.Location = new System.Drawing.Point(12, 574);
+            this.lbImpresindibleAA4.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbImpresindibleAA4.Location = new System.Drawing.Point(11, 574);
             this.lbImpresindibleAA4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleAA4.Name = "lbImpresindibleAA4";
             this.lbImpresindibleAA4.Size = new System.Drawing.Size(22, 25);
@@ -612,8 +625,8 @@
             this.lbImpresindibleAA3.AutoSize = true;
             this.lbImpresindibleAA3.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA3.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleAA3.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbImpresindibleAA3.Location = new System.Drawing.Point(12, 519);
+            this.lbImpresindibleAA3.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbImpresindibleAA3.Location = new System.Drawing.Point(11, 519);
             this.lbImpresindibleAA3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleAA3.Name = "lbImpresindibleAA3";
             this.lbImpresindibleAA3.Size = new System.Drawing.Size(22, 25);
@@ -625,8 +638,8 @@
             this.lbImpresindibleAA2.AutoSize = true;
             this.lbImpresindibleAA2.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleAA2.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbImpresindibleAA2.Location = new System.Drawing.Point(12, 338);
+            this.lbImpresindibleAA2.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbImpresindibleAA2.Location = new System.Drawing.Point(11, 338);
             this.lbImpresindibleAA2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleAA2.Name = "lbImpresindibleAA2";
             this.lbImpresindibleAA2.Size = new System.Drawing.Size(22, 25);
@@ -638,8 +651,8 @@
             this.lbImpresindibleAA1.AutoSize = true;
             this.lbImpresindibleAA1.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleAA1.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbImpresindibleAA1.Location = new System.Drawing.Point(12, 285);
+            this.lbImpresindibleAA1.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbImpresindibleAA1.Location = new System.Drawing.Point(11, 285);
             this.lbImpresindibleAA1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleAA1.Name = "lbImpresindibleAA1";
             this.lbImpresindibleAA1.Size = new System.Drawing.Size(22, 25);
@@ -873,7 +886,7 @@
             this.btnCancelarAgregacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarAgregacion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarAgregacion.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCancelarAgregacion.Location = new System.Drawing.Point(237, 659);
+            this.btnCancelarAgregacion.Location = new System.Drawing.Point(239, 661);
             this.btnCancelarAgregacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelarAgregacion.Name = "btnCancelarAgregacion";
             this.btnCancelarAgregacion.Size = new System.Drawing.Size(182, 39);
@@ -891,7 +904,7 @@
             this.btnAgregarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarArticulo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarArticulo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(34, 659);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(36, 661);
             this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(181, 39);
@@ -904,11 +917,12 @@
             // 
             // lbAvisoModificarMA
             // 
+            this.lbAvisoModificarMA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbAvisoModificarMA.AutoSize = true;
             this.lbAvisoModificarMA.BackColor = System.Drawing.Color.Transparent;
             this.lbAvisoModificarMA.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAvisoModificarMA.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbAvisoModificarMA.Location = new System.Drawing.Point(28, 700);
+            this.lbAvisoModificarMA.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbAvisoModificarMA.Location = new System.Drawing.Point(28, 702);
             this.lbAvisoModificarMA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAvisoModificarMA.Name = "lbAvisoModificarMA";
             this.lbAvisoModificarMA.Size = new System.Drawing.Size(197, 20);
@@ -917,11 +931,12 @@
             // 
             // lbImpresindibleMA6
             // 
+            this.lbImpresindibleMA6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbImpresindibleMA6.AutoSize = true;
             this.lbImpresindibleMA6.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA6.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleMA6.ForeColor = System.Drawing.Color.DarkRed;
-            this.lbImpresindibleMA6.Location = new System.Drawing.Point(12, 701);
+            this.lbImpresindibleMA6.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbImpresindibleMA6.Location = new System.Drawing.Point(12, 703);
             this.lbImpresindibleMA6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA6.Name = "lbImpresindibleMA6";
             this.lbImpresindibleMA6.Size = new System.Drawing.Size(22, 25);
@@ -933,7 +948,7 @@
             this.lbImpresindibleMA5.AutoSize = true;
             this.lbImpresindibleMA5.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA5.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleMA5.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbImpresindibleMA5.ForeColor = System.Drawing.Color.IndianRed;
             this.lbImpresindibleMA5.Location = new System.Drawing.Point(12, 627);
             this.lbImpresindibleMA5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA5.Name = "lbImpresindibleMA5";
@@ -946,7 +961,7 @@
             this.lbImpresindibleMA4.AutoSize = true;
             this.lbImpresindibleMA4.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA4.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleMA4.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbImpresindibleMA4.ForeColor = System.Drawing.Color.IndianRed;
             this.lbImpresindibleMA4.Location = new System.Drawing.Point(12, 575);
             this.lbImpresindibleMA4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA4.Name = "lbImpresindibleMA4";
@@ -959,7 +974,7 @@
             this.lbImpresindibleMA3.AutoSize = true;
             this.lbImpresindibleMA3.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA3.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleMA3.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbImpresindibleMA3.ForeColor = System.Drawing.Color.IndianRed;
             this.lbImpresindibleMA3.Location = new System.Drawing.Point(12, 518);
             this.lbImpresindibleMA3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA3.Name = "lbImpresindibleMA3";
@@ -972,7 +987,7 @@
             this.lbImpresindibleMA2.AutoSize = true;
             this.lbImpresindibleMA2.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA2.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleMA2.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbImpresindibleMA2.ForeColor = System.Drawing.Color.IndianRed;
             this.lbImpresindibleMA2.Location = new System.Drawing.Point(12, 338);
             this.lbImpresindibleMA2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA2.Name = "lbImpresindibleMA2";
@@ -985,7 +1000,7 @@
             this.lbImpresindibleMA1.AutoSize = true;
             this.lbImpresindibleMA1.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbImpresindibleMA1.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbImpresindibleMA1.ForeColor = System.Drawing.Color.IndianRed;
             this.lbImpresindibleMA1.Location = new System.Drawing.Point(12, 285);
             this.lbImpresindibleMA1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA1.Name = "lbImpresindibleMA1";
@@ -1171,7 +1186,7 @@
             // 
             this.lbAvisoImagenMA.AutoSize = true;
             this.lbAvisoImagenMA.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAvisoImagenMA.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbAvisoImagenMA.ForeColor = System.Drawing.Color.IndianRed;
             this.lbAvisoImagenMA.Location = new System.Drawing.Point(231, 106);
             this.lbAvisoImagenMA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAvisoImagenMA.Name = "lbAvisoImagenMA";
@@ -1498,6 +1513,7 @@
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panelSuperior);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(1237, 821);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catálogo de artículos";

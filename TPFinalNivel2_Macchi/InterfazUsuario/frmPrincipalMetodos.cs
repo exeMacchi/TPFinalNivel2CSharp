@@ -93,13 +93,22 @@ namespace InterfazUsuario
             if (dgvArticulos.CurrentRow != null)
             {
                 OcultarColumnas();
-                dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "N2";
-                dgvArticulos.Columns["Codigo"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                dgvArticulos.Columns["Nombre"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                // Formato moneda en la columna Precio.
+                dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
+
+                AjustarSizeFilas();
+                AcoplarColumnasDGV();
+
+                // Alinear las celdas en el centro.
+                for (int i = 0; i < dgvArticulos.Rows.Count; i++)
+                {
+                    dgvArticulos.Rows[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
             }
             else
             {
                 OcultarColumnas();
+                AcoplarColumnasDGV();
             }
         }
 
@@ -236,6 +245,31 @@ namespace InterfazUsuario
         {
             cantArticulos = dgvArticulos.RowCount;
             lbResultadosBusqueda.Text = $"Resultados: {cantArticulos}";
+        }
+
+        
+        /// <summary>
+        /// Método para aumentar el tamaño de las filas.
+        /// </summary>
+        private void AjustarSizeFilas()
+        {
+            for (int i = 0; i < dgvArticulos.Rows.Count; i++)
+            {
+                dgvArticulos.Rows[i].Height = 40;
+            }
+
+        }
+
+
+        /// <summary>
+        /// Método para acoplar las columnas al borde del DGV.
+        /// </summary>
+        private void AcoplarColumnasDGV()
+        {
+            foreach (DataGridViewColumn column in dgvArticulos.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
         }
 
 
