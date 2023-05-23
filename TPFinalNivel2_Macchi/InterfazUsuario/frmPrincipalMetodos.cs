@@ -22,6 +22,8 @@ namespace InterfazUsuario
         /// </summary>
         private void StartUp()
         {
+            this.Icon = Properties.Resources.Catalogo;
+
             modificacionPendiente = false;
             btnModificacionPendiente.Visible = false;
 
@@ -85,8 +87,9 @@ namespace InterfazUsuario
 
         /// <summary>
         /// Estilizar el formato del DGV. Si este tiene registros, además de ocultar columnas,
-        /// formatea cómo se ve la columna Precio, Codigo y Nombre; en cambio, si no tiene
-        /// registros, solo oculta columnas.
+        /// formatea cómo se ve la columna Precio, Codigo y Nombre, ajusta el tamaño de las filas
+        /// y acopla los bordes de la grilla a los bordes del componente. En cambio, si no tiene
+        /// registros, solo oculta y acopla columnas.
         /// </summary>
         private void FormatearDGV()
         {
@@ -98,12 +101,6 @@ namespace InterfazUsuario
 
                 AjustarSizeFilas();
                 AcoplarColumnasDGV();
-
-                // Alinear las celdas en el centro.
-                for (int i = 0; i < dgvArticulos.Rows.Count; i++)
-                {
-                    dgvArticulos.Rows[i].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
             }
             else
             {
@@ -112,6 +109,32 @@ namespace InterfazUsuario
             }
         }
 
+        /// <summary>
+        /// Estilizar el formato de un ComboBox cuando se hace focus en este para tener un 
+        /// aspecto acorde al programa.
+        /// </summary>
+        /// <param name="combox">ComboBox a formatear</param>
+        /// <param name="e">Evento DrawItemEventArgs</param>
+        private void FormatearComboBox(ComboBox combox, DrawItemEventArgs e)
+        {
+            if (e.Index >= 0)
+            {
+                Color ColorSelector = Color.FromArgb(173, 149, 116);
+
+                if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(ColorSelector), e.Bounds);
+                }
+                else
+                {
+                    e.Graphics.FillRectangle(new SolidBrush(combox.BackColor), e.Bounds);
+                }
+
+                e.Graphics.DrawString(combox.Items[e.Index].ToString(), e.Font, Brushes.White, e.Bounds);
+
+                e.DrawFocusRectangle();
+            }
+        }
 
         /// <summary>
         /// Cargar la imagen del PictureBox de la plantilla "Detalles artículos" con una

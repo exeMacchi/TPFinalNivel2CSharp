@@ -717,14 +717,14 @@ namespace InterfazUsuario
             if (panelFiltroAvanzado.Visible)
             {
                 panelFiltroAvanzado.Visible = false;
-                lbBusqueda.Text = "Búsqueda básica";
+                lbBusqueda.Text = "Búsqueda básica (?)";
                 btnFiltroAvanzado.Text = "AVANZADA";
             }    
             else if (!panelFiltroAvanzado.Visible)
             {
                 comboxCampoBusqueda.SelectedIndex = 0;
                 panelFiltroAvanzado.Visible = true;
-                lbBusqueda.Text = "Búsqueda avanzada";
+                lbBusqueda.Text = "Búsqueda avanzada (?)";
                 btnFiltroAvanzado.Text = "BÁSICA";
             }
             ActualizarDGV();
@@ -987,6 +987,38 @@ namespace InterfazUsuario
         private void btnFiltroAvanzado_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
+        }
+
+
+        // ------------------ Estilización de los ComboBox ------------------ //
+        private void comboxCriterioBusqueda_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            FormatearComboBox((ComboBox)sender, e);
+        }
+
+        private void comboxCampoBusqueda_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            FormatearComboBox((ComboBox)sender, e);
+        }
+
+        private void comboxMarcaAA_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            FormatearComboBox((ComboBox)sender, e);
+        }
+
+        private void comboxCategoriaAA_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            FormatearComboBox((ComboBox)sender, e);
+        }
+
+        private void comboxMarcaMA_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            FormatearComboBox((ComboBox)sender, e);
+        }
+
+        private void comboxCategoriaMA_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            FormatearComboBox((ComboBox)sender, e);
         }
     }
 }
