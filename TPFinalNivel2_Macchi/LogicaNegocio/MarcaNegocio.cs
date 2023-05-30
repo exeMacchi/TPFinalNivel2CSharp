@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Dominio;
 using AccesoDatos;
+using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace LogicaNegocio
 {
@@ -38,10 +40,17 @@ namespace LogicaNegocio
 
                 return marcas;
             }
+            catch (SqlException)
+            {
+                MessageBox.Show("No se pudo cargar las marcas por un error en la conexión " + 
+                                "a la base de datos.", "Error: marca negocio", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return marcas;
+            }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageBox.Show(ex.ToString(),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return marcas;
             }
             finally
             {

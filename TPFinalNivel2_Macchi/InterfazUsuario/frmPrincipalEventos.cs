@@ -201,6 +201,7 @@ namespace InterfazUsuario
             if (!CargarImagenAA(txbxCargarImagenAA.Text))
             {
                 nuevoArticulo.Imagen = "";
+                lbAvisoImagenAA.Visible = false;
             }
             else
             {
@@ -488,6 +489,7 @@ namespace InterfazUsuario
             if (!CargarImagenAA(txbxImagenMA.Text))
             {
                 articuloModificado.Imagen = "";
+                lbAvisoImagenMA.Visible = false;
             }
             else
             {
@@ -813,7 +815,7 @@ namespace InterfazUsuario
         {
             if (panelFiltroAvanzado.Visible)
             {
-                if (e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Enter && articulos != null)
                 {
                     btnBuscar_Click(sender, e);
                 }

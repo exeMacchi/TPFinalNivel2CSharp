@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.panelFiltroRapido = new System.Windows.Forms.Panel();
             this.lbResultadosBusqueda = new System.Windows.Forms.Label();
@@ -147,9 +147,9 @@
             this.panelSuperior.Controls.Add(this.panelMetodosVentana);
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.Location = new System.Drawing.Point(0, 0);
-            this.panelSuperior.Margin = new System.Windows.Forms.Padding(2);
+            this.panelSuperior.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new System.Drawing.Size(1221, 58);
+            this.panelSuperior.Size = new System.Drawing.Size(1222, 58);
             this.panelSuperior.TabIndex = 0;
             // 
             // panelFiltroRapido
@@ -162,9 +162,9 @@
             this.panelFiltroRapido.Controls.Add(this.btnFiltroAvanzado);
             this.panelFiltroRapido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFiltroRapido.Location = new System.Drawing.Point(0, 0);
-            this.panelFiltroRapido.Margin = new System.Windows.Forms.Padding(2);
+            this.panelFiltroRapido.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelFiltroRapido.Name = "panelFiltroRapido";
-            this.panelFiltroRapido.Size = new System.Drawing.Size(775, 58);
+            this.panelFiltroRapido.Size = new System.Drawing.Size(776, 58);
             this.panelFiltroRapido.TabIndex = 0;
             // 
             // lbResultadosBusqueda
@@ -174,7 +174,7 @@
             this.lbResultadosBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.lbResultadosBusqueda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbResultadosBusqueda.ForeColor = System.Drawing.Color.White;
-            this.lbResultadosBusqueda.Location = new System.Drawing.Point(637, 34);
+            this.lbResultadosBusqueda.Location = new System.Drawing.Point(638, 34);
             this.lbResultadosBusqueda.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbResultadosBusqueda.Name = "lbResultadosBusqueda";
             this.lbResultadosBusqueda.Size = new System.Drawing.Size(94, 19);
@@ -201,8 +201,8 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnBuscar.Location = new System.Drawing.Point(529, 4);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Location = new System.Drawing.Point(530, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(108, 27);
             this.btnBuscar.TabIndex = 1;
@@ -221,9 +221,9 @@
             this.txbxBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxBuscar.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxBuscar.Location = new System.Drawing.Point(9, 4);
-            this.txbxBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxBuscar.Name = "txbxBuscar";
-            this.txbxBuscar.Size = new System.Drawing.Size(516, 27);
+            this.txbxBuscar.Size = new System.Drawing.Size(517, 27);
             this.txbxBuscar.TabIndex = 0;
             this.txbxBuscar.TextChanged += new System.EventHandler(this.txbxBuscar_TextChanged);
             this.txbxBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbxBuscar_KeyDown);
@@ -236,8 +236,8 @@
             this.btnFiltroAvanzado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltroAvanzado.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFiltroAvanzado.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnFiltroAvanzado.Location = new System.Drawing.Point(641, 4);
-            this.btnFiltroAvanzado.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFiltroAvanzado.Location = new System.Drawing.Point(642, 4);
+            this.btnFiltroAvanzado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
             this.btnFiltroAvanzado.Size = new System.Drawing.Size(130, 27);
             this.btnFiltroAvanzado.TabIndex = 2;
@@ -253,8 +253,8 @@
             this.panelMetodosVentana.Controls.Add(this.btnModificacionPendiente);
             this.panelMetodosVentana.Controls.Add(this.btnNuevoArticulo);
             this.panelMetodosVentana.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMetodosVentana.Location = new System.Drawing.Point(775, 0);
-            this.panelMetodosVentana.Margin = new System.Windows.Forms.Padding(2);
+            this.panelMetodosVentana.Location = new System.Drawing.Point(776, 0);
+            this.panelMetodosVentana.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelMetodosVentana.Name = "panelMetodosVentana";
             this.panelMetodosVentana.Size = new System.Drawing.Size(446, 58);
             this.panelMetodosVentana.TabIndex = 1;
@@ -266,7 +266,7 @@
             this.btnModificacionPendiente.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificacionPendiente.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnModificacionPendiente.Location = new System.Drawing.Point(232, 4);
-            this.btnModificacionPendiente.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModificacionPendiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModificacionPendiente.Name = "btnModificacionPendiente";
             this.btnModificacionPendiente.Size = new System.Drawing.Size(209, 50);
             this.btnModificacionPendiente.TabIndex = 1;
@@ -284,7 +284,7 @@
             this.btnNuevoArticulo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevoArticulo.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnNuevoArticulo.Location = new System.Drawing.Point(1, 4);
-            this.btnNuevoArticulo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevoArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNuevoArticulo.Name = "btnNuevoArticulo";
             this.btnNuevoArticulo.Size = new System.Drawing.Size(227, 50);
             this.btnNuevoArticulo.TabIndex = 0;
@@ -302,9 +302,9 @@
             this.panelPrincipal.Controls.Add(this.panelDetallesArticulos);
             this.panelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelPrincipal.Location = new System.Drawing.Point(0, 58);
-            this.panelPrincipal.Margin = new System.Windows.Forms.Padding(2);
+            this.panelPrincipal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelPrincipal.Name = "panelPrincipal";
-            this.panelPrincipal.Size = new System.Drawing.Size(1221, 724);
+            this.panelPrincipal.Size = new System.Drawing.Size(1222, 730);
             this.panelPrincipal.TabIndex = 1;
             // 
             // panelSubPrincipalIzquierda
@@ -314,9 +314,9 @@
             this.panelSubPrincipalIzquierda.Controls.Add(this.panelFiltroAvanzado);
             this.panelSubPrincipalIzquierda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSubPrincipalIzquierda.Location = new System.Drawing.Point(0, 0);
-            this.panelSubPrincipalIzquierda.Margin = new System.Windows.Forms.Padding(2);
+            this.panelSubPrincipalIzquierda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelSubPrincipalIzquierda.Name = "panelSubPrincipalIzquierda";
-            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(775, 724);
+            this.panelSubPrincipalIzquierda.Size = new System.Drawing.Size(776, 730);
             this.panelSubPrincipalIzquierda.TabIndex = 1;
             // 
             // panelGridDataView
@@ -326,9 +326,9 @@
             this.panelGridDataView.Controls.Add(this.lbDataGridViewVacio);
             this.panelGridDataView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGridDataView.Location = new System.Drawing.Point(0, 46);
-            this.panelGridDataView.Margin = new System.Windows.Forms.Padding(2);
+            this.panelGridDataView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelGridDataView.Name = "panelGridDataView";
-            this.panelGridDataView.Size = new System.Drawing.Size(775, 678);
+            this.panelGridDataView.Size = new System.Drawing.Size(776, 684);
             this.panelGridDataView.TabIndex = 1;
             // 
             // dgvArticulos
@@ -340,43 +340,43 @@
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.EnableHeadersVisualStyles = false;
             this.dgvArticulos.Location = new System.Drawing.Point(0, 0);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(76)))), ((int)(((byte)(89)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvArticulos.RowHeadersVisible = false;
             this.dgvArticulos.RowHeadersWidth = 100;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(98)))), ((int)(((byte)(115)))));
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(149)))), ((int)(((byte)(116)))));
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(98)))), ((int)(((byte)(115)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(149)))), ((int)(((byte)(116)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvArticulos.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvArticulos.RowTemplate.Height = 24;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(775, 678);
+            this.dgvArticulos.Size = new System.Drawing.Size(776, 684);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.TabStop = false;
             this.dgvArticulos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvArticulos_RowsAdded);
@@ -388,7 +388,7 @@
             this.lbDataGridViewVacio.AutoSize = true;
             this.lbDataGridViewVacio.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDataGridViewVacio.ForeColor = System.Drawing.Color.White;
-            this.lbDataGridViewVacio.Location = new System.Drawing.Point(102, 288);
+            this.lbDataGridViewVacio.Location = new System.Drawing.Point(103, 288);
             this.lbDataGridViewVacio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDataGridViewVacio.Name = "lbDataGridViewVacio";
             this.lbDataGridViewVacio.Size = new System.Drawing.Size(553, 37);
@@ -402,9 +402,9 @@
             this.panelFiltroAvanzado.Controls.Add(this.comboxCriterioBusqueda);
             this.panelFiltroAvanzado.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltroAvanzado.Location = new System.Drawing.Point(0, 0);
-            this.panelFiltroAvanzado.Margin = new System.Windows.Forms.Padding(2);
+            this.panelFiltroAvanzado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelFiltroAvanzado.Name = "panelFiltroAvanzado";
-            this.panelFiltroAvanzado.Size = new System.Drawing.Size(775, 46);
+            this.panelFiltroAvanzado.Size = new System.Drawing.Size(776, 46);
             this.panelFiltroAvanzado.TabIndex = 0;
             // 
             // comboxCampoBusqueda
@@ -417,8 +417,8 @@
             this.comboxCampoBusqueda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboxCampoBusqueda.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.comboxCampoBusqueda.FormattingEnabled = true;
-            this.comboxCampoBusqueda.Location = new System.Drawing.Point(9, 9);
-            this.comboxCampoBusqueda.Margin = new System.Windows.Forms.Padding(2);
+            this.comboxCampoBusqueda.Location = new System.Drawing.Point(10, 9);
+            this.comboxCampoBusqueda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboxCampoBusqueda.Name = "comboxCampoBusqueda";
             this.comboxCampoBusqueda.Size = new System.Drawing.Size(372, 28);
             this.comboxCampoBusqueda.TabIndex = 0;
@@ -435,8 +435,8 @@
             this.comboxCriterioBusqueda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboxCriterioBusqueda.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.comboxCriterioBusqueda.FormattingEnabled = true;
-            this.comboxCriterioBusqueda.Location = new System.Drawing.Point(399, 10);
-            this.comboxCriterioBusqueda.Margin = new System.Windows.Forms.Padding(2);
+            this.comboxCriterioBusqueda.Location = new System.Drawing.Point(400, 10);
+            this.comboxCriterioBusqueda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboxCriterioBusqueda.Name = "comboxCriterioBusqueda";
             this.comboxCriterioBusqueda.Size = new System.Drawing.Size(372, 28);
             this.comboxCriterioBusqueda.TabIndex = 1;
@@ -462,10 +462,10 @@
             this.panelDetallesArticulos.Controls.Add(this.btnModificarArticuloDA);
             this.panelDetallesArticulos.Controls.Add(this.pboxImagenDA);
             this.panelDetallesArticulos.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelDetallesArticulos.Location = new System.Drawing.Point(775, 0);
-            this.panelDetallesArticulos.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDetallesArticulos.Location = new System.Drawing.Point(776, 0);
+            this.panelDetallesArticulos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelDetallesArticulos.Name = "panelDetallesArticulos";
-            this.panelDetallesArticulos.Size = new System.Drawing.Size(446, 724);
+            this.panelDetallesArticulos.Size = new System.Drawing.Size(446, 730);
             this.panelDetallesArticulos.TabIndex = 0;
             // 
             // panelModificarArticulo
@@ -501,9 +501,9 @@
             this.panelModificarArticulo.Controls.Add(this.btnConfirmarModificacion);
             this.panelModificarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelModificarArticulo.Location = new System.Drawing.Point(0, 0);
-            this.panelModificarArticulo.Margin = new System.Windows.Forms.Padding(2);
+            this.panelModificarArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelModificarArticulo.Name = "panelModificarArticulo";
-            this.panelModificarArticulo.Size = new System.Drawing.Size(446, 724);
+            this.panelModificarArticulo.Size = new System.Drawing.Size(446, 730);
             this.panelModificarArticulo.TabIndex = 0;
             // 
             // panelAgregarArticulo
@@ -538,9 +538,9 @@
             this.panelAgregarArticulo.Controls.Add(this.btnAgregarArticulo);
             this.panelAgregarArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAgregarArticulo.Location = new System.Drawing.Point(0, 0);
-            this.panelAgregarArticulo.Margin = new System.Windows.Forms.Padding(2);
+            this.panelAgregarArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelAgregarArticulo.Name = "panelAgregarArticulo";
-            this.panelAgregarArticulo.Size = new System.Drawing.Size(446, 724);
+            this.panelAgregarArticulo.Size = new System.Drawing.Size(446, 730);
             this.panelAgregarArticulo.TabIndex = 0;
             // 
             // lbAvisoAgregarAA
@@ -550,7 +550,7 @@
             this.lbAvisoAgregarAA.BackColor = System.Drawing.Color.Transparent;
             this.lbAvisoAgregarAA.Font = new System.Drawing.Font("Century Gothic", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAvisoAgregarAA.ForeColor = System.Drawing.Color.Salmon;
-            this.lbAvisoAgregarAA.Location = new System.Drawing.Point(30, 702);
+            this.lbAvisoAgregarAA.Location = new System.Drawing.Point(30, 708);
             this.lbAvisoAgregarAA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAvisoAgregarAA.Name = "lbAvisoAgregarAA";
             this.lbAvisoAgregarAA.Size = new System.Drawing.Size(202, 18);
@@ -564,7 +564,7 @@
             this.lbImpresindibleAA6.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleAA6.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleAA6.ForeColor = System.Drawing.Color.Salmon;
-            this.lbImpresindibleAA6.Location = new System.Drawing.Point(11, 702);
+            this.lbImpresindibleAA6.Location = new System.Drawing.Point(11, 708);
             this.lbImpresindibleAA6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleAA6.Name = "lbImpresindibleAA6";
             this.lbImpresindibleAA6.Size = new System.Drawing.Size(22, 27);
@@ -590,7 +590,7 @@
             this.btnReiniciarAA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReiniciarAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnReiniciarAA.Location = new System.Drawing.Point(238, 11);
-            this.btnReiniciarAA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReiniciarAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReiniciarAA.Name = "btnReiniciarAA";
             this.btnReiniciarAA.Size = new System.Drawing.Size(181, 37);
             this.btnReiniciarAA.TabIndex = 11;
@@ -675,7 +675,7 @@
             this.comboxCategoriaAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.comboxCategoriaAA.FormattingEnabled = true;
             this.comboxCategoriaAA.Location = new System.Drawing.Point(33, 569);
-            this.comboxCategoriaAA.Margin = new System.Windows.Forms.Padding(2);
+            this.comboxCategoriaAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboxCategoriaAA.Name = "comboxCategoriaAA";
             this.comboxCategoriaAA.Size = new System.Drawing.Size(386, 27);
             this.comboxCategoriaAA.TabIndex = 7;
@@ -693,7 +693,7 @@
             this.comboxMarcaAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.comboxMarcaAA.FormattingEnabled = true;
             this.comboxMarcaAA.Location = new System.Drawing.Point(33, 515);
-            this.comboxMarcaAA.Margin = new System.Windows.Forms.Padding(2);
+            this.comboxMarcaAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboxMarcaAA.Name = "comboxMarcaAA";
             this.comboxMarcaAA.Size = new System.Drawing.Size(386, 27);
             this.comboxMarcaAA.TabIndex = 6;
@@ -706,7 +706,7 @@
             this.txbxPrecioAA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxPrecioAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxPrecioAA.Location = new System.Drawing.Point(34, 623);
-            this.txbxPrecioAA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxPrecioAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxPrecioAA.MaxLength = 50;
             this.txbxPrecioAA.Name = "txbxPrecioAA";
             this.txbxPrecioAA.Size = new System.Drawing.Size(385, 26);
@@ -759,7 +759,7 @@
             this.txbxDescripcionAA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxDescripcionAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxDescripcionAA.Location = new System.Drawing.Point(34, 386);
-            this.txbxDescripcionAA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxDescripcionAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxDescripcionAA.MaxLength = 150;
             this.txbxDescripcionAA.Multiline = true;
             this.txbxDescripcionAA.Name = "txbxDescripcionAA";
@@ -786,7 +786,7 @@
             this.txbxNombreAA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxNombreAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxNombreAA.Location = new System.Drawing.Point(34, 334);
-            this.txbxNombreAA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxNombreAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxNombreAA.MaxLength = 50;
             this.txbxNombreAA.Name = "txbxNombreAA";
             this.txbxNombreAA.Size = new System.Drawing.Size(385, 26);
@@ -812,7 +812,7 @@
             this.txbxCodigoAA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxCodigoAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxCodigoAA.Location = new System.Drawing.Point(33, 282);
-            this.txbxCodigoAA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxCodigoAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxCodigoAA.MaxLength = 50;
             this.txbxCodigoAA.Name = "txbxCodigoAA";
             this.txbxCodigoAA.Size = new System.Drawing.Size(386, 26);
@@ -838,7 +838,7 @@
             this.txbxCargarImagenAA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxCargarImagenAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxCargarImagenAA.Location = new System.Drawing.Point(32, 228);
-            this.txbxCargarImagenAA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxCargarImagenAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxCargarImagenAA.MaxLength = 1000;
             this.txbxCargarImagenAA.Name = "txbxCargarImagenAA";
             this.txbxCargarImagenAA.Size = new System.Drawing.Size(387, 26);
@@ -853,7 +853,7 @@
             this.btnCargarImagenUrlAA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargarImagenUrlAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnCargarImagenUrlAA.Location = new System.Drawing.Point(238, 183);
-            this.btnCargarImagenUrlAA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCargarImagenUrlAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCargarImagenUrlAA.Name = "btnCargarImagenUrlAA";
             this.btnCargarImagenUrlAA.Size = new System.Drawing.Size(181, 37);
             this.btnCargarImagenUrlAA.TabIndex = 1;
@@ -870,7 +870,7 @@
             this.btnCargarImagenLocalAA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargarImagenLocalAA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnCargarImagenLocalAA.Location = new System.Drawing.Point(238, 133);
-            this.btnCargarImagenLocalAA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCargarImagenLocalAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCargarImagenLocalAA.Name = "btnCargarImagenLocalAA";
             this.btnCargarImagenLocalAA.Size = new System.Drawing.Size(181, 37);
             this.btnCargarImagenLocalAA.TabIndex = 0;
@@ -884,7 +884,7 @@
             // 
             this.pboxImagenAA.BackColor = System.Drawing.Color.Snow;
             this.pboxImagenAA.Location = new System.Drawing.Point(33, 12);
-            this.pboxImagenAA.Margin = new System.Windows.Forms.Padding(2);
+            this.pboxImagenAA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pboxImagenAA.Name = "pboxImagenAA";
             this.pboxImagenAA.Size = new System.Drawing.Size(192, 208);
             this.pboxImagenAA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -898,8 +898,8 @@
             this.btnCancelarAgregacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarAgregacion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarAgregacion.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCancelarAgregacion.Location = new System.Drawing.Point(237, 661);
-            this.btnCancelarAgregacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelarAgregacion.Location = new System.Drawing.Point(237, 667);
+            this.btnCancelarAgregacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelarAgregacion.Name = "btnCancelarAgregacion";
             this.btnCancelarAgregacion.Size = new System.Drawing.Size(182, 39);
             this.btnCancelarAgregacion.TabIndex = 10;
@@ -916,8 +916,8 @@
             this.btnAgregarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarArticulo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarArticulo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnAgregarArticulo.Location = new System.Drawing.Point(34, 661);
-            this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarArticulo.Location = new System.Drawing.Point(34, 667);
+            this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(181, 39);
             this.btnAgregarArticulo.TabIndex = 9;
@@ -934,7 +934,7 @@
             this.lbAvisoModificarMA.BackColor = System.Drawing.Color.Transparent;
             this.lbAvisoModificarMA.Font = new System.Drawing.Font("Century Gothic", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAvisoModificarMA.ForeColor = System.Drawing.Color.Salmon;
-            this.lbAvisoModificarMA.Location = new System.Drawing.Point(31, 702);
+            this.lbAvisoModificarMA.Location = new System.Drawing.Point(31, 708);
             this.lbAvisoModificarMA.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbAvisoModificarMA.Name = "lbAvisoModificarMA";
             this.lbAvisoModificarMA.Size = new System.Drawing.Size(202, 18);
@@ -948,7 +948,7 @@
             this.lbImpresindibleMA6.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA6.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleMA6.ForeColor = System.Drawing.Color.Salmon;
-            this.lbImpresindibleMA6.Location = new System.Drawing.Point(12, 701);
+            this.lbImpresindibleMA6.Location = new System.Drawing.Point(11, 708);
             this.lbImpresindibleMA6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA6.Name = "lbImpresindibleMA6";
             this.lbImpresindibleMA6.Size = new System.Drawing.Size(22, 27);
@@ -961,7 +961,7 @@
             this.lbImpresindibleMA5.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA5.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleMA5.ForeColor = System.Drawing.Color.Salmon;
-            this.lbImpresindibleMA5.Location = new System.Drawing.Point(12, 627);
+            this.lbImpresindibleMA5.Location = new System.Drawing.Point(11, 626);
             this.lbImpresindibleMA5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA5.Name = "lbImpresindibleMA5";
             this.lbImpresindibleMA5.Size = new System.Drawing.Size(22, 27);
@@ -974,7 +974,7 @@
             this.lbImpresindibleMA4.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA4.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleMA4.ForeColor = System.Drawing.Color.Salmon;
-            this.lbImpresindibleMA4.Location = new System.Drawing.Point(12, 575);
+            this.lbImpresindibleMA4.Location = new System.Drawing.Point(11, 574);
             this.lbImpresindibleMA4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA4.Name = "lbImpresindibleMA4";
             this.lbImpresindibleMA4.Size = new System.Drawing.Size(22, 27);
@@ -987,7 +987,7 @@
             this.lbImpresindibleMA3.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA3.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleMA3.ForeColor = System.Drawing.Color.Salmon;
-            this.lbImpresindibleMA3.Location = new System.Drawing.Point(12, 518);
+            this.lbImpresindibleMA3.Location = new System.Drawing.Point(11, 519);
             this.lbImpresindibleMA3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA3.Name = "lbImpresindibleMA3";
             this.lbImpresindibleMA3.Size = new System.Drawing.Size(22, 27);
@@ -1000,7 +1000,7 @@
             this.lbImpresindibleMA2.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA2.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleMA2.ForeColor = System.Drawing.Color.Salmon;
-            this.lbImpresindibleMA2.Location = new System.Drawing.Point(12, 338);
+            this.lbImpresindibleMA2.Location = new System.Drawing.Point(11, 338);
             this.lbImpresindibleMA2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA2.Name = "lbImpresindibleMA2";
             this.lbImpresindibleMA2.Size = new System.Drawing.Size(22, 27);
@@ -1013,7 +1013,7 @@
             this.lbImpresindibleMA1.BackColor = System.Drawing.Color.Transparent;
             this.lbImpresindibleMA1.Font = new System.Drawing.Font("Century Gothic", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbImpresindibleMA1.ForeColor = System.Drawing.Color.Salmon;
-            this.lbImpresindibleMA1.Location = new System.Drawing.Point(12, 285);
+            this.lbImpresindibleMA1.Location = new System.Drawing.Point(11, 285);
             this.lbImpresindibleMA1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbImpresindibleMA1.Name = "lbImpresindibleMA1";
             this.lbImpresindibleMA1.Size = new System.Drawing.Size(22, 27);
@@ -1030,7 +1030,7 @@
             this.comboxCategoriaMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.comboxCategoriaMA.FormattingEnabled = true;
             this.comboxCategoriaMA.Location = new System.Drawing.Point(34, 569);
-            this.comboxCategoriaMA.Margin = new System.Windows.Forms.Padding(2);
+            this.comboxCategoriaMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboxCategoriaMA.Name = "comboxCategoriaMA";
             this.comboxCategoriaMA.Size = new System.Drawing.Size(385, 27);
             this.comboxCategoriaMA.TabIndex = 7;
@@ -1047,7 +1047,7 @@
             this.comboxMarcaMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.comboxMarcaMA.FormattingEnabled = true;
             this.comboxMarcaMA.Location = new System.Drawing.Point(34, 515);
-            this.comboxMarcaMA.Margin = new System.Windows.Forms.Padding(2);
+            this.comboxMarcaMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboxMarcaMA.Name = "comboxMarcaMA";
             this.comboxMarcaMA.Size = new System.Drawing.Size(385, 27);
             this.comboxMarcaMA.TabIndex = 6;
@@ -1060,7 +1060,7 @@
             this.txbxPrecioMA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxPrecioMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxPrecioMA.Location = new System.Drawing.Point(33, 623);
-            this.txbxPrecioMA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxPrecioMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxPrecioMA.MaxLength = 50;
             this.txbxPrecioMA.Name = "txbxPrecioMA";
             this.txbxPrecioMA.Size = new System.Drawing.Size(386, 26);
@@ -1113,7 +1113,7 @@
             this.txbxDescripcionMA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxDescripcionMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxDescripcionMA.Location = new System.Drawing.Point(34, 386);
-            this.txbxDescripcionMA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxDescripcionMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxDescripcionMA.MaxLength = 150;
             this.txbxDescripcionMA.Multiline = true;
             this.txbxDescripcionMA.Name = "txbxDescripcionMA";
@@ -1140,7 +1140,7 @@
             this.txbxNombreMA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxNombreMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxNombreMA.Location = new System.Drawing.Point(34, 334);
-            this.txbxNombreMA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxNombreMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxNombreMA.MaxLength = 50;
             this.txbxNombreMA.Name = "txbxNombreMA";
             this.txbxNombreMA.Size = new System.Drawing.Size(385, 26);
@@ -1166,7 +1166,7 @@
             this.txbxCodigoMA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxCodigoMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxCodigoMA.Location = new System.Drawing.Point(33, 282);
-            this.txbxCodigoMA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxCodigoMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxCodigoMA.MaxLength = 50;
             this.txbxCodigoMA.Name = "txbxCodigoMA";
             this.txbxCodigoMA.Size = new System.Drawing.Size(386, 26);
@@ -1192,7 +1192,7 @@
             this.txbxImagenMA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxImagenMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxImagenMA.Location = new System.Drawing.Point(33, 230);
-            this.txbxImagenMA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxImagenMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxImagenMA.MaxLength = 1000;
             this.txbxImagenMA.Name = "txbxImagenMA";
             this.txbxImagenMA.Size = new System.Drawing.Size(386, 26);
@@ -1219,7 +1219,7 @@
             this.btnReiniciarMA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReiniciarMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnReiniciarMA.Location = new System.Drawing.Point(238, 12);
-            this.btnReiniciarMA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReiniciarMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReiniciarMA.Name = "btnReiniciarMA";
             this.btnReiniciarMA.Size = new System.Drawing.Size(181, 37);
             this.btnReiniciarMA.TabIndex = 11;
@@ -1236,7 +1236,7 @@
             this.btnImagenUrlMA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImagenUrlMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnImagenUrlMA.Location = new System.Drawing.Point(238, 183);
-            this.btnImagenUrlMA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnImagenUrlMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnImagenUrlMA.Name = "btnImagenUrlMA";
             this.btnImagenUrlMA.Size = new System.Drawing.Size(181, 37);
             this.btnImagenUrlMA.TabIndex = 1;
@@ -1253,7 +1253,7 @@
             this.btnImagenLocalMA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImagenLocalMA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnImagenLocalMA.Location = new System.Drawing.Point(238, 133);
-            this.btnImagenLocalMA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnImagenLocalMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnImagenLocalMA.Name = "btnImagenLocalMA";
             this.btnImagenLocalMA.Size = new System.Drawing.Size(181, 37);
             this.btnImagenLocalMA.TabIndex = 0;
@@ -1267,7 +1267,7 @@
             // 
             this.pboxImagenMA.BackColor = System.Drawing.Color.Snow;
             this.pboxImagenMA.Location = new System.Drawing.Point(33, 12);
-            this.pboxImagenMA.Margin = new System.Windows.Forms.Padding(2);
+            this.pboxImagenMA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pboxImagenMA.Name = "pboxImagenMA";
             this.pboxImagenMA.Size = new System.Drawing.Size(192, 208);
             this.pboxImagenMA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1281,8 +1281,8 @@
             this.btnCancelarModificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarModificacion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarModificacion.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCancelarModificacion.Location = new System.Drawing.Point(238, 661);
-            this.btnCancelarModificacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelarModificacion.Location = new System.Drawing.Point(238, 667);
+            this.btnCancelarModificacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelarModificacion.Name = "btnCancelarModificacion";
             this.btnCancelarModificacion.Size = new System.Drawing.Size(181, 38);
             this.btnCancelarModificacion.TabIndex = 10;
@@ -1299,8 +1299,8 @@
             this.btnConfirmarModificacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmarModificacion.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmarModificacion.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnConfirmarModificacion.Location = new System.Drawing.Point(34, 661);
-            this.btnConfirmarModificacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnConfirmarModificacion.Location = new System.Drawing.Point(34, 667);
+            this.btnConfirmarModificacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConfirmarModificacion.Name = "btnConfirmarModificacion";
             this.btnConfirmarModificacion.Size = new System.Drawing.Size(181, 38);
             this.btnConfirmarModificacion.TabIndex = 9;
@@ -1317,7 +1317,7 @@
             this.txbxPrecioDA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxPrecioDA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxPrecioDA.Location = new System.Drawing.Point(21, 612);
-            this.txbxPrecioDA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxPrecioDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxPrecioDA.Name = "txbxPrecioDA";
             this.txbxPrecioDA.ReadOnly = true;
             this.txbxPrecioDA.Size = new System.Drawing.Size(403, 26);
@@ -1331,7 +1331,7 @@
             this.txbxCategoriaDA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxCategoriaDA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxCategoriaDA.Location = new System.Drawing.Point(21, 557);
-            this.txbxCategoriaDA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxCategoriaDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxCategoriaDA.Name = "txbxCategoriaDA";
             this.txbxCategoriaDA.ReadOnly = true;
             this.txbxCategoriaDA.Size = new System.Drawing.Size(403, 26);
@@ -1345,7 +1345,7 @@
             this.txbxMarcaDA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxMarcaDA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxMarcaDA.Location = new System.Drawing.Point(21, 502);
-            this.txbxMarcaDA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxMarcaDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxMarcaDA.Name = "txbxMarcaDA";
             this.txbxMarcaDA.ReadOnly = true;
             this.txbxMarcaDA.Size = new System.Drawing.Size(403, 26);
@@ -1359,7 +1359,7 @@
             this.txbxDescripcionDA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxDescripcionDA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxDescripcionDA.Location = new System.Drawing.Point(21, 365);
-            this.txbxDescripcionDA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxDescripcionDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxDescripcionDA.MaxLength = 150;
             this.txbxDescripcionDA.Multiline = true;
             this.txbxDescripcionDA.Name = "txbxDescripcionDA";
@@ -1374,7 +1374,7 @@
             this.txbxNombreDA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxNombreDA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxNombreDA.Location = new System.Drawing.Point(21, 309);
-            this.txbxNombreDA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxNombreDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxNombreDA.MaxLength = 50;
             this.txbxNombreDA.Name = "txbxNombreDA";
             this.txbxNombreDA.ReadOnly = true;
@@ -1389,7 +1389,7 @@
             this.txbxCodigoDA.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbxCodigoDA.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.txbxCodigoDA.Location = new System.Drawing.Point(21, 254);
-            this.txbxCodigoDA.Margin = new System.Windows.Forms.Padding(2);
+            this.txbxCodigoDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbxCodigoDA.MaxLength = 50;
             this.txbxCodigoDA.Name = "txbxCodigoDA";
             this.txbxCodigoDA.ReadOnly = true;
@@ -1476,8 +1476,8 @@
             this.btnEliminarArticuloDA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarArticuloDA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarArticuloDA.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnEliminarArticuloDA.Location = new System.Drawing.Point(243, 666);
-            this.btnEliminarArticuloDA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarArticuloDA.Location = new System.Drawing.Point(243, 672);
+            this.btnEliminarArticuloDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminarArticuloDA.Name = "btnEliminarArticuloDA";
             this.btnEliminarArticuloDA.Size = new System.Drawing.Size(181, 38);
             this.btnEliminarArticuloDA.TabIndex = 7;
@@ -1494,8 +1494,8 @@
             this.btnModificarArticuloDA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarArticuloDA.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarArticuloDA.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnModificarArticuloDA.Location = new System.Drawing.Point(21, 666);
-            this.btnModificarArticuloDA.Margin = new System.Windows.Forms.Padding(2);
+            this.btnModificarArticuloDA.Location = new System.Drawing.Point(21, 672);
+            this.btnModificarArticuloDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModificarArticuloDA.Name = "btnModificarArticuloDA";
             this.btnModificarArticuloDA.Size = new System.Drawing.Size(181, 38);
             this.btnModificarArticuloDA.TabIndex = 6;
@@ -1510,7 +1510,7 @@
             this.pboxImagenDA.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pboxImagenDA.BackColor = System.Drawing.Color.Snow;
             this.pboxImagenDA.Location = new System.Drawing.Point(133, 12);
-            this.pboxImagenDA.Margin = new System.Windows.Forms.Padding(2);
+            this.pboxImagenDA.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pboxImagenDA.Name = "pboxImagenDA";
             this.pboxImagenDA.Size = new System.Drawing.Size(192, 208);
             this.pboxImagenDA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1527,11 +1527,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1221, 782);
+            this.ClientSize = new System.Drawing.Size(1222, 788);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.panelSuperior);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1236, 820);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(1238, 827);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catálogo de artículos";

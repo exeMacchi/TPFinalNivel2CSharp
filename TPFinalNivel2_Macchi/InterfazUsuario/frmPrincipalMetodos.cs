@@ -222,7 +222,11 @@ namespace InterfazUsuario
                 FormatearDGV();
                 ActualizarResultados();
             }
-            else if (articulos.Count <= 0)
+            else if (articulos != null && articulos.Count <= 0)
+            {
+                NingunRegistro();
+            }
+            else
             {
                 NingunRegistro();
             }
@@ -326,6 +330,7 @@ namespace InterfazUsuario
             btnReiniciarAA.Visible = false;
 
             btnAgregarArticulo.Enabled = false;
+            btnAgregarArticulo.BackColor = Color.FromArgb(85, 98, 115); 
             lbImpresindibleAA6.Visible = true;
             lbAvisoAgregarAA.Visible = true;
         }
@@ -699,14 +704,24 @@ namespace InterfazUsuario
         {
             string filtro = txbxBuscar.Text;
 
-            List<Articulo> articulosFiltrados = articulos.FindAll(art => art.Nombre.ToUpper().Contains(filtro.ToUpper()));
-
-            if (articulosFiltrados != null)
+            try
             {
-                dgvArticulos.DataSource = null;
-                dgvArticulos.DataSource = articulosFiltrados;
-                FormatearDGV();
-                ActualizarResultados();
+                if (articulos != null)
+                {
+                    List<Articulo> articulosFiltrados = articulos.FindAll(art => art.Nombre.ToUpper().Contains(filtro.ToUpper()));
+
+                    if (articulosFiltrados != null)
+                    {
+                        dgvArticulos.DataSource = null;
+                        dgvArticulos.DataSource = articulosFiltrados;
+                        FormatearDGV();
+                        ActualizarResultados();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Dominio;
 using AccesoDatos;
 using System.Runtime.Serialization;
+using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace LogicaNegocio
 {
@@ -73,9 +75,17 @@ namespace LogicaNegocio
 
                 return articulos;
             }
+            catch (SqlException)
+            {
+                MessageBox.Show("No se pudo cargar los artículos por un error en la conexión " + 
+                                "a la base de datos.", "Error: artículo negocio", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
             finally
             {
@@ -106,9 +116,15 @@ namespace LogicaNegocio
                 db.SetParametro("@Precio", nuevoArticulo.Precio);
                 db.ExecuteNonQuery();
             }
+            catch (SqlException)
+            {
+                MessageBox.Show("No se pudo agregar el nuevo artículo por un error en la " + 
+                                "conexión a la base de datos.", "Error: artículo negocio", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -131,9 +147,15 @@ namespace LogicaNegocio
                 db.SetParametro("@ID", articuloSeleccionado.ID);
                 db.ExecuteNonQuery();
             }
+            catch (SqlException)
+            {
+                MessageBox.Show("No se pudo borrar el artículo seleccionado por un error en " + 
+                                "la conexión a la base de datos.", "Error: artículo negocio", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -168,10 +190,15 @@ namespace LogicaNegocio
 
                 db.ExecuteNonQuery();
             }
+            catch (SqlException)
+            {
+                MessageBox.Show("No se pudo modificar el artículo seleccionado por un error en " + 
+                                "la conexión a la base de datos.", "Error: artículo negocio", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-
-                throw ex;
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -246,9 +273,17 @@ namespace LogicaNegocio
 
                 return articulosEncontrados;
             }
+            catch (SqlException)
+            {
+                MessageBox.Show("No se pudo encontrar artículos por un error en la conexión " + 
+                                "a la base de datos.", "Error: artículo negocio", 
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return articulosEncontrados;
+            }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return articulosEncontrados;
             }
             finally
             {
