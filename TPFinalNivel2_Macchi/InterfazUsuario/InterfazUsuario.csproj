@@ -46,16 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmPrincipalMetodosYEventos\BusquedaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmPrincipal.designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipalEventos.cs">
+    <Compile Include="frmPrincipalMetodosYEventos\AgregarArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrincipalMetodos.cs">
+    <Compile Include="frmPrincipalMetodosYEventos\BorrarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalMetodosYEventos\EventosGenerales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalMetodosYEventos\MetodosGenerales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalMetodosYEventos\ModificarArticulo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Program.cs" />
