@@ -107,7 +107,7 @@ namespace InterfazUsuario
             {
                 if (nuevoArticuloPendiente)
                 {
-                    DialogResult r = MessageBox.Show("Hay información de un nuevo artículo no agregado, " +
+                    DialogResult r = MessageBox.Show("Hay información de un nuevo artículo pendiente, " +
                                                      "¿quiere descartarla?", "Nuevo artículo pendiente",
                                                      MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 

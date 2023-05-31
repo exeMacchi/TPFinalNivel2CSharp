@@ -94,7 +94,7 @@ namespace InterfazUsuario
                 // Formato moneda en la columna Precio.
                 dgvArticulos.Columns["Precio"].DefaultCellStyle.Format = "C";
 
-                AjustarSizeFilas();
+                AjustarAlturaFilas();
                 AcoplarColumnasDGV();
             }
             else
@@ -275,13 +275,12 @@ namespace InterfazUsuario
         /// <summary>
         /// Método para aumentar el tamaño de las filas.
         /// </summary>
-        private void AjustarSizeFilas()
+        private void AjustarAlturaFilas()
         {
             for (int i = 0; i < dgvArticulos.Rows.Count; i++)
             {
                 dgvArticulos.Rows[i].Height = 40;
             }
-
         }
 
 
