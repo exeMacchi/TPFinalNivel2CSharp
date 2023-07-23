@@ -65,6 +65,10 @@ namespace InterfazUsuario
                     return;
                 }
             }
+            else if (campo == "Marca" || campo == "Categoria")
+            {
+                filtro = criterio;
+            }
             else
             {
                 filtro = txbxBuscar.Text;
@@ -107,11 +111,11 @@ namespace InterfazUsuario
                     break;
 
                 case "Marca":
-                    condicion = CondicionCampoTexto("M.Descripcion", criterio, filtro);
+                    condicion = $"M.Descripcion LIKE '{criterio}'";
                     break;
 
                 case "Categoría":
-                    condicion = CondicionCampoTexto("C.Descripcion", criterio, filtro);
+                    condicion = $"C.Descripcion LIKE '{criterio}'";
                     break;
 
                 case "Precio":
@@ -184,15 +188,15 @@ namespace InterfazUsuario
             if (panelFiltroAvanzado.Visible)
             {
                 panelFiltroAvanzado.Visible = false;
-                lbBusqueda.Text = "Búsqueda básica (?)";
+                lbBusqueda.Text = "Búsqueda rápida";
                 btnFiltroAvanzado.Text = "AVANZADA";
             }    
             else if (!panelFiltroAvanzado.Visible)
             {
                 comboxCampoBusqueda.SelectedIndex = 0;
                 panelFiltroAvanzado.Visible = true;
-                lbBusqueda.Text = "Búsqueda avanzada (?)";
-                btnFiltroAvanzado.Text = "BÁSICA";
+                lbBusqueda.Text = "Búsqueda avanzada";
+                btnFiltroAvanzado.Text = "RÁPIDA";
             }
             ActualizarDGV();
         }
@@ -238,6 +242,30 @@ namespace InterfazUsuario
                 comboxCriterioBusqueda.Items.Add("Mayor a...");
                 comboxCriterioBusqueda.Items.Add("Menor a...");
                 comboxCriterioBusqueda.Items.Add("Igual a...");
+                comboxCriterioBusqueda.SelectedIndex = 0;
+            }
+            else if (opcion == "Marca")
+            {
+                comboxCriterioBusqueda.Items.Clear();
+                MarcaNegocio marcaNegocio = new MarcaNegocio();
+                List<Marca> marcas = marcaNegocio.CargarMarcas();
+                foreach(Marca marca in marcas)
+                {
+                    comboxCriterioBusqueda.Items.Add(marca.Descripcion);
+                }
+
+                comboxCriterioBusqueda.SelectedIndex = 0;
+            }
+            else if (opcion == "Categoría")
+            {
+                comboxCriterioBusqueda.Items.Clear();
+                CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+                List<Categoria> categorias = categoriaNegocio.CargarCategorias();
+                foreach(Categoria categoria in categorias)
+                {
+                    comboxCriterioBusqueda.Items.Add(categoria.Descripcion);
+                }
+
                 comboxCriterioBusqueda.SelectedIndex = 0;
             }
             else

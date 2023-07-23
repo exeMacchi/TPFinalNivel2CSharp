@@ -29,7 +29,7 @@ namespace InterfazUsuario
 
             CargarComboBoxes();
 
-            toolTip.SetToolTip(lbBusqueda, "Búsqueda básica: filtro según el nombre del artículo.\n" +
+            toolTip.SetToolTip(lbBusqueda, "Búsqueda rápida: filtro según el nombre del artículo.\n" +
                                            "Búsqueda avanzada: filtro según campo y criterio.");
         }
 
